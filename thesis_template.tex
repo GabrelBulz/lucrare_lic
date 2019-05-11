@@ -1,7 +1,7 @@
 \documentclass[12pt, a4paper]{report}
 \special{papersize=210mm, 297mm}
 \usepackage[english]{babel}
-\usepackage[utf8x]{inputenc}
+\usepackage[utf8]{inputenc}
 \usepackage[left=2.5cm, right=2.5cm, top=2.5cm]{geometry}
 \renewcommand{\baselinestretch}{1.4}
 \usepackage[toc,page]{appendix}
@@ -21,6 +21,8 @@
 \usepackage{listings}
 \usepackage{verbatim}
 \usepackage{color}
+
+\usepackage{biblatex}
 
 \definecolor{dkgreen}{rgb}{0,0.6,0}
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
@@ -186,7 +188,9 @@ Bulz \textsc{Gabriel} % Student's Name
 \begin{abstract} %begin abstract  
 %The abstract should have one page and should be a compact presentation of the dissertation.
 \vspace{1.0cm}
-\par
+
+
+
 Floods are without doubt the most devastating natural disasters, striking numerous regions in the world each year. During the last decades due the increased frequency of heavy rain and a continuously increasing concentration of population near water regions a lot of assets and lives were lost.
 
 That is the reason why a system that can create a flood forecasting is  
@@ -211,15 +215,61 @@ In the first part we will try to identify the areas nearby the rivers and lakes 
 \setcounter{page}{1}
 
 
-\section{Motivation} 
+\section{Motivation}
+\quad
+Water is an essential component of ecosystems for the sustainability of life on our planet. It balances ecosystems and maintains climate variation, carbon cycling, etc. It is equally important to humans and other forms of life. Its excess or absence could lead to disasters and extreme land use change. Hence, identification of water bodies is an essential process in science and engineering research. The identification can be useful in various ways, such as estimation of water areas and demarcation of flooded regions\cite{1,2}
+\par 
 
-Floods are without doubt the most devastating natural disasters, striking numerous regions in the world each year. During the last decades due the increased frequency of heavy rain and a continuously increasing concentration of population near water regions a lot of assets and lives were lost.
+Floods are without doubt the most devastating natural disasters, striking numerous regions in the world each year. During the last decades due the increased frequency of heavy rain and a continuously increasing concentration of population near water regions a lot of assets and lives were lost.In general, less developed countries are the most vulnerable to floods, causing damages that significantly affect the national GDP. At country and community levels important initiatives have and are being devoted to implement appropriate countermeasures, both structural and non-structural, aiming to alleviate the persistent threats of water-related disasters. 
 \par
-In general, less developed countries are the most vulnerable to floods, causing damages that significantly affect the national GDP. At country and community levels important initiatives have and are being devoted to implement appropriate countermeasures, both structural and non-structural, aiming to alleviate the persistent threats of water-related disasters.
+
+Flood prediction models are of significant importance for hazard assessment and extreme event management.Robust and accurate prediction contribute highly to water recourse management strategies, policy suggestions and analysis, and further evacuation modeling\cite{3}
 \par
- 
+
+Thus, the importance of advanced systems for short-term and long-term prediction for flood and other hydrological events is strongly emphasized to alleviate damage\cite{4}. However, the prediction of flood lead time and occurrence location is fundamentally complex due to the dynamic nature of climate condition. Therefore, today’s major flood prediction models are mainly data-specific and involve various simplified assumptions.\cite{5}
+\par
+
+Physically based models were long used to predict hydrological events, such as storm, rainfall/runoff, shallow water condition, hydraulic models of flow, and further global circulation phenomena , including the coupled effects of atmosphere, ocean, and floods, and this is why we chose to develop a physically based flood prediction model. Other types of prediction models are data-driven models e.g. machine learning or hybrid models which can combine data-driven, statistical and physically base models.
+\par 
+
+Physical models showed great capabilities for predicting a diverse range of flooding scenarios\cite{6},especially in long and mid-term prediction, although they often require various types of hydro-geomorphological monitoring datasets. 
+\par 
+
+In contrast to the physically based models, the data-driven prediction models using ML are shown to have a higher performance rate on both short-term and long-term forecasting compared to the physically based models, furthermore, the literature includes numerous successful experiments of quantitative precipitation forecasting (QPF) using ML methods for different lead-time predictions\cite{7,8}. In addition,  it was shown that the performance of ML could be improved through hybridization  with other ML methods, soft computing techniques, numerical simulations, and/or physical models. Such applications provided more robust and efficient models that can effectively learn complex flood systems in an adaptive manner. Although the literature includes numerous evaluation performance analyses of individual ML models \cite{9-12}, there is no definite conclusion reported with regards to which models function better in certain applications. In fact, the literature includes only a limited number of surveys on specific ML methods in specific hydrology fields {13-15}. Consequently, there is a research gap for a comprehensive literature review in the general applications of ML in all flood resource variables from the perspective of ML modeling and data-driven prediction systems.
+\par 
+
+Although the data-driven models using ML can be much efficient in some cases there is a still a big draw back regarding their development and use. For a data-driven model to have a high accuracy it will be needed a very large amount of training data, which can be hard to acquire due the weather conditions and monitoring devices availability time. Furthermore the development of a data-driven model using ML is very expensive because it requires a complex model which needs to be trained for a long period of time, requiring a high computation cost, and it also requires a longer validation, testing, and evaluation period.
+\par
+
+Even dough the data-driven models using ML can be a great scientific tool they tend to be hard to understood by a non trained person, and they can require, as shown above, a high run cost and a data set which can be very difficult to acquire by every person. This is why we chose to develop a physically prediction model which can be used by everybody with a low run cost, which requires a minimum data-set easy to obtain via different services like Sentinel 1,2,3 or Landsat satellite images programs. This app has the potential to serve regular people when making decisions about where to buy a property, or where to build a house without any risk saving lots of money.
+\par
+
 
 \section{Our Contribution}
+\subsection{Method and Outline}
+
+This paper identifies the state of the art of physically methods for flood prediction taking into account the processing time, cost, efficiency and difficulty to use. The methods that we used shown a very significant performance and accuracy.
+\par
+
+The applications in flood prediction can be classified according to flood resource variables, i.e. river flow, flood peak discharge, urban flood and plain flood. Among these key influencing flood resource variables, and the spatial examination of the topographical images the application include the possibility to detect with high accuracy the water surfaces (over 82\% accuracy from all tests).
+\par
+
+The mainly methods that we used in the application were the detection of water and flooding a land area based on the topographically images. The water detection was obtained by combining a set of near infrared (or Nif) and green band satellite images, and then applying a method of extraction called normalized difference water index (NDWI). This method is based on the extraction the water bodies taking into account the reflectance property of water.
+\par 
+
+After the water has been detected, the land area is filled based on the topological map of the surface. One of the problems that we encountered here is ,besides the water detection, the fact that the topological satellite images tend to cover a bigger area than the NIF and green band area from the satellite images, so we had to map the smaller NIF images into the bigger topological images, but we will discuss this problem and how we solve it in the following chapters. The resulting product of our application is a area that has a high possibility of being flooded during a rain storm, results that can be achieved using a very low processing time, cost and resources.
+\par 
+
+\begin{center}
+	\includegraphics[scale=0.6]{application_outline.png} 
+\end{center}
+
+
+
+
+
+\subsection{State of Art of Physically models in flood prediction}
+
 
 
 \section{Thesis Structure}
@@ -425,7 +475,46 @@ Later the user will be able to add a set of topographic images and determine the
 
 \chapter{Bibliography} 
 
-\section{Bibliography here}
+\section{References}
+
+\begin{thebibliography}{widest entry}
+\bibitem{Rover} Rover J., Ji L., Wylie B.K., Tieszen L.L. Establishing Water Body Areal Extent Trends in Interior Alaska from Multi-Temporal Landsat Data. Remote Sens. Lett. 2012;3:595–604. doi: 10.1080/01431161.2011.643507
+
+\bibitem{Alsdorf} Alsdorf D.E., Rodríguez E., Lettenmaier D.P. Measuring Surface Water from Space. Rev. Geophys. 2007;45 doi: 10.1029/2006RG000197. [CrossRef] [Google Scholar]
+
+\bibitem{Xie} Xie, K; Ozbay,K;Zhu, Y;Yang, H. Evacuation zone modeling under climate change: A data-driven method. J.Infrastruct. Syst. 2017,23,04017013
+
+\bibitem{Pitt}Pitt, M.	Learning Lessons from the 2007 Floods; Cabinet Office: London, UK, 2008.
+
+\bibitem{Lohani}Lohani, A.K.; Goel, N.; Bhatia, K. Improving real time flood forecasting using fuzzy inference system.J. Hydrol. 2014, 509, 25–41
+
+\bibitem{Nayak}Nayak, P.; Sudheer, K.; Rangan, D.; Ramasastri, K. Short-term flood forecasting with a neurofuzzy model.Water Resour. Res. 2005, 41.
+
+\bibitem{Fox}Fox, N.I.; Wikle, C.K. A bayesian quantitative precipitation nowcast scheme. Weather Forecast. 2005, 20, 264–275.
+
+\bibitem{Merz}Merz, B.; Hall, J.; Disse, M.; Schumann, A. Fluvial flood risk management in a changing world. Nat. Hazards Earth Syst. Sci. 2010, 10, 509–527
+
+\bibitem{Taherei}Taherei Ghazvinei, P.; Hassanpour Darvishi, H.; Mosavi, A.; Yusof, K.B.W.; Alizamir, M.; Shamshirband, S.; Chau, K.W. Sugarcane growth prediction based on meteorological parameters using extreme learning machine and artificial neural network. Eng. Appl. Comput. Fluid Mech. 2018, 12, 738–749
+
+\bibitem{Kasiviswanathan}Kasiviswanathan, K.; He, J.; Sudheer, K.; Tay, J.-H. Potential application of wavelet neural network ensemble to forecast streamflow for flood management. J. Hydrol. 2016, 536, 161–173.
+
+\bibitem{Ravansalar}Ravansalar, M.; Rajaee, T.; Kisi, O. Wavelet-linear genetic programming: A new approach for modeling monthly streamflow. J. Hydrol. 2017, 549, 461–475.
+
+\bibitem{Mosavi}Mosavi, A.; Rabczuk, T. Learning and intelligent optimization for material design innovation. In Learning and Intelligent Optimization; Springer: Cham, Switzerland, 2017; pp. 358–363.
+
+\bibitem{Dandagala}Dandagala, S.; Reddy, M.S.; Murthy, D.S.; Nagaraj, G. Artificial neural networks applications in groundwater hydrology—A review. Artif. Intell. Syst. Mach. Learn. 2017, 9, 182–187.
+
+\bibitem{Deka}Deka, P.C. Support vector machine applications in the field of hydrology: A review. Appl. Soft Comput. 2014,
+19, 372–386.
+
+\bibitem{Fotovatikhah}Fotovatikhah, F.; Herrera, M.; Shamshirband, S.; Chau, K.-W.; Faizollahzadeh Ardabili, S.; Piran, M.J. Survey of computational intelligence as basis to big flood management: Challenges, research directions and future work. Eng. Appl. Comput. Fluid Mech. 2018, 12, 411–437. 
+
+\end{thebibliography}
+
+
+
+
+
 
 % end appendix part
 
