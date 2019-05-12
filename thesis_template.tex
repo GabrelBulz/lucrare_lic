@@ -248,27 +248,33 @@ Even dough the data-driven models using ML can be a great scientific tool they t
 \section{Our Contribution}
 \subsection{Method and Outline}
 
-This paper identifies the state of the art of physically methods for flood prediction taking into account the processing time, cost, efficiency and difficulty to use. The methods that we used shown a very significant performance and accuracy.
+This paper identifies the state of the art of physically methods for flood prediction taking into account the processing time, cost, efficiency and difficulty to use. The methods that we used shown a very significant performance and accuracy rate.
 \par
 
 The applications in flood prediction can be classified according to flood resource variables, i.e. river flow, flood peak discharge, urban flood and plain flood. Among these key influencing flood resource variables, and the spatial examination of the topographical images the application include the possibility to detect with high accuracy the water surfaces (over 82\% accuracy from all tests).
 \par
 
-The mainly methods that we used in the application were the detection of water and flooding a land area based on the topographically images. The water detection was obtained by combining a set of near infrared (or Nif) and green band satellite images, and then applying a method of extraction called normalized difference water index (NDWI). This method is based on the extraction the water bodies taking into account the reflectance property of water.
+The mainly methods that we used in the application were the detection of water and flooding a land area based on the topographical images. The water detection was obtained by combining a set of near infrared (or Nif) and green band satellite images, and then applying a method of extraction called normalized difference water index (NDWI). This method is based on the extraction the water bodies taking into account the reflectance property of water.
 \par 
 
-After the water has been detected, the land area is filled based on the topological map of the surface. One of the problems that we encountered here is ,besides the water detection, the fact that the topological satellite images tend to cover a bigger area than the NIF and green band area from the satellite images, so we had to map the smaller NIF images into the bigger topological images, but we will discuss this problem and how we solve it in the following chapters. The resulting product of our application is a area that has a high possibility of being flooded during a rain storm, results that can be achieved using a very low processing time, cost and resources.
+After the water has been detected, the land area is filled based on the topological map of the surface. One of the problems that we encountered here is ,besides the water detection, the fact that the topological satellite images tend to cover a bigger area than the NIF and green band area from the satellite images, so we had to map the smaller NIF images into the bigger topological images, but we will discuss this problem and how we solve it in the following chapters. The resulting product of our application is a area that has a high possibility of being flooded during a heavy rainstorm, results that can be achieved using a very low processing time, cost and resources.
 \par 
 
 \begin{center}
 	\includegraphics[scale=0.6]{application_outline.png} 
 \end{center}
 
+Combining those techniques with an easy to use and understand client interface we managed to create a system that can predict the land areas with a high potential of being flooded. The processing time and cost are reduced because the server part has to go through a set of images only twice, first time to detect the surface water and second time to fill the land area based on the topographic map, so the computations are reduced as low as possible. On the client side, there are big advantages because the set of resources (satellite images) are free and easy to access and the results are easy to understand, making this application ideal for a non trained person.
+\par
+
 
 
 
 
 \subsection{State of Art of Physically models in flood prediction}
+
+\quad
+For creating our physically prediction model we chose to use NDWI water extraction technique due its ease use and low processing time. McFeeters \cite{16} developed the normalized difference water index (NDWI) using the reflectance of the green (band 2) and near-infrared (band 4) bands of Landsat TM (Thematic Mapper). NDWI is one of the most widely used water indices for a variety of applications, including surface water mapping, land use/cover change analyses, and ecological research\cite{17-19} and also it shown great classification accuracy in areas that include shadow and dark surfaces.
 
 
 
@@ -279,7 +285,11 @@ After the water has been detected, the land area is filled based on the topologi
 \newpage{}
 
 
-\chapter{Technologies Used}
+\chapter{Descrierea aplicatiei}
+
+\section{Technologies used}
+
+\subsection{Collecting and processing the resources}
 
 
 \section{Programming languages and Frameworks} 
@@ -508,6 +518,14 @@ Later the user will be able to add a set of topographic images and determine the
 19, 372–386.
 
 \bibitem{Fotovatikhah}Fotovatikhah, F.; Herrera, M.; Shamshirband, S.; Chau, K.-W.; Faizollahzadeh Ardabili, S.; Piran, M.J. Survey of computational intelligence as basis to big flood management: Challenges, research directions and future work. Eng. Appl. Comput. Fluid Mech. 2018, 12, 411–437. 
+
+\bibitem{McFeeters}McFeeters, S.K. The use of the normalized difference water index (NDWI) in the delineation of open water features. Int. J. Remote Sens. 1996, 17, 1425–1432.
+
+\bibitem{Duan}Duan, Z.; Bastiaanssen, W.G.M. Estimating water volume variations in lakes and reservoirs from four operational satellite altimetry databases and satellite imagery data. Remote Sens. Environ. 2013, 134, 403–416.
+
+\bibitem{Poulin}Poulin, B.; Davranche, A.; Lefebvre, G. Ecological assessment of phragmites australis wetlands using multi-season spot-5 scenes. Remote Sens. Environ. 2010, 114, 1602–1609..
+
+\bibitem{Hui}Hui, F.; Xu, B.; Huang, H.; Yu, Q.; Gong, P. Modelling spatial-temporal change of poyang lake using multitemporal landsat imagery. Int. J. Remote Sens. 2008, 29, 5767–5784.
 
 \end{thebibliography}
 

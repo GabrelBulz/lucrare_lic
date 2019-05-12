@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.10.18)  11 MAY 2019 11:18
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.10.18)  12 MAY 2019 00:26
 entering extended mode
 **./thesis_template.tex
 (thesis_template.tex
@@ -716,75 +716,79 @@ LaTeX Warning: Citation '8' on page 2 undefined on input line 238.
 LaTeX Warning: Citation '9-12' on page 2 undefined on input line 238.
 
 [2] [3]
-<application_outline.png, id=39, 769.37437pt x 583.42969pt>
+<application_outline.png, id=39, 769.37437pt x 656.4525pt>
 File: application_outline.png Graphic file (type png)
 <use application_outline.png>
 Package pdftex.def Info: application_outline.png  used on input line 264.
-(pdftex.def)             Requested size: 461.62819pt x 350.0605pt.
+(pdftex.def)             Requested size: 461.62819pt x 393.87454pt.
 
 Overfull \hbox (8.6603pt too wide) in paragraph at lines 264--265
  [] 
  []
 
-[4 <./application_outline.png>]
+
+LaTeX Warning: Citation '16' on page 4 undefined on input line 277.
+
+
+LaTeX Warning: Citation '17-19' on page 4 undefined on input line 277.
+
+[4 <./application_outline.png>] [5]
 Chapter 2.
-[5
+[6
 
 ]
-<multi_thread.png, id=50, 266.49562pt x 225.84375pt>
+<multi_thread.png, id=53, 266.49562pt x 225.84375pt>
 File: multi_thread.png Graphic file (type png)
 <use multi_thread.png>
-Package pdftex.def Info: multi_thread.png  used on input line 307.
+Package pdftex.def Info: multi_thread.png  used on input line 317.
 (pdftex.def)             Requested size: 159.89859pt x 135.50728pt.
-<python_call_java_1.png, id=51, 811.53188pt x 215.30438pt>
+<python_call_java_1.png, id=54, 811.53188pt x 215.30438pt>
 File: python_call_java_1.png Graphic file (type png)
 <use python_call_java_1.png>
-Package pdftex.def Info: python_call_java_1.png  used on input line 329.
+Package pdftex.def Info: python_call_java_1.png  used on input line 339.
 (pdftex.def)             Requested size: 486.92288pt x 129.18361pt.
 
-Overfull \hbox (51.5798pt too wide) in paragraph at lines 329--331
+Overfull \hbox (51.5798pt too wide) in paragraph at lines 339--341
 [][]
  []
 
-[6 <./multi_thread.png> <./python_call_java_1.png>]
-<python_call_java_2.png, id=57, 811.53188pt x 426.09187pt>
+[7 <./multi_thread.png>]
+<python_call_java_2.png, id=59, 811.53188pt x 426.09187pt>
 File: python_call_java_2.png Graphic file (type png)
 <use python_call_java_2.png>
-Package pdftex.def Info: python_call_java_2.png  used on input line 335.
+Package pdftex.def Info: python_call_java_2.png  used on input line 345.
 (pdftex.def)             Requested size: 486.92288pt x 255.65709pt.
 
-Overfull \hbox (51.5798pt too wide) in paragraph at lines 335--336
+Overfull \hbox (51.5798pt too wide) in paragraph at lines 345--346
 [][] 
  []
 
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 342.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 352.
 
 ("C:\Users\Gabrel\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 342.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 352.
 
-[7 <./python_call_java_2.png>] [8] [9] [10]
+[8 <./python_call_java_1.png> <./python_call_java_2.png>] [9] [10] [11]
+[12]
 Chapter 3.
-[11
+[13
 
-] [12] [13]
+] [14] [15]
 Chapter 4.
-[14
+[16
 
 ]
 Chapter 5.
-[15
+[17
 
-] [16
+] [18
 
-] [17] (thesis_template.aux)
+] [19] [20] (thesis_template.aux)
 
 LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
 
 Package biblatex Warning: Please (re)run Biber on the file:
@@ -796,13 +800,13 @@ Package logreq Info: Writing requests to 'thesis_template.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 11479 strings out of 492970
- 195151 string characters out of 3126149
- 634283 words of memory out of 3000000
- 15199 multiletter control sequences out of 15000+200000
+ 11483 strings out of 492970
+ 195181 string characters out of 3126149
+ 634433 words of memory out of 3000000
+ 15203 multiletter control sequences out of 15000+200000
  10679 words of font info for 38 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 35i,6n,40p,1353b,1719s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 35i,5n,40p,1353b,1701s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Users/Gabrel/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfont
 s/cm/cmbx12.pfb><C:/Users/Gabrel/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/
 public/amsfonts/cm/cmcsc10.pfb><C:/Users/Gabrel/AppData/Local/Programs/MiKTeX 2
@@ -812,9 +816,9 @@ ata/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/User
 s/Gabrel/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.
 pfb><C:/Users/Gabrel/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfo
 nts/cm/cmsy10.pfb>
-Output written on thesis_template.pdf (24 pages, 275397 bytes).
+Output written on thesis_template.pdf (27 pages, 281331 bytes).
 PDF statistics:
- 117 PDF objects out of 1000 (max. 8388607)
+ 126 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  26 words of extra memory for PDF output out of 10000 (max. 10000000)
 
