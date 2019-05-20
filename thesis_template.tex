@@ -9,6 +9,7 @@
 \usepackage{amsmath}
 \usepackage{graphicx}
 \usepackage{float}
+\usepackage[export]{adjustbox}
 \graphicspath{{images/} {diagrams/}}
 
 %\usepackage{showframe}
@@ -262,6 +263,7 @@ After the water has been detected, the land area is filled based on the topologi
 
 \begin{center}
 	\includegraphics[scale=0.6]{application_outline.png} 
+	Fig 1
 \end{center}
 
 Combining those techniques with an easy to use and understand client interface we managed to create a system that can predict the land areas with a high potential of being flooded. The processing time and cost are reduced because the server part has to go through a set of images only twice, first time to detect the surface water and second time to fill the land area based on the topographic map, so the computations are reduced as low as possible. On the client side, there are big advantages because the set of resources (satellite images) are free and easy to access and the results are easy to understand, making this application ideal for a non trained person.
@@ -290,6 +292,61 @@ For creating our physically prediction model we chose to use NDWI water extracti
 \section{Technologies used}
 
 \subsection{Collecting and processing the resources}
+
+\subsubsection{Collecting the resources}
+
+\quad
+Our prediction model was created with a simple scope in mind, to offer a simply  application that can predict the areas with high risk of being flooded during a rainstorm, with as little processing time and cost as possible. The input for our model had to be easy to obtained and the output had to be easy to understand, so we chose to use a input data that is both easy to obtained and free (it will need to be accessible by every person). The input for our model is a set of .tiff images that should contain a near infrared image (Nif), a green band image, and a topographic image. A simple way to obtain the NIF and green band images is by using the available data offered by satellites like Landsat 1 to Landsat 8 or Sentinel 2. 
+
+\par 
+The Landsat project is one of the longest-running enterprise projects for acquisition of satellite imagery of Earth. The project was first developed by NASA and then it was transferred to NOAA (National Oceanic and Atmospheric Administration) by U.S Jimmy Carter's presidential directive. There were 8 Landsat satellites on the Earth's orbit, now only 2 of them are still active, and the resources collected are available on the USGS (U.S Geological Survey) website. The only thing that a user will need in order to access the data is a free account. After the account is created the user can select different areas via USGS's EarthExplorer portal and download the area's satellite imagery using filters like Data Range or satellite preference (Landsat satellite 1-8).
+\par
+
+\includegraphics[scale=0.5, right]{landsat_search.png} 
+\begin{center}
+Fig 2
+\end{center}
+
+The image presented above is a shot taken while searching for our test data from a region in U.S (Cairo)that was heavy flooded during a rainstorm by the Mississippi river. The yellow and pink areas represents two different scenes captured by the Landsat 7 satellite. A set of 8 images are found in a package downloaded from this website depending on the satellite that had provided them, but all the Landsat satellites imagery set contains a NIF and green band shot of the selected area (the main difference between them is the resolution in meters of the photo). We used in our research mainly Landsat's 7 images because the photos are at a higher resolution (30 m) and most of them are already processed by the USGS servers (some images need to be processed by the internal servers before being available to the users).
+
+\includegraphics[scale=0.73, center]{Capture.png} 
+\begin{center}
+Fig 3
+\end{center}
+
+
+\medskip
+
+As we specified above there is another option to obtain the images besides Landsat, and that is through the Sentinel program. Sentinel is an observation mission from the Eu Copernicus Programme that acquires optical imagery of Earth at large resolution (10 to 60 m) over land and coastal waters. There are 3 satellites launched by the Copernicus Programme but we will focus mainly on Sentinel 2, because it has the largest collected data. 
+\par 
+
+The Sentinel 2 satellite has a multi-spectral instrument with 13 spectral channels in the visible, short wave and near infrared spectral range. The bands that are interesting for us are the 3-rd band which is the green one and the 8-th band which is the NIF one (the bands have a spatial resolution of 10 m). The images  can be downloaded from the Copernicus Scihub website, again by creating a free account. There is a possibility to select a date range, cloud coverage in percents and the satellite platform which is the best suitable for the user needs (I.E Sentinel 1,2 or 3). 
+\par 
+
+\bigskip
+
+\includegraphics[scale=0.54, center]{sentinel.png} 
+\begin{center}
+Fig 4
+\end{center}
+\par 
+
+
+Still, there are some drawbacks from using the Sentinel imagery. We chose to use the Landsat images over Sentinel's data set, because the Sentinel 1 images are at a lower resolution, and the Sentinel 2 and 3 images are too recent taken (the satellites were launched in 2015, so the data could not cover a larger time period for our data analysis).
+
+\subsubsection{Processing the resources}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 \section{Programming languages and Frameworks} 

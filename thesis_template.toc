@@ -23,38 +23,42 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.1.1}Collecting and processing the resources}{6}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2.2}Programming languages and Frameworks}{6}
+\contentsline {subsubsection}{Collecting the resources}{6}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2.3}Python Programming Language}{10}
+\contentsline {subsubsection}{Processing the resources}{9}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2.4}Gdal}{11}
+\contentsline {section}{\numberline {2.2}Programming languages and Frameworks}{9}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2.5}Qgis}{12}
+\contentsline {section}{\numberline {2.3}Python Programming Language}{13}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {3}The application}{13}
+\contentsline {section}{\numberline {2.4}Gdal}{14}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.1}Qgis introduction}{13}
+\contentsline {section}{\numberline {2.5}Qgis}{15}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.2}Python GDAL introduction}{13}
+\contentsline {chapter}{\numberline {3}The application}{16}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.3}Functional description}{13}
+\contentsline {section}{\numberline {3.1}Qgis introduction}{16}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.4}The user interface}{13}
+\contentsline {section}{\numberline {3.2}Python GDAL introduction}{16}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.5}Main use cases}{13}
+\contentsline {section}{\numberline {3.3}Functional description}{16}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.6}Implementation details}{13}
+\contentsline {section}{\numberline {3.4}The user interface}{16}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.7}Application specification - user's point of view}{14}
+\contentsline {section}{\numberline {3.5}Main use cases}{16}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.8}Application specification - programmer's point of view}{15}
+\contentsline {section}{\numberline {3.6}Implementation details}{16}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {4}Conclusions}{16}
+\contentsline {section}{\numberline {3.7}Application specification - user's point of view}{17}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.1}Performance Evaluation}{16}
+\contentsline {section}{\numberline {3.8}Application specification - programmer's point of view}{18}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.2}Future Development}{16}
+\contentsline {chapter}{\numberline {4}Conclusions}{19}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {5}Bibliography}{17}
+\contentsline {section}{\numberline {4.1}Performance Evaluation}{19}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.1}References}{17}
+\contentsline {section}{\numberline {4.2}Future Development}{19}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {5}Bibliography}{20}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {5.1}References}{20}
