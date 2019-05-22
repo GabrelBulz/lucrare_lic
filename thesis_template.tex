@@ -1,4 +1,4 @@
-\documentclass[12pt, a4paper]{report}
+ \documentclass[12pt, a4paper]{report}
 \special{papersize=210mm, 297mm}
 \usepackage[english]{babel}
 \usepackage[utf8]{inputenc}
@@ -10,6 +10,7 @@
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage[export]{adjustbox}
+\usepackage{wrapfig}
 \graphicspath{{images/} {diagrams/}}
 
 %\usepackage{showframe}
@@ -302,16 +303,18 @@ Our prediction model was created with a simple scope in mind, to offer a simply 
 The Landsat project is one of the longest-running enterprise projects for acquisition of satellite imagery of Earth. The project was first developed by NASA and then it was transferred to NOAA (National Oceanic and Atmospheric Administration) by U.S Jimmy Carter's presidential directive. There were 8 Landsat satellites on the Earth's orbit, now only 2 of them are still active, and the resources collected are available on the USGS (U.S Geological Survey) website. The only thing that a user will need in order to access the data is a free account. After the account is created the user can select different areas via USGS's EarthExplorer portal and download the area's satellite imagery using filters like Data Range or satellite preference (Landsat satellite 1-8).
 \par
 
+\bigskip
+
 \includegraphics[scale=0.5, right]{landsat_search.png} 
 \begin{center}
-Fig 2
+Fig 2 - \cite{20}
 \end{center}
 
-The image presented above is a shot taken while searching for our test data from a region in U.S (Cairo)that was heavy flooded during a rainstorm by the Mississippi river. The yellow and pink areas represents two different scenes captured by the Landsat 7 satellite. A set of 8 images are found in a package downloaded from this website depending on the satellite that had provided them, but all the Landsat satellites imagery set contains a NIF and green band shot of the selected area (the main difference between them is the resolution in meters of the photo). We used in our research mainly Landsat's 7 images because the photos are at a higher resolution (30 m) and most of them are already processed by the USGS servers (some images need to be processed by the internal servers before being available to the users).
+The image presented above (fig 2) is a shot taken while searching for our test data from a region in U.S (Cairo) that was heavy flooded during a rainstorm by the Mississippi river. The yellow and pink areas represents two different scenes captured by the Landsat 7 satellite. A set of 8 images are found in a package downloaded from this website depending on the satellite that had provided them, but all the Landsat satellites imagery set contains a NIF and green band shot of the selected area (the main difference between them is the resolution in meters of the photo). We used in our research mainly Landsat's 7 images because the photos are at a higher resolution (30 m) and most of them are already processed by the USGS servers (some images need to be processed by the internal servers before being available to the users).
 
 \includegraphics[scale=0.73, center]{Capture.png} 
 \begin{center}
-Fig 3
+Fig 3 - \cite{21}
 \end{center}
 
 
@@ -327,52 +330,86 @@ The Sentinel 2 satellite has a multi-spectral instrument with 13 spectral channe
 
 \includegraphics[scale=0.54, center]{sentinel.png} 
 \begin{center}
-Fig 4
+Fig 4 - \cite{22}
 \end{center}
 \par 
 
 
 Still, there are some drawbacks from using the Sentinel imagery. We chose to use the Landsat images over Sentinel's data set, because the Sentinel 1 images are at a lower resolution, and the Sentinel 2 and 3 images are too recent taken (the satellites were launched in 2015, so the data could not cover a larger time period for our data analysis).
+\par 
+
+After we obtained the NIF and green band images we will need to download a topographic map of the area ,that will be processed. The topographic map can be taken from USGS website by searching for digital elevation maps. The process is pretty similar to the one of collecting Landsat imagery. A interesting difference between a NIF and a topographic image is represented by the images size. The topographic image is usually taken over a larger field, and this is a problem that we encountered during the processing of the areas with high flood risk. We needed to determine where to place the smaller image inside the bigger one based on coordinates, but we will discuss about this problem in one of the following sections.
+\par
 
 \subsubsection{Processing the resources}
 
+\quad
+Before a set of images can be processed by our application they need to be rendered. For this process we used a program called QGIS. Qgis is an open source geographic information system, created by OSGeo (Open Source Geospatial Foundation), licensed under GNU, that supports numerous vector, raster and database formats and functionalities\cite{23}.
+\par 
+
+The images will need to be rendered from 8 bit depth to 32 bit depth and the pixel range value will be mapped between 0 and 255. They will also need to be saved with .TIF extension, to be later processed by our servers.
+\par 
+
+The Sentinel images are pretty straight forward to rendered, but the images from Landsat will need an extra step before being ready to save. The Landsat 7 images have what seems to be "black stripes" across the side of the image. This is due to a failure of Landsat 7 Scan Line Corrector. The forward movement of the satellite on the orbit should be compensated by The Scan Line Corrector, but because of the failure a zigzag pattern of ground tracking is used instead of a mapping in straight lines. This can be seen very clearly in the image below (fig 5), and the location of the black stripes varies between 390-450 m; therefore US Geological Survey(USGS) estimates that affected images lose about 22\% of their data.\cite{24}
+
+\bigskip
+
+\includegraphics[scale=0.54, center]{landsat_black_stripes.png} 
+\begin{center}
+Fig 5
+\end{center}
+\par 
+
+\quad
+The black lines get smaller as we approach the center of the image, which means that we can crop some parts of the land area and use them without any future modification, or if we need to use the full image we can try to apply a image correction, which should fill the black lines based on the gap masks offered by Landsat (for this part we will need to have Gdal installed). Below we can see how a mask layer looks like (fig 6).
+\par 
 
 
+\medskip
 
+\includegraphics[scale=0.54, center]{landsat_black_stripes_correction.png} 
+\begin{center}
+Fig 6
+\end{center}
+\par 
 
-
-
-
-
-
-
+After the images are ready they can be rendered by saving the image with .tif extension and checking the "render image" box.
 
 
 
 \section{Programming languages and Frameworks} 
 
-{\Large Programming language: Java\par}
+\subsubsection{Programming language: Java}
 \medskip
 
-
-Java is popular high-level programming language that is object-oriented and it is designed to have as few implementation dependencies as possible. It was created in 1995 by Sun Microsystems and now it is owned by Oracle.
+\quad
+Java is popular object-oriented programming language that was designed to have as few implementation dependencies as possible. It was created in 1995 by Sun Microsystems and now it is owned by Oracle.
 \par
 
-This project was developed using Java 1.8 with two external libraries i.e.: Gdal and jai-imageio-core 1.4.0. Any version below 1.6 will now work as intended because of jai-imageio-core library. This library was used to process TIFF images from satellite.
+This project was developed using Java 1.8 with two external libraries i.e.: Gdal and jai-imageio-core 1.4.0. Any version below 1.6 will now work as intended because of jai-imageio-core library. These libraries were used to process the TIFF images from satellite.
 \par
 
 At first we intended to use Python as the heavy lifting programming language because of the more relaxed syntactic structure, but in the end we chose Java because of its parallel programming capabilities. Usually when we have to work with satellite images we should take into account the fact that the images can be really large, like 8161x7211 pixels in size covering over 589.000.000 $km^2$, and when we have to process more that one image of this kind the processing time becomes very important.
 \par
 
-Python will become much slower in this area because of the Global Interpreter Lock or GIL (a mutex, or a lock, that allows only one thread to hold the control of the Python interpreter). This means that only one thread can be in a state of execution at any point in time. The impact of the GIL isn’t visible to developers who execute single-threaded programs, but it can be a performance bottleneck in CPU-bound and multi-threaded code.
-\par
+Python will become much slower in this area because of the Global Interpreter Lock or GIL (a mutex, or a lock, that allows only one thread to be in a state of execution at any point in time). The impact of the GIL is visible only to developers who execute multi-threaded programs, because it can create a performance bottleneck at the CPU level.
+ \par
+ 
 \bigskip
 
-In the following image we can take a look over the processing time between the Java's multi-threaded system and the single-threaded Python's system
+In the following image () we can take a look over the processing time between the Java's multi-threaded system and the single-threaded Python's system
 \par
 
-\includegraphics[scale=0.6]{multi_thread.png}
-\par
+\begin{wrapfigure}{r}{1}
+	\includegraphics[scale=0.8, center]{multi_thread.png}
+\end{wrapfigure}
+
+ 
+\begin{center}
+Fig 7
+\end{center}
+\par 
+
 
 {\Large Programming language: Python\par}
 \medskip
@@ -380,7 +417,7 @@ In the following image we can take a look over the processing time between the J
 Python is a interpreted, high-level, open source programming language that was made to have a  relaxed syntactic structure and to be more easy to read. It supports both functional and object oriented programming and its mainly targeted to a fast development and easy to maintain code.
 \par
 
-Python had played a major role in the project because of its relaxed syntactic structure and it was use to create the server part of the application, using Flask (flask is a microframework for python based applications).
+Python had played a major role in the project because of its relaxed syntactic structure and it was use to create the server part of the application, using Flask (flask is a microframework for python web based applications).
 \par 
 
 After the server receives a set of satellite images from the user, a Java process is started by the server to solve the request. The java files are complied when the server is started for the first time and then for every request a java process is started. All this part was handled using the python's "subprocess" library
@@ -583,6 +620,22 @@ Later the user will be able to add a set of topographic images and determine the
 \bibitem{Poulin}Poulin, B.; Davranche, A.; Lefebvre, G. Ecological assessment of phragmites australis wetlands using multi-season spot-5 scenes. Remote Sens. Environ. 2010, 114, 1602–1609..
 
 \bibitem{Hui}Hui, F.; Xu, B.; Huang, H.; Yu, Q.; Gong, P. Modelling spatial-temporal change of poyang lake using multitemporal landsat imagery. Int. J. Remote Sens. 2008, 29, 5767–5784.
+
+\bibitem{USGS}
+USGS \textit{https://earthexplorer.usgs.gov/} - accessed in 19.05.2019
+
+
+\bibitem{Wiki_landsat}
+Wikipedia Landsat Program \textit{https://en.wikipedia.org/wiki/Landsat\_program} - accessed in 19.05.2019
+
+\bibitem{Copernicus}
+Copernicus \textit{https://scihub.copernicus.eu/} - accessed in 19.05.2019
+
+\bibitem{Copernicus}
+Copernicus \textit{https://www.qgis.org/en/site/about/index.html} - accessed in 19.05.2019
+
+\bibitem{Copernicus}
+Copernicus \textit{https://www.pixalytics.com/landsat-quirks/} - accessed in 22.05.2019
 
 \end{thebibliography}
 
