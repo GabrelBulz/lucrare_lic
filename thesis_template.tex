@@ -203,11 +203,6 @@ In the first part we will try to identify the areas nearby the rivers and lakes 
 
 \end{abstract} %end abstract
 
-\tableofcontents{}
-\addcontentsline{toc}{chapter}{List Of Figures}
-\listoffigures{}
-\addcontentsline{toc}{chapter}{List Of Tables}
-\listoftables{}
 
 \newpage{}
 
@@ -253,13 +248,13 @@ Even dough the data-driven models using ML can be a great scientific tool they t
 This paper identifies the state of the art of physically methods for flood prediction taking into account the processing time, cost, efficiency and difficulty to use. The methods that we used shown a very significant performance and accuracy rate.
 \par
 
-The applications in flood prediction can be classified according to flood resource variables, i.e. river flow, flood peak discharge, urban flood and plain flood. Among these key influencing flood resource variables, and the spatial examination of the topographical images the application include the possibility to detect with high accuracy the water surfaces (over 82\% accuracy from all tests).
+The applications in flood prediction can be classified according to flood resource variables, i.e. river flow, flood peak discharge, urban flood and plain flood. Among these key influencing flood resource variables, and the spatial examination of the topographical images the application include the possibility to detect with high accuracy the water surfaces (over 89\% accuracy from all tests).
 \par
 
 The mainly methods that we used in the application were the detection of water and flooding a land area based on the topographical images. The water detection was obtained by combining a set of near infrared (or NIR) and green band satellite images, and then applying a method of extraction called normalized difference water index (NDWI). This method is based on the extraction the water bodies taking into account the reflectance property of water.
 \par 
 
-After the water has been detected, the land area is filled based on the topological map of the surface. One of the problems that we encountered here is ,besides the water detection, the fact that the topological satellite images tend to cover a bigger area than the NIR and green band area from the satellite images, so we had to map the smaller NIR images into the bigger topological images, but we will discuss this problem and how we solve it in the following chapters. The resulting product of our application is a area that has a high possibility of being flooded during a heavy rainstorm, results that can be achieved using a very low processing time, cost and resources.
+After the water has been detected, the land area is filled based on the topographical map of the surface. One of the problems that we encountered here is ,besides the water detection, the fact that the topographical satellite images tend to cover a bigger area than the NIR and green band area from the satellite images, so we had to map the smaller NIR images into the bigger topographical images, but we will discuss this problem and how we solve it in the following chapters. The resulting product of our application is a area that has a high possibility of being flooded during a heavy rainstorm, results that can be achieved using a very low processing time, cost and resources.
 \par 
 
 \begin{center}
@@ -288,7 +283,7 @@ For creating our physically prediction model we chose to use NDWI water extracti
 \newpage{}
 
 
-\chapter{Descrierea aplicatiei}
+\chapter{The application}
 
 \section{Technologies used}
 
@@ -467,15 +462,73 @@ Flask was developed based on the template engines offered by Jinja 2, which can 
 There is an another available web framework dedicated to Python which we took into consideration when we built this application and that is Django. At first look Django seemed a better choice than Flask, because it has a better template engine than Flask, it has a ORM (object-relational mapping) system that can work with several databases like SQLite, Oracle and MySQL and it has a built-in bootstrapping tool, but despite all this upsides, which can make the application development much easier, there are some drawbacks when using Django. Even though Django could offer a cheaper App development, we should also take a look on how a Django HTTP server will compare to a HTTP Flask server.
 \par 
 
-We had to consider the fact that the machine on which our application will run will need to be cheap to maintained, and it should be pretty responsive, which means that it should have a low latency (that was one of our main focuses). We took a look on several benchmarks that compared the performance obtained by Flask and Dajngo during longer sessions of run time, because the available resources tend to change with time. We had to determine how they can handle a more intensive environment where the available resources can decrease. Like on the real machines where the decrease of resource is non linear because the OS can spawn daemons or trigger some side jobs, we had to find some tests that will take this facts into account, and we found that the HTTP Flask server performs much better than the HTTP Django server in this king of conditions. The test that we take into consideration were made using Gunicorn (a Python Web Server Gateway HTTP interface) at a constant 4000 queries per seconds. In the tests the HTTP Falsk server displayed a lower latency and  error numbers and a higher request number compared to the HTTP Django server.
+We had to consider the fact that the machine on which our application will run will need to be cheap to maintained, and it should be pretty responsive, which means that it should have a low latency (that was one of our main focuses). We took a look on several benchmarks that compared the performance obtained by Flask and Dajngo during longer sessions of run time, because the available resources tend to change with time. We had to determine how they can handle a more intensive environment where the available resources can decrease. Like on the real machines where the decrease of resource is non linear because the OS can spawn daemons or trigger some side jobs, we had to find some tests that will take this facts into account, and we found that the HTTP Flask server performs much better than the HTTP Django server in this king of conditions. The tests that we take into consideration \cite{27} were made using Gunicorn (a Python Web Server Gateway HTTP interface) at a constant 4000 queries per seconds. In the tests the HTTP Falsk server displayed a lower latency and  error numbers and a higher request number compared to the HTTP Django server.
 \par 
 
+\bigskip
+\includegraphics[scale=0.7, center]{django-flask-table.png}
+\begin{center}
+Fig 10 - \cite{27}
+\end{center}
+
+\medskip
+\includegraphics[scale=0.6, center]{django-flask-latency.png}
+\begin{center}
+Fig 11 - \cite{27}
+\end{center}
 
 
 
-\section{Partea algoritmica}
 
-\subsection{NDWI + referinte si procente}
+\section{Functional description}
+
+\quad
+In this section we will take a closer look on how our application manages to process the input offered by the user and predict the areas with high flooding risk. Firstly we offer a friendly and easy to understand web interface where any user can upload a set of satellite images, where a set is composed of a NIR image, a green band image and a topographical image (a user can upload multiple sets of this kind at once; the sets will be identified based on names).
+\par 
+ After the input is uploaded to the server a solving request will be created and placed on a queue. Each request is processed one at a time, and when it turn will come, the server will unzip the input and start the prediction. The first step in our prediction consists in detecting the water surfaces by combining the NIR band image and the green band image and then applying a formula called NDWI (Normalized Difference Water Index) to each pixel. After that, the resulting image is mapped to the topographical image and a fill algorithm is applied. The fill will start from the water bodies already detected and it will spread base on the land's topography.
+
+
+\subsection{Detecting surface water using NDWI + referinte si procente}
+\quad 
+
+The detection of the water bodies was probably one of the most challenging part of this application, because there are different types of water, with different colors and different densities. At first, we tried to detect the water surfaces based on their color, but usually the chromatic of the oceanic water is very different than the chromatic of the lakes and rivers. The color range that we had to cover was too large, so we gave up this idea. 
+\par 
+The second method that we tried was to use only the near infrared band. The idea behind this was that the satellite will shoot a laser beam across the land area and the beam will be reflected back by the most objects, except water. It is one of the only things that can absorb the NIR laser, so the values of the NIR resulted images ,over the water bodies, will be equal to 0. Near the water banks, because the volume of water is too small to absorb all the NIR rays, the pixel values will not be exactly 0 (the value range can vary up to 15-20). The method seemed to work when we considered all the pixel values between 0-15 to be a water part, with a calculated accuracy of around 83\% (from our tests done over a set of 12 images), but we encountered a big drawback. On the flatter land areas, lacking valleys and mountains, the images looked pretty good, but when the topography was to diverse the shadows began to appear. The pixel value of the areas covered by shadows can vary between 10 and 25, so we got a lot of false positive cases.
+
+\bigskip
+\includegraphics[scale=0.4, left]{water-false-positive.png}
+\begin{center}
+Fig 12 - False positive water detection
+\end{center}
+\par 
+
+We can take a look in the previous picture (Fig 12) to see how significant are the errors caused by the shadows. The green areas represent the water bodies classified correct and the white areas are the shadows that our application classified as water. It may not seem much but that figure is 1414 x 658 pixels in size covering around 930.412 $m^2$, and it will be a waist of money to move all the people from that areas in case of a flood just because we classified the shadows as water.
+\par 
+
+The method that we chose in the end was to use a index called NDWI or Normalized difference water index. NDWI is a remote sensing indicator which is obtained by combining the NIR and green band images. The formula will be applied as following for each pixel:
+
+$$ NDWI/perpixel = \frac{Xgreen - Xnir}{Xgreen + Xnir}$$
+
+If the calculated value is bigger than 0.45 we can classify that specific pixel as a spot that contains water, and all the other values below that can be classified as non-water pixels (land). This method shown a very satisfying result compared to the true value, with an calculated accuracy of around 88\% (the tests were done by us over a set of 12 images; over the oceanic area the accuracy was around 98\% and over the more diverse land area the accuracy was around 82\%). The big advantage of this approach was that it dose not identify any shadows as water pixels, without losing the accuracy. 
+\par 
+There are numerous studies \cite{28, 29} that suggested that NDWI is one of the best classification method, for optical images, comparable with the multifractal formalism method (with an accuracy of 89\%), and the neural network classification approach that shown great results in some cases, but it did not provide a proper classification because of its high sensitivity to speckle noise.
+
+\includegraphics[scale=0.35, left]{NDWI-prediction.png}
+\begin{center}
+Fig 13 - Water detection using NDWI (white areas are water bodies)
+\end{center}
+
+
+\par 
+
+\bigskip
+
+
+MAI AI DE SCRIS AICI DESPRE SA FACI COMPARATIA INTRE CE AI GASIT CU NDWI SI CE TI-A DAT LA INCEPUT CU NIR
+
+
+
+
 \subsection{maparea imaginilor folosind gdal}
 \subsection{fill imagine}
 
@@ -502,38 +555,6 @@ We had to consider the fact that the machine on which our application will run w
 
 \newpage
 
-\section{Application specification - user's point of view}
-
-{\Large User's point of view\par}
-
-This app should be able to deliver a marked zone on the land area(provided by the user), based on the probabilities of that zone to be floodable. (ex: red for high probability, green for none)\par 
-
-The user will have to insert a set of images provided by sentinel 1,2 or 3, or a .tif representation of the area which he wants to test. The .tif set of images should include a infrared picture as well, because that is the way in which the water can be detected. The satellites usually use infrared scanners so this would not be a problem. The infrared images are useful because the water will absorb the infrared laser, so the areas covered with water are usually black. This is how the program will find the water areas, and will be able to detect the zones which have a higher chance of being flooded. Depending on the progress of the program, we will try to offer a GUI for the user in which he/she will be able to insert the coordinates of the area under the observation, and we will try to download the images based on their coordinated using a API for sentinel satellites.
-
-\par 
-The resulted image will give the user a sense of which areas are more likely of being flooded during a heavy rain period.
-
-\newpage
-
-\section{Application specification - programmer's point of view}
-
-{\Large User's point of view and application skeleton\par}
-
-This app should be able to deliver a marked zone on the land area(provided by the user), based on the probabilities of that zone to be floodable. (ex: red for high probability, green for none)\par 
-
-The app will receive a set of .tif images, (provided by the user) from Landsat, sentinel 1,2 or 3, one image will be in infrared and the other one will be composed from the green wave channel.\par
- The way that we detect water is by combining the NIR(infrared) with green band resulting NDWI (Normalized Difference Water Index). NDWI  is a remote sensing based indicator sensitive to the change in the water content.NDWI  is computed  using  the  near  infrared  (NIR–MODIS  band  2)  and  the  short  wave infrared (Green band) reflectance’s.\par 
-The formula will be applied as following for each pixel:
-
-$$ NDWI/perpixel = \frac{Xgreen - Xnir}{Xgreen + Xnir}$$
-
-If the resulted pixel has a value bigger that 0.45 we classify that specific pixel as a pixel that contains/is water (lake, river, ocean, etc), and all the pixels below that value as non-water pixels (land). We will color the water pixels in white and the other ones in black. \par 
-
-Using this method we will obtain all the water content of a picture, and we can mark the areas which have a high risk of being flooded(the areas near the water). \par 
-
-Later the user will be able to add a set of topographic images and determine the exact areas that will be flooded, by combining the results from NDWI water area detection with the topographic height of the map.
-
-
 
 
 \newpage{}
@@ -546,11 +567,6 @@ Later the user will be able to add a set of topographic images and determine the
 
 \section{Future Development}
 
-\newpage{}
-
-\chapter{Bibliography} 
-
-\section{References}
 
 \begin{thebibliography}{widest entry}
 \bibitem{Rover} Rover J., Ji L., Wylie B.K., Tieszen L.L. Establishing Water Body Areal Extent Trends in Interior Alaska from Multi-Temporal Landsat Data. Remote Sens. Lett. 2012;3:595–604. doi: 10.1080/01431161.2011.643507
@@ -613,6 +629,18 @@ Gdal \textit{https://en.wikipedia.org/wiki/GDAL} -accessed in 22.05.2019
 
 \bibitem{Flask1}
 Flask vs Django \textit{http://www.mindfiresolutions.com/blog/2018/05/flask-vs-django/} -accessed in 22.05.2019
+
+\bibitem{Flask2}
+Flask server vs Django server \textit{http://blog.gmludo.eu/2015/02/macro-benchmark-with-django-flask-and-asyncio.html} -accessed in 22.05.2019
+
+\bibitem{NDWI}
+A. S. Rogers, M. S. Kearney, Reducing signature variability in unmixing coastal marshthematic mapper scenes using spectral indices, International Journal of Remote Sensing25 (12) (2004) 2317–2335.
+
+\bibitem{NDWI Comparison}
+V. M. San Martina, Alejandra Figliolaa, Application of Multifractal Analysis to Segmentation of WaterBodies in Optical and Synthetic Aperture Radar Satellite Images, originally announced April 2016 and published in Cornell University Journal.
+
+
+
 
 \end{thebibliography}
 

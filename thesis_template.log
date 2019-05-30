@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.10.18)  22 MAY 2019 19:59
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.10.18)  30 MAY 2019 20:37
 entering extended mode
 **./thesis_template.tex
 (thesis_template.tex
@@ -744,229 +744,258 @@ Package pdftex.def Info: FMI-03.png  used on input line 70.
 Non-PDF special ignored!
 <special> papersize=210mm, 297mm
 {C:/Users/Gabrel/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map} <./FMI-03.p
-ng>] [1] [1] (thesis_template.toc [1
-
-])
-\tf@toc=\write4
-\openout4 = `thesis_template.toc'.
-
- [2] (thesis_template.lof)
-\tf@lof=\write5
-\openout5 = `thesis_template.lof'.
-
- [3
-
-]
-(thesis_template.lot)
-\tf@lot=\write6
-\openout6 = `thesis_template.lot'.
-
- [4
-
-]
+ng>] [1] [1]
 Chapter 1.
 
-LaTeX Warning: Citation '1' on page 1 undefined on input line 222.
+LaTeX Warning: Citation '1' on page 1 undefined on input line 217.
 
 
-LaTeX Warning: Citation '2' on page 1 undefined on input line 222.
+LaTeX Warning: Citation '2' on page 1 undefined on input line 217.
 
 
-LaTeX Warning: Citation '3' on page 1 undefined on input line 228.
+LaTeX Warning: Citation '3' on page 1 undefined on input line 223.
 
 
-LaTeX Warning: Citation '4' on page 1 undefined on input line 231.
+LaTeX Warning: Citation '4' on page 1 undefined on input line 226.
 
 
-LaTeX Warning: Citation '5' on page 1 undefined on input line 231.
+LaTeX Warning: Citation '5' on page 1 undefined on input line 226.
 
 [1
 
 ]
 
-LaTeX Warning: Citation '6' on page 2 undefined on input line 237.
+LaTeX Warning: Citation '6' on page 2 undefined on input line 232.
 
 
-LaTeX Warning: Citation '7' on page 2 undefined on input line 240.
+LaTeX Warning: Citation '7' on page 2 undefined on input line 235.
 
 
-LaTeX Warning: Citation '8' on page 2 undefined on input line 240.
+LaTeX Warning: Citation '8' on page 2 undefined on input line 235.
 
 
-LaTeX Warning: Citation '9-12' on page 2 undefined on input line 240.
+LaTeX Warning: Citation '9-12' on page 2 undefined on input line 235.
 
 [2] [3]
-<application_outline.png, id=39, 769.37437pt x 656.4525pt>
+<application_outline.png, id=26, 769.37437pt x 656.4525pt>
 File: application_outline.png Graphic file (type png)
 <use application_outline.png>
-Package pdftex.def Info: application_outline.png  used on input line 266.
+Package pdftex.def Info: application_outline.png  used on input line 261.
 (pdftex.def)             Requested size: 461.62819pt x 393.87454pt.
 
-Overfull \hbox (8.6603pt too wide) in paragraph at lines 266--268
+Overfull \hbox (8.6603pt too wide) in paragraph at lines 261--263
  [] 
  []
 
 [4 <./application_outline.png>]
 
-LaTeX Warning: Citation '16' on page 5 undefined on input line 280.
+LaTeX Warning: Citation '16' on page 5 undefined on input line 275.
 
 
-LaTeX Warning: Citation '17-19' on page 5 undefined on input line 280.
+LaTeX Warning: Citation '17-19' on page 5 undefined on input line 275.
 
 [5]
 Chapter 2.
 [6
 
 ]
-<landsat_search.png, id=50, 988.44281pt x 686.565pt>
+<landsat_search.png, id=38, 988.44281pt x 686.565pt>
 File: landsat_search.png Graphic file (type png)
 <use landsat_search.png>
-Package pdftex.def Info: landsat_search.png  used on input line 308.
+Package pdftex.def Info: landsat_search.png  used on input line 303.
 (pdftex.def)             Requested size: 494.2202pt x 343.28166pt.
 
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 308--309
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 303--304
 [][] 
  []
 
 
-LaTeX Warning: Citation '20' on page 7 undefined on input line 310.
+LaTeX Warning: Citation '20' on page 7 undefined on input line 305.
 
-<Capture.png, id=51, 757.32938pt x 129.48375pt>
+<Capture.png, id=39, 757.32938pt x 129.48375pt>
 File: Capture.png Graphic file (type png)
 <use Capture.png>
-Package pdftex.def Info: Capture.png  used on input line 315.
+Package pdftex.def Info: Capture.png  used on input line 310.
 (pdftex.def)             Requested size: 552.84586pt x 94.52232pt.
 
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 315--316
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 310--311
 [][] 
  []
 
 [7 <./landsat_search.png>]
 
-LaTeX Warning: Citation '21' on page 8 undefined on input line 317.
+LaTeX Warning: Citation '21' on page 8 undefined on input line 312.
 
-<sentinel.png, id=56, 954.56625pt x 686.565pt>
+<sentinel.png, id=44, 954.56625pt x 686.565pt>
 File: sentinel.png Graphic file (type png)
 <use sentinel.png>
-Package pdftex.def Info: sentinel.png  used on input line 331.
+Package pdftex.def Info: sentinel.png  used on input line 326.
 (pdftex.def)             Requested size: 515.45811pt x 370.73958pt.
 
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 331--332
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 326--327
 [][] 
  []
 
 [8 <./Capture.png>]
 
-LaTeX Warning: Citation '22' on page 9 undefined on input line 333.
+LaTeX Warning: Citation '22' on page 9 undefined on input line 328.
 
 
-LaTeX Warning: Citation '23' on page 9 undefined on input line 347.
+LaTeX Warning: Citation '23' on page 9 undefined on input line 342.
 
 [9 <./sentinel.png>]
 
-LaTeX Warning: Citation '24' on page 10 undefined on input line 353.
+LaTeX Warning: Citation '24' on page 10 undefined on input line 348.
 
-<landsat_black_stripes.png, id=65, 728.7225pt x 495.35063pt>
+<landsat_black_stripes.png, id=53, 728.7225pt x 495.35063pt>
 File: landsat_black_stripes.png Graphic file (type png)
 <use landsat_black_stripes.png>
-Package pdftex.def Info: landsat_black_stripes.png  used on input line 357.
+Package pdftex.def Info: landsat_black_stripes.png  used on input line 352.
 (pdftex.def)             Requested size: 393.50429pt x 267.48535pt.
 
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 357--358
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 352--353
 [][] 
  []
 
 [10 <./landsat_black_stripes.png>]
-<landsat_black_stripes_correction.png, id=70, 702.37407pt x 481.8pt>
+<landsat_black_stripes_correction.png, id=59, 702.37407pt x 481.8pt>
 File: landsat_black_stripes_correction.png Graphic file (type png)
 <use landsat_black_stripes_correction.png>
 Package pdftex.def Info: landsat_black_stripes_correction.png  used on input li
-ne 370.
+ne 365.
 (pdftex.def)             Requested size: 379.27635pt x 260.16812pt.
 
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 370--371
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 365--366
 [][] 
  []
 
 [11 <./landsat_black_stripes_correction.png>]
-! Illegal unit of measure (pt inserted).
-<to be read again> 
-                   \relax 
-l.403 \begin{wrapfigure}{r}{1}
-                              
-Dimensions can be in units of em, ex, in, pt, pc,
-cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
-I'll assume that you meant to say pt, for printer's points.
-To recover gracefully from this error, it's best to
-delete the erroneous units; e.g., type `2' to delete
-two letters. (See Chapter 27 of The TeXbook.)
+<multi_thread2.png, id=64, 455.45157pt x 485.56406pt>
+File: multi_thread2.png Graphic file (type png)
+<use multi_thread2.png>
+Package pdftex.def Info: multi_thread2.png  used on input line 404.
+(pdftex.def)             Requested size: 318.81392pt x 339.89252pt.
 
-<multi_thread.png, id=75, 301.125pt x 254.45062pt>
-File: multi_thread.png Graphic file (type png)
-<use multi_thread.png>
-Package pdftex.def Info: multi_thread.png  used on input line 404.
-(pdftex.def)             Requested size: 240.90031pt x 203.56076pt.
-
-Package wrapfig Warning: Stationary wrapfigure forced to float on input line 40
-9.
-
-<python_call_java_1.png, id=76, 811.53188pt x 215.30438pt>
-File: python_call_java_1.png Graphic file (type png)
-<use python_call_java_1.png>
-Package pdftex.def Info: python_call_java_1.png  used on input line 433.
-(pdftex.def)             Requested size: 486.92288pt x 129.18361pt.
-
-Overfull \hbox (62.5798pt too wide) in paragraph at lines 433--435
-[][]
- []
-
-[12 <./multi_thread.png>]
-<python_call_java_2.png, id=85, 811.53188pt x 426.09187pt>
-File: python_call_java_2.png Graphic file (type png)
-<use python_call_java_2.png>
-Package pdftex.def Info: python_call_java_2.png  used on input line 439.
-(pdftex.def)             Requested size: 486.92288pt x 255.65709pt.
-
-Overfull \hbox (62.5798pt too wide) in paragraph at lines 439--440
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 404--405
 [][] 
  []
 
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 446.
+[12 <./multi_thread2.png>]
+<python_call_java_1.png, id=71, 627.84563pt x 215.30438pt>
+File: python_call_java_1.png Graphic file (type png)
+<use python_call_java_1.png>
+Package pdftex.def Info: python_call_java_1.png  used on input line 430.
+(pdftex.def)             Requested size: 502.27718pt x 172.24373pt.
 
-("C:\Users\Gabrel\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\omscmr.fd"
-File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 446.
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 430--431
+[][] 
+ []
 
-[13 <./python_call_java_1.png> <./python_call_java_2.png>] [14] [15] [16]
-[17]
+[13 <./python_call_java_1.png>]
+<python_call_java_2.png, id=76, 703.87968pt x 426.09187pt>
+File: python_call_java_2.png Graphic file (type png)
+<use python_call_java_2.png>
+Package pdftex.def Info: python_call_java_2.png  used on input line 440.
+(pdftex.def)             Requested size: 492.71242pt x 298.26227pt.
+
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 440--441
+[][] 
+ []
+
+
+LaTeX Warning: Citation '25' on page 14 undefined on input line 448.
+
+
+LaTeX Warning: Citation '26' on page 14 undefined on input line 459.
+
+[14 <./python_call_java_2.png>]
+
+LaTeX Warning: Citation '27' on page 15 undefined on input line 465.
+
+<django-flask-table.png, id=81, 688.82344pt x 91.84312pt>
+File: django-flask-table.png Graphic file (type png)
+<use django-flask-table.png>
+Package pdftex.def Info: django-flask-table.png  used on input line 469.
+(pdftex.def)             Requested size: 482.17313pt x 64.28973pt.
+
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 469--470
+[][] 
+ []
+
+
+LaTeX Warning: Citation '27' on page 15 undefined on input line 471.
+
+<django-flask-latency.png, id=82, 837.88031pt x 469.00218pt>
+File: django-flask-latency.png Graphic file (type png)
+<use django-flask-latency.png>
+Package pdftex.def Info: django-flask-latency.png  used on input line 475.
+(pdftex.def)             Requested size: 502.73207pt x 281.40347pt.
+
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 475--476
+[][] 
+ []
+
+[15 <./django-flask-table.png>]
+
+LaTeX Warning: Citation '27' on page 16 undefined on input line 477.
+
+[16 <./django-flask-latency.png>]
+<water-false-positive.png, id=92, 1064.47687pt x 495.35063pt>
+File: water-false-positive.png Graphic file (type png)
+<use water-false-positive.png>
+Package pdftex.def Info: water-false-positive.png  used on input line 499.
+(pdftex.def)             Requested size: 425.7832pt x 198.13673pt.
+
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 499--500
+[][] 
+ []
+
+[17 <./water-false-positive.png>]
+
+LaTeX Warning: Citation '28' on page 18 undefined on input line 514.
+
+
+LaTeX Warning: Citation '29' on page 18 undefined on input line 514.
+
+<NDWI-prediction.png, id=97, 1090.82532pt x 486.31688pt>
+File: NDWI-prediction.png Graphic file (type png)
+<use NDWI-prediction.png>
+Package pdftex.def Info: NDWI-prediction.png  used on input line 516.
+(pdftex.def)             Requested size: 381.79459pt x 170.21346pt.
+
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 516--517
+[][] 
+ []
+
+[18 <./NDWI-prediction.png>] [19]
 Chapter 3.
-[18
+[20
 
-] [19] [20]
+]
 Chapter 4.
 [21
 
-]
-Chapter 5.
-[22
+] [22
 
-] [23
-
-] [24]
-Overfull \hbox (8.32979pt too wide) in paragraph at lines 629--630
+] [23]
+Overfull \hbox (8.32979pt too wide) in paragraph at lines 616--617
 []\OT1/cmr/m/n/12 Wikipedia Land-sat Pro-gram \OT1/cmr/m/it/12 https://en.wikip
 edia.org/wiki/Landsat[]program
  []
 
 
-Underfull \hbox (badness 3078) in paragraph at lines 638--639
+Underfull \hbox (badness 3078) in paragraph at lines 625--626
 []\OT1/cmr/m/n/12 Copernicus \OT1/cmr/m/it/12 https://www.pixalytics.com/landsa
 t-quirks/ \OT1/cmr/m/n/12 - ac-cessed in
  []
 
-[25] (thesis_template.aux)
+
+Underfull \hbox (badness 1270) in paragraph at lines 634--635
+[]\OT1/cmr/m/n/12 Flask server vs Django server \OT1/cmr/m/it/12 http://blog.gm
+ludo.eu/2015/02/macro-
+ []
+
+[24] (thesis_template.aux)
 
 LaTeX Warning: There were undefined references.
 
@@ -983,26 +1012,25 @@ Package logreq Info: Writing requests to 'thesis_template.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 12584 strings out of 492970
- 213754 string characters out of 3126149
- 653693 words of memory out of 3000000
- 16260 multiletter control sequences out of 15000+200000
+ 12580 strings out of 492970
+ 213747 string characters out of 3126149
+ 652754 words of memory out of 3000000
+ 16264 multiletter control sequences out of 15000+200000
  11026 words of font info for 39 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 40i,8n,72p,1353b,1701s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 40i,7n,72p,1354b,1606s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Users/Gabrel/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfont
 s/cm/cmbx12.pfb><C:/Users/Gabrel/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/
 public/amsfonts/cm/cmcsc10.pfb><C:/Users/Gabrel/AppData/Local/Programs/MiKTeX 2
 .9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/Gabrel/AppData/Local/Pro
 grams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/Gabrel/AppD
-ata/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/User
-s/Gabrel/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.
-pfb><C:/Users/Gabrel/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfo
-nts/cm/cmsy10.pfb><C:/Users/Gabrel/AppData/Local/Programs/MiKTeX 2.9/fonts/type
-1/public/amsfonts/cm/cmti12.pfb>
-Output written on thesis_template.pdf (32 pages, 3588516 bytes).
+ata/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users
+/Gabrel/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10
+.pfb><C:/Users/Gabrel/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsf
+onts/cm/cmti12.pfb>
+Output written on thesis_template.pdf (27 pages, 3675843 bytes).
 PDF statistics:
- 156 PDF objects out of 1000 (max. 8388607)
+ 146 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 51 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 71 words of extra memory for PDF output out of 10000 (max. 10000000)
 
