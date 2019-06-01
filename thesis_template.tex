@@ -272,10 +272,27 @@ Combining those techniques with an easy to use and understand client interface w
 \subsection{State of Art of Physically models in flood prediction}
 
 \quad
-For creating our physically prediction model we chose to use NDWI water extraction technique due its ease use and low processing time. McFeeters \cite{McFeeters} developed the normalized difference water index (NDWI) using the reflectance of the green (band 2) and near-infrared (band 4) bands of Landsat TM (Thematic Mapper). NDWI is one of the most widely used water indices for a variety of applications, including surface water mapping, land use/cover change analyses, and ecological research \cite{Duan, Poulin, Hui} and also it shown great classification accuracy in areas that include shadow and dark surfaces.
+For creating our physically prediction model we chose to use NDWI water extraction technique due its ease use and low processing time. McFeeters \cite{McFeeters} developed the normalized difference water index (NDWI) using the reflectance of the green (band 2) and near-infrared (band 4) bands of Landsat TM (Thematic Mapper). NDWI is one of the most widely used water indices for a variety of applications, including surface water mapping, land cover analyses \cite{Duan, Poulin, Hui} and also it shown great classification accuracy in areas that include shadow and dark surfaces.
 \par 
 
 Besides the existence of NDWI index for detecting the water bodies, there are other techniques presented in various papers \cite{Multifractal water analysis, NDWI Comparison} that shown significant results. These methods are the Multifractal analysis of water bodies using Wavelet method and Fluctuation analysis and the detection of water using neural networks. Both of these techniques shown a high accuracy (multifractal analysis shown the best of those two, over 89\%; very similar to the accuracy obtained by our NDWI index), but there are some downsides regarding the neural network water detection. That method shown great results but only on some particular sets of images and it did not provided a proper classification for all radar images. The studies \cite{NDWI Comparison} suggests that the neural network errors may appear due to the high sensitivity to the noise in the images. 
+\par 
+
+On short, after our model manages to detect the water areas from a picture it starts to expand these areas taking into account the topography of the land, like a fill bases in the land level. This model is called a physically prediction model and it allows us to create a simply to understand and test model, which will be time and cost efficient. The image has to be processed only two times in a linear manner, first time to detect the water areas with a complexity of O(n) = N , and second time to fill the land area with a complexity that can go up to O(n) = $N^2$. 
+\par 
+
+There exists more complex physical models that can take into account more elements, like land water saturation, vegetation type of that area and the volume of rain that will fall over specific areas, but that types of models are more complex, and more expensive both on execution time and on development time. The test and validation part will need to be more complex, and the input required will be harder to gathered up by a simple user. 
+\par 
+
+Besides the physically prediction models there are some other forecasting models presented in various papers \cite{Flood forecasting models}, like data driven models based on machine learning and hybrid models that combine physically, and machine learning hydrologically models.\par 
+
+The first one that we will discuss is the \textbf{ML-based hydrology-dynamic modeling}: The computational cost of this model can limit the resolution and the scope of the hydro-dynamic system. The costs can be reduced by up to orders of magnitude by taking advantage of machine learning derivation methods, as it was experimentally done of other fluid dynamics models \cite{Yohai}.
+\par 
+
+The second model that we will discuss about will be the \textbf{Remote discharge estimation}: The most important obstacle for incorporating machine learning into the hydrology field is the limited data. Measuring the water levels and the discharges is relatively difficult when it comes into attention the global order of 100,000. But still, the quantity, variety and quality of satellites constantly imaging all river is rising at a very fast pace. The ability to estimate the river discharges without in-site measurements is a a task that has become both critical for the hydrology field, and incredibly well suited for machine learning field.
+\par 
+
+The third and the last model that we will discuss about is the \textbf{Hybrid physics-machine learning hydrologic models}: This model is a alternative to the machine learning approach, and it adopts a hybrid approach where a ML model is combined with the classical physics-based components, which can enclose important prior knowledge about the domain structure. Some could view this approach as allowing the physically model to capture the major hydrologic  model, while the ML will be responsible for error correction, and calibration of the final model. As an interesting fact, it was shown that the physically models tend to be more accurate on the long-term and mid-term prediction, while the ML tend to be more accurate on the short-term predictions, and by combining those two techniques in one we can possibly obtain a accurate prediction model on both long-term and short-time periods.
 
 
 
@@ -626,6 +643,14 @@ Volume 2017
 \bibitem{NDWI Comparison}
 Comparison between NDWI, Machine Learning, and Multifractal analysis for detecting water bodies -  
 V. M. San Martina, Alejandra Figliolaa, Application of Multifractal Analysis to Segmentation of WaterBodies in Optical and Synthetic Aperture Radar Satellite Images, originally announced April 2016 and published in Cornell University Journal.
+
+\bibitem{Flood forecasting models}
+Flood forecasting models - S. Nevo, V. Anisimov, G. Elidan, R. El-Yaniv, P. Giencke, Y. Gigi, A. Hassidim, Z. Moshe, M. Schlesinger, G. Shalev, A. Tirumali, A. Wiesel, O. Zlydenko, Y. Matias ,  ML for Flood Forecasting at Scale originally announced in January 2019, published in 28 January 2019 on arXiv.
+
+\bibitem{Yohai}
+ML hydro-dynamic modeling
+Yohai Bar-Sinai, Stephan Hoyer, Jason Hickey, and Michael P Brenner. Data-driven discretiza-tion: a method for systematic coarse graining of partial differential equations.arXiv preprintarXiv:1808.04930, 2018
+
 
 \bibitem{USGS}
 USGS \textit{https://earthexplorer.usgs.gov/} - accessed in 19.05.2019
