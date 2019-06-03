@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.10.18)  1 JUN 2019 21:34
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.10.18)  4 JUN 2019 00:00
 entering extended mode
 **./thesis_template.tex
 (thesis_template.tex
@@ -625,39 +625,39 @@ Overfull \hbox (17.62482pt too wide) in paragraph at lines 519--520
  []
 
 [18 <./water-false-positive.png>]
-<NDWI-prediction.png, id=100, 1090.82532pt x 486.31688pt>
+<NDWI-prediction.png, id=100, 1090.0725pt x 1058.45438pt>
 File: NDWI-prediction.png Graphic file (type png)
 <use NDWI-prediction.png>
-Package pdftex.def Info: NDWI-prediction.png  used on input line 536.
-(pdftex.def)             Requested size: 381.79459pt x 170.21346pt.
+Package pdftex.def Info: NDWI-prediction.png  used on input line 542.
+(pdftex.def)             Requested size: 436.02127pt x 423.37425pt.
 
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 536--537
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 542--543
 [][] 
  []
 
-[19 <./NDWI-prediction.png>] [20]
+[19] [20 <./NDWI-prediction.png>] [21]
 Chapter 3.
-[21
-
-]
-Chapter 4.
 [22
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 604--605
+Chapter 4.
+[23
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 612--613
 []\OT1/cmr/m/n/12 Flood fore-cast-ing - World me-te-o-ro-log-i-cal or-ga-ni-za-
 tion
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 604--605
+Underfull \hbox (badness 10000) in paragraph at lines 612--613
 \OT1/cmr/m/it/12 http://www.wmo.int/pages/prog/hwrp/FloodForecastingInitiative.
 php \OT1/cmr/m/n/12 - ac-cessed
  []
 
-[23
+[24
 
-] [24] [25] (thesis_template.aux) ) 
+] [25] [26] (thesis_template.aux) ) 
 Here is how much of TeX's memory you used:
  6066 strings out of 492970
  90304 string characters out of 3126149
@@ -675,9 +675,9 @@ m/cmr12.pfb><C:/Users/Gabrel/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/publ
 ic/amsfonts/cm/cmr8.pfb><C:/Users/Gabrel/AppData/Local/Programs/MiKTeX 2.9/font
 s/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Gabrel/AppData/Local/Programs/M
 iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on thesis_template.pdf (28 pages, 3679699 bytes).
+Output written on thesis_template.pdf (29 pages, 4330707 bytes).
 PDF statistics:
- 149 PDF objects out of 1000 (max. 8388607)
+ 152 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  71 words of extra memory for PDF output out of 10000 (max. 10000000)
 

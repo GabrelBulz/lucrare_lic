@@ -511,7 +511,7 @@ In this section we will take a closer look on how our application manages to pro
 \subsection{Detecting surface water using NDWI + referinte si procente}
 \quad 
 
-The detection of the water bodies was probably one of the most challenging part of this application, because there are different types of water, with different colors and different densities. At first, we tried to detect the water surfaces based on their color, but usually the chromatic of the oceanic water is very different than the chromatic of the lakes and rivers. The color range that we had to cover was too large, so we gave up this idea. 
+The detection of the water bodies was probably one of the most challenging part of this application, because there are different types of water, with different colors and different densities. At first, we tried to detect the water surfaces based on their color, but usually the chromatic of the oceanic water is very different than the chromatic of the lakes and rivers. The color range that we had to cover was too large, so we gave up on this idea. 
 \par 
 The second method that we tried was to use only the near infrared band. The idea behind this was that the satellite will shoot a laser beam across the land area and the beam will be reflected back by the most objects, except water. It is one of the only things that can absorb the NIR laser, so the values of the NIR resulted images ,over the water bodies, will be equal to 0. Near the water banks, because the volume of water is too small to absorb all the NIR rays, the pixel values will not be exactly 0 (the value range can vary up to 15-20). The method seemed to work when we considered all the pixel values between 0-15 to be a water part, with a calculated accuracy of around 83\% (from our tests done over a set of 12 images), but we encountered a big drawback. On the flatter land areas, lacking valleys and mountains, the images looked pretty good, but when the topography was to diverse the shadows began to appear. The pixel value of the areas covered by shadows can vary between 10 and 25, so we got a lot of false positive cases.
 
@@ -532,24 +532,32 @@ $$ NDWI/perpixel = \frac{Xgreen - Xnir}{Xgreen + Xnir}$$
 If the calculated value is bigger than 0.45 we can classify that specific pixel as a spot that contains water, and all the other values below that can be classified as non-water pixels (land). This method shown a very satisfying result compared to the true value, with an calculated accuracy of around 88\% (the tests were done by us over a set of 12 images; over the oceanic area the accuracy was around 98\% and over the more diverse land area the accuracy was around 82\%). The big advantage of this approach was that it dose not identify any shadows as water pixels, without losing the accuracy. 
 \par 
 There are numerous studies \cite{NDWI, NDWI Comparison} that suggested that NDWI is one of the best classification method, for optical images, comparable with the multifractal formalism method (with an accuracy of 89\%), and the neural network classification approach that shown great results in some cases, but it did not provide a proper classification because of its high sensitivity to speckle noise.
+\par 
 
-\includegraphics[scale=0.35, left]{NDWI-prediction.png}
+In the end, using this approach we manage to detect all the water bodies with a great accuracy with a insignificant false positives like shadows and other objects. We can take a look in the following picture (Fig 13) on how a result image using NDWI would look like. In this picture all the white zones are water areas, and if we make a difference between the Fig 12 and Fig 13 we can see a big improve when we take in consideration the error caused by the shadows.
+\par 
+
+
+\bigskip
+\includegraphics[scale=0.4, left]{NDWI-prediction.png}
 \begin{center}
 Fig 13 - Water detection using NDWI (white areas are water bodies)
 \end{center}
-
-
 \par 
 
-\bigskip
+After the application has managed to detect all the water bodies from a image it will need to overlay the processed image over the topographic image. This will be a topic that we will cover in the next subsection.
+
+\subsection{Mapping the processed images (containing water) to the topographically images}
+
+\quad
+In this section we will discuss about how we managed to map two images (the processed image, containing water, with the topographical image). The idea behind this process is that, usually the topographical images available online tend to cover a very large area, that can be even 10 times bigger that the image from which we detect the water bodies, so when we apply the fill algorithm that should extend the water areas based on the topographical surface we cannot just simply place the smaller image over the larger one without taking into account the coordinates. 
+\par 
+
+Fortunately for us, every topographical, NIR, and green band image offered both by Landsat and Sentinel has a header that contains the metadata (information about the data; structural, administrative and descriptive) for that specific image. In the header we can find the coordinates of each corner of an image, and we can use the Gdal library to take use of that data. 
 
 
-MAI AI DE SCRIS AICI DESPRE SA FACI COMPARATIA INTRE CE AI GASIT CU NDWI SI CE TI-A DAT LA INCEPUT CU NIR
 
 
-
-
-\subsection{maparea imaginilor folosind gdal}
 \subsection{fill imagine}
 
 
