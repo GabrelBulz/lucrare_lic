@@ -254,7 +254,7 @@ The applications in flood prediction can be classified according to flood resour
 The mainly methods that we used in the application were the detection of water and flooding a land area based on the topographical images. The water detection was obtained by combining a set of near infrared (or NIR) and green band satellite images, and then applying a method of extraction called normalized difference water index (NDWI). This method is based on the extraction the water bodies taking into account the reflectance property of water.
 \par 
 
-After the water has been detected, the land area is filled based on the topographical map of the surface. One of the problems that we encountered here is ,besides the water detection, the fact that the topographical satellite images tend to cover a bigger area than the NIR and green band area from the satellite images, so we had to map the smaller NIR images into the bigger topographical images, but we will discuss this problem and how we solve it in the following chapters. The resulting product of our application is a area that has a high possibility of being flooded during a heavy rainstorm, results that can be achieved using a very low processing time, cost and resources.
+After the water has been detected, the land area is flooded based on the topographical map of the surface. One of the problems that we encountered here is ,besides the water detection, the fact that the topographical satellite images tend to cover a bigger area than the NIR and green band area from the satellite images, so we had to map the smaller NIR images into the bigger topographical images, but we will discuss this problem and how we solve it in the following chapters. The resulting product of our application is a area that has a high possibility of being flooded during a heavy rainstorm, results that can be achieved using a very low processing time, cost and resources.
 \par 
 
 \begin{center}
@@ -262,7 +262,7 @@ After the water has been detected, the land area is filled based on the topograp
 	Fig 1
 \end{center}
 
-Combining those techniques with an easy to use and understand client interface we managed to create a system that can predict the land areas with a high potential of being flooded. The processing time and cost are reduced because the server part has to go through a set of images only twice, first time to detect the surface water and second time to fill the land area based on the topographic map, so the computations are reduced as low as possible. On the client side, there are big advantages because the set of resources (satellite images) are free and easy to access and the results are easy to understand, making this application ideal for a non trained person.
+Combining those techniques with an easy to use and understand client interface we managed to create a system that can predict the land areas with a high potential of being flooded. The processing time and cost are reduced because the server part has to go through a set of images only twice, first time to detect the surface water and second time to flood the land area based on the topographic map, so the computations are reduced as low as possible. On the client side, there are big advantages because the set of resources (satellite images) are free and easy to access and the results are easy to understand, making this application ideal for a non trained person.
 \par
 
 
@@ -278,7 +278,7 @@ For creating our physically prediction model we chose to use NDWI water extracti
 Besides the existence of NDWI index for detecting the water bodies, there are other techniques presented in various papers \cite{Multifractal water analysis, NDWI Comparison} that shown significant results. These methods are the Multifractal analysis of water bodies using Wavelet method and Fluctuation analysis and the detection of water using neural networks. Both of these techniques shown a high accuracy (multifractal analysis shown the best of those two, over 89\%; very similar to the accuracy obtained by our NDWI index), but there are some downsides regarding the neural network water detection. That method shown great results but only on some particular sets of images and it did not provided a proper classification for all radar images. The studies \cite{NDWI Comparison} suggests that the neural network errors may appear due to the high sensitivity to the noise in the images. 
 \par 
 
-On short, after our model manages to detect the water areas from a picture it starts to expand these areas taking into account the topography of the land, like a fill bases in the land level. This model is called a physically prediction model and it allows us to create a simply to understand and test model, which will be time and cost efficient. The image has to be processed only two times in a linear manner, first time to detect the water areas with a complexity of O(n) = N , and second time to fill the land area with a complexity that can go up to O(n) = $N^2$. 
+On short, after our model manages to detect the water areas from a picture it starts to expand these areas taking into account the topography of the land, like a flood bases in the land level. This model is called a physically prediction model and it allows us to create a simply to understand and test model, which will be time and cost efficient. The image has to be processed only two times in a linear manner, first time to detect the water areas with a complexity of O(n) = N , and second time to flood the land area with a complexity that can go up to O(n) = $N^2$. 
 \par 
 
 There exists more complex physical models that can take into account more elements, like land water saturation, vegetation type of that area and the volume of rain that will fall over specific areas, but that types of models are more complex, and more expensive both on execution time and on development time. The test and validation part will need to be more complex, and the input required will be harder to gathered up by a simple user. 
@@ -505,7 +505,7 @@ Fig 11 - \cite{Flask2}
 \quad
 In this section we will take a closer look on how our application manages to process the input offered by the user and predict the areas with high flooding risk. Firstly we offer a friendly and easy to understand web interface where any user can upload a set of satellite images, where a set is composed of a NIR image, a green band image and a topographical image (a user can upload multiple sets of this kind at once; the sets will be identified based on names).
 \par 
- After the input is uploaded to the server a solving request will be created and placed on a queue. Each request is processed one at a time, and when it turn will come, the server will unzip the input and start the prediction. The first step in our prediction consists in detecting the water surfaces by combining the NIR band image and the green band image and then applying a formula called NDWI (Normalized Difference Water Index) to each pixel. After that, the resulting image is mapped to the topographical image and a fill algorithm is applied. The fill will start from the water bodies already detected and it will spread base on the land's topography.
+ After the input is uploaded to the server a solving request will be created and placed on a queue. Each request is processed one at a time, and when it turn will come, the server will unzip the input and start the prediction. The first step in our prediction consists in detecting the water surfaces by combining the NIR band image and the green band image and then applying a formula called NDWI (Normalized Difference Water Index) to each pixel. After that, the resulting image is mapped to the topographical image and a flood algorithm is applied. The flood will start from the water bodies already detected and it will spread base on the land's topography.
 
 
 \subsection{Detecting surface water using NDWI + referinte si procente}
@@ -550,15 +550,65 @@ After the application has managed to detect all the water bodies from a image it
 \subsection{Mapping the processed images (containing water) to the topographically images}
 
 \quad
-In this section we will discuss about how we managed to map two images (the processed image, containing water, with the topographical image). The idea behind this process is that, usually the topographical images available online tend to cover a very large area, that can be even 10 times bigger that the image from which we detect the water bodies, so when we apply the fill algorithm that should extend the water areas based on the topographical surface we cannot just simply place the smaller image over the larger one without taking into account the coordinates. 
+In this section we will discuss about how we managed to map two images (the processed image, containing water, with the topographical image). The idea behind this process is that, usually the topographical images available online tend to cover a very large area, that can be even 10 times bigger that the image from which we detect the water bodies, so when we apply the flood algorithm that should extend the water areas based on the topographical surface we cannot just simply place the smaller image over the larger one without taking into account the coordinates. 
 \par 
 
-Fortunately for us, every topographical, NIR, and green band image offered both by Landsat and Sentinel has a header that contains the metadata (information about the data; structural, administrative and descriptive) for that specific image. In the header we can find the coordinates of each corner of an image, and we can use the Gdal library to take use of that data. 
+Fortunately for us, every topographical, NIR, and green band image offered both by Landsat and Sentinel has a header that contains the metadata (information about the data; structural, administrative and descriptive) for that specific image. In the header we can find the coordinates of each corner of an image, and we can use the Gdal library to take use of that data. The 
+Gdal library can parse every header offered by satellite images and this is why we chose to use this approach. 
+\par 
+
+We cannot just simply overlay one image above another because the pictures can have different resolutions, some of them have a resolution of 10 $m^2$ per pixel, while others can have a resolution 30 $m^2$ per pixel. What we did instead was to create a function that can map every pixel to a global coordinate (of form longitude and latitude), and we can search for that coordinate set in the second image. For every image header we apply a function offered by Gdal called dataset.GetGeoTransform which can parse the metadata, and then based on obtained data a Spatial Reference is created for each picture (Spatial reference is a class offered by Gdal that can reference every satellite image to a place on Earth based on the metadata obtained). The Spatial Reference for both images (our processed image and topographical image) is then passed as an argument together with the transformation header, and the pixel coordinates to a function that will return the longitude and latitude corresponding to the specified pixel.
+
+\bigskip
+\includegraphics[scale=0.8, left]{java_coordinate_mapping.png}
+\begin{center}
+Fig 14 - Function for obtaining global coordinates from pixel coordinates
+\end{center}
+\par 
+
+\quad
+There is an another function created by us that can get as an argument the longitude, latitude, transformation dataset and the Spatial References for two images and it can return the pixel coordinates corresponding to the specified global coordinates.
+\par 
+These functions will be used to help us on the flood algorithm that we will discuss about in the next subsection
 
 
 
 
-\subsection{fill imagine}
+\subsection{The flood algorithm applied over the images}
+
+\quad
+In this section we will discuss about how the flood algorithm works. Firstly the water detection class is called, which will combine the NIR and the green band images resulting a processed image that will color all the water bodies with the white color, and the rest (land cover) will be colored black.
+\par 
+ After the water is detected, the flood algorithm is called. The algorithm is stored in a class that will take as input parameters the name of the NIR image, the name of the processed image(containing the water bodies), and the name of the topographic image. The only reason that we had to pass as an input parameter the name of the NIR image is because our processed image dose not contain a file header (containing the global coordinates of each corner), but essentially the images are pretty much the same, when it comes to the land cover area, so we had to use the NIR header as the matadata for our processed picture.
+\par
+
+The flood algorithm that we created is based on the square flood fill algorithm. The idea is that the image is parsed in a linear manner, and when it encounters a white pixel (containing water) it starts a fill algorithm, that pixel will be colored to green and its based on the topographical map will be retained (the height is obtained by mapping the pixel from our processed image to the topographical map (using the functions described in the previous subsection). Every neighbor (up, down, left, right; this is why is called square flood fill) of that pixel will be place on a stack. \par 
+The elements are popped from the stack, one at a time, and every element is checked. If the element is a white pixel (already containing water), it is colored green (we chose to color the already parsed pixels with green to know that they have been checked, so they will not be added again on the stack; it servers as a mark flag), and its neighbors will be added to the stack. If the element is a black pixel (land area) it will be subjected to a test, and if the test is passed the pixel is colored green, and all his neighbor will be pushed on the stack. The test consists on several things.
+\par 
+ Firstly the coordinates (set x,y) of the black pixel will be gathered from our processed image. The x,y coordinates will be transformed to a global longitude and latitude. The obtained global coordinates will be mapped to the topographical image such that the algorithm will be able to identify the exact position of our black pixel on the topographical map. The height of our black pixel is than compared to the previous stored height, and if the height difference is small enough, the pixel will pass the test. Besides the height difference we tried to take into account the distance from the river, such that we store the coordinates of the closest river (water) pixel, and we calculate the height difference based on the distance from the water. The reason because we used this extra test case is because of the swampy regions. They tend to be pretty flat, with a small height variation, but we all know that the water cannot extent to the infinity, so this is why we chose to use this extra case. The height difference that we accepted was between \textbf{$CurrentHeight - 2$} and \textbf{$CurrentHeight + 2$} (the range was selected by us based on several tests and comparisons with real floods).
+\par 
+In the following pictures (Fig 15, Fig 16) we can take a look on how our application will get through every process (detecting water and applying the flood algorithm). On Fig 15 in the right side we can see how a NIR input image would look like and in the left side is the resulting image after we apply the detection of water bodies.
+
+\bigskip
+\includegraphics[scale=0.3, left]{process1.png}
+\begin{center}
+Fig 15 - ... 
+\end{center}
+\par 
+
+\includegraphics[scale=0.4, center]{process3.png}
+\begin{center}
+Fig 16 - ... coordinates
+\end{center}
+\par 
+
+In the above picture (Fig 16) we can see, on the left side, how a prediction made by our algorithm would look like. The image is obtained by applying the flood algorithm over the processed image (which contains the water bodies) on the right side of Fig 15. \par 
+
+In the right side of Fig 16 we can see an image of an actual flood area that was captured by the Landsat 7 satellite over a section of Mississippi river in Cairo, Illinois, USA. There are some zones  containing water (in the image of the actual flood) that cannot be seen because of the clouds. The green waves cannot penetrate the clouds, meaning that some images cannot be processed correctly because of that problem.
+\par 
+
+Another possible cause that can make some differences, between the two images, is the fact that our flood algorithm dose not take into account the volume of water dropped over a specific area during a rainstorm. That kind of data can be hard to acquire by a normal user and can make the whole process much expensive (That is what we tried to avoid with our application).
+After the pictures are being processed, the image sets are archived and an email, containing a link from where the data can be downloaded, is send to the user that had placed the request in the first place. 
 
 
 
