@@ -100,7 +100,7 @@ Conf. Dr. Marc Eduard \textsc{Fr\^incu} % Coordinator
 \begin{minipage}{0.4\textwidth}
 \begin{flushright} \large
 \textbf{GRADUATE:} \\
-Bulz \textsc{Gabriel} % Student's Name
+Gabriel \textsc{Bulz} % Student's Name
 \end{flushright}
 \end{minipage}\\[1cm]
 
@@ -303,7 +303,7 @@ The third and the last model that we will discuss about is the \textbf{Hybrid ph
 \newpage{}
 
 
-\chapter{The application}
+\chapter{Problem description and solving}
 
 \section{Technologies used}
 
@@ -529,7 +529,7 @@ The method that we chose in the end was to use a index called NDWI or Normalized
 
 $$ NDWI/perpixel = \frac{Xgreen - Xnir}{Xgreen + Xnir}$$
 
-If the calculated value is bigger than 0.45 we can classify that specific pixel as a spot that contains water, and all the other values below that can be classified as non-water pixels (land). This method shown a very satisfying result compared to the true value, with an calculated accuracy of around 88\% (the tests were done by us over a set of 12 images; over the oceanic area the accuracy was around 98\% and over the more diverse land area the accuracy was around 82\%). The big advantage of this approach was that it dose not identify any shadows as water pixels, without losing the accuracy. 
+If the calculated value is bigger than 0.45 we can classify that specific pixel as a spot that contains water, and all the other values below that can be classified as non-water pixels (land). This method shown a very satisfying result compared to the true value, with an calculated accuracy of around 88\% (the tests were done by us over a set of 12 images; over the oceanic area the accuracy was around 98\% and over the more diverse land area the accuracy was around 82\%). The big advantage of this approach was that it does not identify any shadows as water pixels, without losing the accuracy. 
 \par 
 There are numerous studies \cite{NDWI, NDWI Comparison} that suggested that NDWI is one of the best classification method, for optical images, comparable with the multifractal formalism method (with an accuracy of 89\%), and the neural network classification approach that shown great results in some cases, but it did not provide a proper classification because of its high sensitivity to speckle noise.
 \par 
@@ -579,7 +579,7 @@ These functions will be used to help us on the flood algorithm that we will disc
 \quad
 In this section we will discuss about how the flood algorithm works. Firstly the water detection class is called, which will combine the NIR and the green band images resulting a processed image that will color all the water bodies with the white color, and the rest (land cover) will be colored black.
 \par 
- After the water is detected, the flood algorithm is called. The algorithm is stored in a class that will take as input parameters the name of the NIR image, the name of the processed image(containing the water bodies), and the name of the topographic image. The only reason that we had to pass as an input parameter the name of the NIR image is because our processed image dose not contain a file header (containing the global coordinates of each corner), but essentially the images are pretty much the same, when it comes to the land cover area, so we had to use the NIR header as the matadata for our processed picture.
+ After the water is detected, the flood algorithm is called. The algorithm is stored in a class that will take as input parameters the name of the NIR image, the name of the processed image(containing the water bodies), and the name of the topographic image. The only reason that we had to pass as an input parameter the name of the NIR image is because our processed image does not contain a file header (containing the global coordinates of each corner), but essentially the images are pretty much the same, when it comes to the land cover area, so we had to use the NIR header as the matadata for our processed picture.
 \par
 
 The flood algorithm that we created is based on the square flood fill algorithm. The idea is that the image is parsed in a linear manner, and when it encounters a white pixel (containing water) it starts a fill algorithm, that pixel will be colored to green and its based on the topographical map will be retained (the height is obtained by mapping the pixel from our processed image to the topographical map (using the functions described in the previous subsection). Every neighbor (up, down, left, right; this is why is called square flood fill) of that pixel will be place on a stack. \par 
@@ -604,32 +604,108 @@ Fig 16 - ... coordinates
 
 In the above picture (Fig 16) we can see, on the left side, how a prediction made by our algorithm would look like. The image is obtained by applying the flood algorithm over the processed image (which contains the water bodies) on the right side of Fig 15. \par 
 
-In the right side of Fig 16 we can see an image of an actual flood area that was captured by the Landsat 7 satellite over a section of Mississippi river in Cairo, Illinois, USA. There are some zones  containing water (in the image of the actual flood) that cannot be seen because of the clouds. The green waves cannot penetrate the clouds, meaning that some images cannot be processed correctly because of that problem.
+In the right side of Fig 16 we can see an image of an actual flood area that was captured by the Landsat 7 satellite over a section of Mississippi river in Cairo, Illinois, USA. There are some zones  that contain water (in the image of the actual flood) that cannot be seen because of the clouds. The green waves cannot penetrate through the clouds, meaning that some images cannot be processed correctly because of that problem.
 \par 
 
-Another possible cause that can make some differences, between the two images, is the fact that our flood algorithm dose not take into account the volume of water dropped over a specific area during a rainstorm. That kind of data can be hard to acquire by a normal user and can make the whole process much expensive (That is what we tried to avoid with our application).
-After the pictures are being processed, the image sets are archived and an email, containing a link from where the data can be downloaded, is send to the user that had placed the request in the first place. 
+Another possible cause that can make some differences, between the two images, is the fact that our flood algorithm does not take into account the volume of water dropped over a specific area during a rainstorm. That kind of data can be hard to acquire by a normal user and can make the whole process much expensive, both on processing time and on application developing time. This is a thing that we take into account when we built the system, such that we can keep the whole application at a low cost. In the next figure (Fig 17) we will overlay the prediction made by us with the real flood and check the numbers.
+\medskip
+\includegraphics[scale=0.6, center]{processed_flood_combined.png}
+\begin{center}
+Fig 17 - ... 
+\end{center}
+\par 
 
+The image above covers about 26,000,000 $m^2$ and it represents the overlaid images of the prediction made by us and a real flood that took place in 2011. The blue marked areas  represents the areas that our model predicted right which are \textbf{1537919} $m^2$ and the yellow pixels represents the area which was flooded in 2011, but our model could not predict. The yellow surface is about \textbf{780178} $m^2$ in size, which means that our model has managed to predict the flooded areas with an \textbf{accuracy of 66,34}\% from the total flooded area in 2011. The red pixels in the image represent the land area that our model overestimated, but we cannot classify that as an error because our prediction model does not take into account the precipitation level that will fall during a specific rainstorm, it just predicts the worst possible case. That red area covers around 1,197,600 $m^2$.
 
 
 
 \chapter{The application}
 
-\section{Qgis introduction} 
+\section{Functional description}
 
+\quad 
+In this section we will describe how our application is structured and the technical details about the implementation will be presented in one of the following chapters called Implementation details. 
+\par 
 
-\section{Python GDAL introduction} 
+Firstly our application has a server side which is written in python, using the Flask web framework, and that part will run as a process on our machines. It will offer a web Gui interface for every user that will chose to enter to our website. There are several HTML templates that will be loaded when needed (home page, image upload succeeded page, image upload failed page, error while processing page). 
+\par 
 
-\section{Functional description} 
+The first page that is displayed then a user will access the website will be the homepage where the instruction on how to use our application will be displayed, together with a upload files field (that would take a zip, tar.gz or taz.bz2 as input), and a field where the user can enter a email. On the upload files field the user can place as an input a set of images. The sets should be composed as follow: one NIR image, one green band image, and one topographical image over the same are. The images should have the .TIF extension. The user can place multiple sets of images but the sets would be differentiate by their name (e.g set 1: \texttt{0\_nif}, \texttt{0\_green}, \texttt{0\_topo}; set 2: \texttt{1\_nif}, \texttt{1\_green}, \texttt{1\_topo}). The email is required because after the images are being processed the server will send an email to the specified address with a link from where the resulted images can be downloaded.
+\par 
 
+After the submit button is pressed the input images will be uploaded to the server, and if the uploaded has succeeded and the email is valid a HTML page with that specific message will be displayed to the user. When the images are received by the server a request to process the input sets is created and place on a queue, each request is processed one at a time. A request will contain a field with the user email address and a field containing the path the zip files that the user had uploaded.
+\par 
 
+When the time has come for a request to be processed, it will be popped from the queue at it will be analyzed. The server will try to unzip the input set and check if the resulted folder contains the required images with the specified naming style. If the standards are not met a email if fired to notify the user that the input is not valid and it will no be processed. If the input set is accepted, the server will add in the Databese a item that will contain a path the the folder where the images were unzipped and a unique hash that should make the identification much more easy. The image processing part is done by a Java process that will be spawned by the server for each process. The Java files, together with the needed libraries will be compiled when the server is started for the first time (we already talked about how we compiled the Java files and how we run a Java process from python in the second chapter on python subsection; Fig 8 - compiling, Fig 9 - running a process). 
+\par 
+
+When a Java process is started the server will pass the as a command line arguments a path the the folder where the images that should be handled are stored, and a path to a folder where the resulted picture should be placed (the folder that will contain the results is created by the server). From this point the spawned Java process will handle the given input in a multi-threaded manner (each image set will be processed by a separate thread) and it will try to place the output on the specified folder path. When the Java process is ended it will return an output that will specify if the instructions had been executed with no errors. If an error has occurred that thing will be specified in the output. 
+\par 
+
+After the Java process is finished the python server will check the output, and if no error had occurred an email with a link, from where the resulting images can be downloaded, is sent to the user. If the server detects some errors from the Java process a email is send where this thing is specified.
 \section{The user interface}
+
+\medskip
+\includegraphics[scale=0.3, center]{gui_homepage.png}
+\begin{center}
+Fig 18 - ... 
+\end{center}
+\par 
+
 
 
 \section{Main use cases}
 
 
 \section{Implementation details}
+\quad
+In this section we will go a bit deeper in the details regarding the implementation of our application. Firstly we will discuss about the server side written in python and then we will discuss about the java part that is responsible for the image processing part
+
+\subsection{Server Part}
+
+\quad 
+The server basically runs on two separated threads that are started when the python process is spawned. One of the threads will be responsible of holding the Flask server, which at his turn is multi-threaded and can offer multi-user access at the same time, and the other thread is responsible for managing the queue where the request are stored.
+\par 
+
+When a user submits a request the zipped file is saved in a folder  and a request containing the user's email address and the path where the file had been saved is place into the queue. 
+\par 
+
+At first when the thread responsible for the processing queue is started it compiles all the java classes together with the required libraries (Fig 8). The paths to the java libraries and classes are hardcoded in the python file, and can be change manually if the location of the java files will ever need to be changed, but we do not recommend that thing because all the server's components should be stored together to offer a good project structure. All the compiling and spawning the java processes is done using the subprocess library available for python. 
+\par 
+
+After the Java files are being compiled the resulted classes are stored into a predefined folder. After that the handling of the queue's request is started. If the queue is empty the thread will wait until some request will be placed on the queue. After a request is detected it will be popped from the queue and will be process. Firstly the input set will be in unzipped to a folder with the same name (if it can be created; otherwise it will be renamed), and the content of the that folder will be checked to make sure that the required images with the required naming stile are present. If the requirements are not met the server will fire a email to the user that will specify the fact that the received archived was faulty. If the requirements are met a node is inserted in out database.
+\par 
+
+The database is created using the SQL ALCHEMY and the resulted table contains one integer column with a unique ID, a string column that will hold the path to the user's file and a string column that will hold a unique hash for every request. We will see later why we used this hash. In the following picture (Fig 19) we can see the table structure.
+
+\medskip
+\includegraphics[scale=0.8, center]{database_table.png}
+\begin{center}
+Fig 19 - ... 
+\end{center}
+\par 
+
+The \textbf{@session.ensure\texttt{\_session}} wrapper is used when an insertion has to occur or an item is being fetched from the DB. We also had provided two function that can handle this kind of operation \textbf{add\texttt{\_pack}} and \textbf{get\texttt{\_pack}} which will ensure a new session every time. We created this database as a way to store the information in case of a server failure. If the server will fail we can restore the queue based on this DB or if a result is processed wrong by the java part we can take a look on the faulty files.
+\par 
+
+After the server had inserted the information in the database, it will spawn a java process that will handle the images. The java process will place the resulting images into a folder created by the server and when it is done it will return an output to the server that will specify if any error had occurred during the execution. If an error was present the server will fire a email to the user will specify that thing and otherwise it will send an email containing the link from where the user can download the image. The email are sent using the smtplib python's library. That library is used to create services that can handle all the emails (@yahoo, @gmail, and others).
+\par 
+
+The following picture will represent what an user will receive when the server had done processing the request.
+
+\medskip
+\includegraphics[scale=1, center]{receive_email.png}
+\begin{center}
+Fig 20 - ... 
+\end{center}
+\par 
+
+When the user will click the link a download will be started and, depending on the size, the files will be deleted from the server after a period of time, to save storage memory. As we can see in the previous figure (Fig 20) the link contains the file hash sored in out table. If we had chose to sent an email to the user with the file path (default method offered by flask), we will expose our server to vulnerabilities, such that if someone would like to download something from our machine could do that very easy just by changing the path. This is why we chose to use a unique hash for every file, to prevent that kind of threat.
+
+\subsection{Java part}
+
+\quad 
+The first thing that we have to do on our machines to be able to run the server will be to modify a little bit the Java Virtual Machine (JVM is a virtual machine that enables a machine to run a java program). Because the satellite images that we work with tent to get very large in size we will need to allocate some extra memory such that the java process can load into the memory all the files. The images can get as large as 800 Megabytes, and the minimum required number of images for the processing to be done is 3 (NIR, green band and topographical image). A user can upload multiple sets of this images and for every image set a thread will be spawned in java, so we will need lots of available memory. On our machine we set up a maximum number of 3 threads that can run simultaneous and we had to set up the default JVM memory to 4 GB. This can be done on a machine running windows by  creating a environment variable called \texttt{\_JAVA\_OPTIONS} with the value \textbf{-Xmx4096m}. That value will set the minimum JVM memory allocation to 4 GB.
 
 \newpage
 

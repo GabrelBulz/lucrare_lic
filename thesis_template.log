@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.10.18)  5 JUN 2019 00:05
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.10.18)  5 JUN 2019 18:07
 entering extended mode
 **./thesis_template.tex
 (thesis_template.tex
@@ -667,35 +667,71 @@ Overfull \hbox (17.62482pt too wide) in paragraph at lines 599--600
 [][] 
  []
 
-[23 <./process1.png>] [24 <./process3.png>]
+[23 <./process1.png>]
+<processed_flood_combined.png, id=124, 918.43124pt x 698.61pt>
+File: processed_flood_combined.png Graphic file (type png)
+<use processed_flood_combined.png>
+Package pdftex.def Info: processed_flood_combined.png  used on input line 612.
+(pdftex.def)             Requested size: 551.063pt x 419.16924pt.
+ [24 <./process3.png>] [25 <./processed_flood_combined.png>]
 Chapter 3.
-[25
-
-]
-Chapter 4.
 [26
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 662--663
+<gui_homepage.png, id=137, 1403.99532pt x 679.03688pt>
+File: gui_homepage.png Graphic file (type png)
+<use gui_homepage.png>
+Package pdftex.def Info: gui_homepage.png  used on input line 649.
+(pdftex.def)             Requested size: 421.20184pt x 203.71263pt.
+ [27] [28 <./gui_homepage.png>]
+<database_table.png, id=146, 522.45187pt x 349.305pt>
+File: database_table.png Graphic file (type png)
+<use database_table.png>
+Package pdftex.def Info: database_table.png  used on input line 682.
+(pdftex.def)             Requested size: 417.96207pt x 279.44437pt.
+
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 682--683
+[][] 
+ []
+
+LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <12> not available
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 688.
+[29 <./database_table.png>]
+<receive_email.png, id=151, 431.36156pt x 189.70876pt>
+File: receive_email.png Graphic file (type png)
+<use receive_email.png>
+Package pdftex.def Info: receive_email.png  used on input line 697.
+(pdftex.def)             Requested size: 431.3605pt x 189.70828pt.
+
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 697--698
+[][] 
+ []
+
+[30 <./receive_email.png>] [31]
+Chapter 4.
+[32
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 738--739
 []\OT1/cmr/m/n/12 Flood fore-cast-ing - World me-te-o-ro-log-i-cal or-ga-ni-za-
 tion
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 662--663
+Underfull \hbox (badness 10000) in paragraph at lines 738--739
 \OT1/cmr/m/it/12 http://www.wmo.int/pages/prog/hwrp/FloodForecastingInitiative.
 php \OT1/cmr/m/n/12 - ac-cessed
  []
 
-[27
+[33
 
-] [28] [29] (thesis_template.aux) ) 
+] [34] [35] (thesis_template.aux) ) 
 Here is how much of TeX's memory you used:
- 6081 strings out of 492970
- 90616 string characters out of 3126149
+ 6104 strings out of 492970
+ 91124 string characters out of 3126149
  354585 words of memory out of 3000000
- 9810 multiletter control sequences out of 15000+200000
- 11026 words of font info for 39 fonts, out of 3000000 for 9000
+ 9828 multiletter control sequences out of 15000+200000
+ 11195 words of font info for 40 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  41i,7n,72p,1243b,258s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Users/Gabrel/AppData/Local/Programs/MiKT
@@ -706,10 +742,11 @@ C:/Users/Gabrel/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/c
 m/cmr12.pfb><C:/Users/Gabrel/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/publ
 ic/amsfonts/cm/cmr8.pfb><C:/Users/Gabrel/AppData/Local/Programs/MiKTeX 2.9/font
 s/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Gabrel/AppData/Local/Programs/M
-iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on thesis_template.pdf (32 pages, 5857919 bytes).
+iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/Gabrel/AppData/Lo
+cal/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
+Output written on thesis_template.pdf (38 pages, 8660450 bytes).
 PDF statistics:
- 168 PDF objects out of 1000 (max. 8388607)
+ 201 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 86 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 106 words of extra memory for PDF output out of 10000 (max. 10000000)
 
