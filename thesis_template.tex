@@ -618,7 +618,7 @@ Fig 17 - ...
 The image above covers about 26,000,000 $m^2$ and it represents the overlaid images of the prediction made by us and a real flood that took place in 2011. The blue marked areas  represents the areas that our model predicted right which are \textbf{1537919} $m^2$ and the yellow pixels represents the area which was flooded in 2011, but our model could not predict. The yellow surface is about \textbf{780178} $m^2$ in size, which means that our model has managed to predict the flooded areas with an \textbf{accuracy of 66,34}\% from the total flooded area in 2011. The red pixels in the image represent the land area that our model overestimated, but we cannot classify that as an error because our prediction model does not take into account the precipitation level that will fall during a specific rainstorm, it just predicts the worst possible case. That red area covers around 1,197,600 $m^2$.
 
 
-
+\newpage
 \chapter{The application}
 
 \section{Functional description}
@@ -627,7 +627,7 @@ The image above covers about 26,000,000 $m^2$ and it represents the overlaid ima
 In this section we will describe how our application is structured and the technical details about the implementation will be presented in one of the following chapters called Implementation details. 
 \par 
 
-Firstly our application has a server side which is written in python, using the Flask web framework, and that part will run as a process on our machines. It will offer a web Gui interface for every user that will chose to enter to our website. There are several HTML templates that will be loaded when needed (home page, image upload succeeded page, image upload failed page, error while processing page). 
+Firstly our application has a server side which is written in python, using the Flask web framework, and that part will run as a process on our machines. It will offer a web GUI interface for every user that will chose to enter our website. There are several HTML templates that will be loaded when needed (home page, image upload succeeded page, image upload failed page, error while processing page). 
 \par 
 
 The first page that is displayed then a user will access the website will be the homepage where the instruction on how to use our application will be displayed, together with a upload files field (that would take a zip, tar.gz or taz.bz2 as input), and a field where the user can enter a email. On the upload files field the user can place as an input a set of images. The sets should be composed as follow: one NIR image, one green band image, and one topographical image over the same are. The images should have the .TIF extension. The user can place multiple sets of images but the sets would be differentiate by their name (e.g set 1: \texttt{0\_nif}, \texttt{0\_green}, \texttt{0\_topo}; set 2: \texttt{1\_nif}, \texttt{1\_green}, \texttt{1\_topo}). The email is required because after the images are being processed the server will send an email to the specified address with a link from where the resulted images can be downloaded.
@@ -636,30 +636,65 @@ The first page that is displayed then a user will access the website will be the
 After the submit button is pressed the input images will be uploaded to the server, and if the uploaded has succeeded and the email is valid a HTML page with that specific message will be displayed to the user. When the images are received by the server a request to process the input sets is created and place on a queue, each request is processed one at a time. A request will contain a field with the user email address and a field containing the path the zip files that the user had uploaded.
 \par 
 
-When the time has come for a request to be processed, it will be popped from the queue at it will be analyzed. The server will try to unzip the input set and check if the resulted folder contains the required images with the specified naming style. If the standards are not met a email if fired to notify the user that the input is not valid and it will no be processed. If the input set is accepted, the server will add in the Databese a item that will contain a path the the folder where the images were unzipped and a unique hash that should make the identification much more easy. The image processing part is done by a Java process that will be spawned by the server for each process. The Java files, together with the needed libraries will be compiled when the server is started for the first time (we already talked about how we compiled the Java files and how we run a Java process from python in the second chapter on python subsection; Fig 8 - compiling, Fig 9 - running a process). 
+When the time has come for a request to be processed, it will be popped from the queue at it will be analyzed. The server will try to unzip the input set and check if the resulted folder contains the required images with the specified naming style. If the standards are not met a email is fired to notify the user that the input is not valid and it will no be processed. If the input set is accepted, the server will add in the Databese a item that will contain a path the the folder where the images were unzipped and a unique hash that should make the identification much more easy. The image processing part is done by a Java process that will be spawned by the server for each process. The Java files, together with the needed libraries will be compiled when the server is started for the first time (we already talked about how we compiled the Java files and how we run a Java process from python in the second chapter on python subsection; Fig 8 - compiling, Fig 9 - running a process). 
 \par 
 
-When a Java process is started the server will pass the as a command line arguments a path the the folder where the images that should be handled are stored, and a path to a folder where the resulted picture should be placed (the folder that will contain the results is created by the server). From this point the spawned Java process will handle the given input in a multi-threaded manner (each image set will be processed by a separate thread) and it will try to place the output on the specified folder path. When the Java process is ended it will return an output that will specify if the instructions had been executed with no errors. If an error has occurred that thing will be specified in the output. 
+When a Java process is started the server will pass as command line arguments a path the the folder where the images that should be handled are stored, and a path to a folder where the resulted picture should be placed (the folder that will contain the results is created by the server). From this point the spawned Java process will handle the given input in a multi-threaded manner (each image set will be processed by a separate thread) and it will try to place the output on the specified folder path. When the Java process is ended it will return an output that will specify if the instructions had been executed with no errors. If an error has occurred that thing will be specified in the output. 
 \par 
 
-After the Java process is finished the python server will check the output, and if no error had occurred an email with a link, from where the resulting images can be downloaded, is sent to the user. If the server detects some errors from the Java process a email is send where this thing is specified.
+After the Java process is finished the python server will check the output, and if no error had occurred an email with a link, from where the resulting images can be downloaded, is sent to the user. If the server detects some errors from the Java process an email is send to notify the user.
+
+
+
+\newpage
 \section{The user interface}
 
-\medskip
-\includegraphics[scale=0.3, center]{gui_homepage.png}
+\quad
+The graphical interface that the user will interact with is a pretty simple HTML page loaded using Flask and mostly create using Bootstrap (Bootstrap is a free framework for front-end which offers CSS and JavaScript design templates, forms, buttons, and so on). Bootstrap was linked to our project with a remote link, so the templates will work only if there is a valid internet connection. The following image (Fig 18) will offer us a quick preview on how this page looks like.
+
+\bigskip
+\includegraphics[scale=0.4, center]{gui_homepage.png}
 \begin{center}
 Fig 18 - ... 
 \end{center}
 \par 
 
+The background is a Bootstrap carousel that will display 3 images, from our local source, in a repetitive manner. The first item that we see below the title is a Bootstrap list-group that holds several list-group-items, each of them representing a instruction about how the input file should look like (type of accepted images, what images will be needed, accepted naming style, and accepted archives format).
+\par 
+
+The second field is a file-input from which the user will be able to upload the archive containing the input images that will later need to be processed by our server.
+\par 
+
+The third field represents a input of type email, where the user should insert an email address to which a message will be sent ,with a link from where the resulted images can be downloaded, after the server manages to process the request. If an error will occur during the processing the user will be notify at that email address. Below the email input field is a submit button that will upload the images to the server, together with the email address, and if all went good a web page containing the "Success" message will be displayed, otherwise a page containing the possible problems will be shown. At the bottom of the page we can find three icons that are linked to our Github, Facebook, and Instagram account.
+
 
 
 \section{Main use cases}
 
+\bigskip
+\includegraphics[scale=0.7, center]{FlowCase.png}
+\begin{center}
+Fig 19 - ... 
+\end{center}
+\par 
+
+The figure above (Fig 19) represents the main use case for our application. The flow shows the fact that the Server will deliver a web page for every user, which will input a set of images (archived) and an email back to the page. The user's input will be sent back to the server, and checked for any errors (wrong input images, wrong naming style). If no error are found the server will spawn a java process that will solve the request, and will notify the server when the job have been done. If no errors were detected while processing the files, the server will fire an email to the user with a link from where our predictions can be downloaded.
+
 
 \section{Implementation details}
 \quad
-In this section we will go a bit deeper in the details regarding the implementation of our application. Firstly we will discuss about the server side written in python and then we will discuss about the java part that is responsible for the image processing part
+In this section we will go a bit deeper in the details regarding the implementation of our application. Firstly we will discuss about the server side written in python and then we will discuss about the java part that is responsible for the image processing part.
+\par 
+
+In the following picture (Fig 20) we can see a overview of our server, which contains two threads, one is responsible with the web part, with flask, and the other one is responsible for managing the request pushed on queue. A java process is spawned to solve every request and the results path together with an unique hash are stored in the DB.
+\par 
+
+\medskip
+\includegraphics[scale=0.795, right]{application_overview.png}
+\begin{center}
+Fig 20 - ... 
+\end{center}
+\par 
 
 \subsection{Server Part}
 
@@ -667,28 +702,29 @@ In this section we will go a bit deeper in the details regarding the implementat
 The server basically runs on two separated threads that are started when the python process is spawned. One of the threads will be responsible of holding the Flask server, which at his turn is multi-threaded and can offer multi-user access at the same time, and the other thread is responsible for managing the queue where the request are stored.
 \par 
 
-When a user submits a request the zipped file is saved in a folder  and a request containing the user's email address and the path where the file had been saved is place into the queue. 
+When a user submits a request the zipped file is saved in a folder  and a processing request ,containing the user's email address and the path to where the file had been saved, is place into the queue. 
 \par 
 
-At first when the thread responsible for the processing queue is started it compiles all the java classes together with the required libraries (Fig 8). The paths to the java libraries and classes are hardcoded in the python file, and can be change manually if the location of the java files will ever need to be changed, but we do not recommend that thing because all the server's components should be stored together to offer a good project structure. All the compiling and spawning the java processes is done using the subprocess library available for python. 
+At first, when the thread responsible for the processing queue is started it compiles all the java classes together with the required libraries (Fig 8). The paths to the java libraries and classes are hardcoded in the python file, and can be change manually if the location of the java files will ever need to be changed, but we do not recommend that thing because all the server's components should be stored together to offer a good project structure. All the compiling and spawning a java process is done using the subprocess library available for python. 
 \par 
 
-After the Java files are being compiled the resulted classes are stored into a predefined folder. After that the handling of the queue's request is started. If the queue is empty the thread will wait until some request will be placed on the queue. After a request is detected it will be popped from the queue and will be process. Firstly the input set will be in unzipped to a folder with the same name (if it can be created; otherwise it will be renamed), and the content of the that folder will be checked to make sure that the required images with the required naming stile are present. If the requirements are not met the server will fire a email to the user that will specify the fact that the received archived was faulty. If the requirements are met a node is inserted in out database.
+After the Java files are being compiled the resulted classes are stored into a predefined folder. After that the handling of the queue's requests is started. If the queue is empty the thread will wait until a request will be placed on the queue. After a request is detected it will be popped from the queue and it will be processed. Firstly the input set will be unzipped into a folder with the same name (if it can be created; otherwise it will be renamed), and the content of the that folder will be checked to make sure that the required images with the required naming style are present. If the requirements are not met the server will fire an email to the user that will specify the fact that the received archived was faulty. If the requirements are met a record is inserted in our database.
 \par 
 
-The database is created using the SQL ALCHEMY and the resulted table contains one integer column with a unique ID, a string column that will hold the path to the user's file and a string column that will hold a unique hash for every request. We will see later why we used this hash. In the following picture (Fig 19) we can see the table structure.
+The database is created using the SQL ALCHEMY and the resulted table contains one integer column with a unique ID, a string column that will hold the path to the user's file and a string column that will hold a unique hash for every request. We will see later why we used this hash. In the following picture (Fig 21) we can see the table structure.
+\par
 
 \medskip
-\includegraphics[scale=0.8, center]{database_table.png}
+\includegraphics[scale=0.9, right]{database_table.png}
 \begin{center}
-Fig 19 - ... 
+Fig 21 - ... 
 \end{center}
 \par 
 
-The \textbf{@session.ensure\texttt{\_session}} wrapper is used when an insertion has to occur or an item is being fetched from the DB. We also had provided two function that can handle this kind of operation \textbf{add\texttt{\_pack}} and \textbf{get\texttt{\_pack}} which will ensure a new session every time. We created this database as a way to store the information in case of a server failure. If the server will fail we can restore the queue based on this DB or if a result is processed wrong by the java part we can take a look on the faulty files.
+The \textbf{@session.ensure\texttt{\_session}} wrapper is used when an insertion has to occur or an item has to be fetched from the DB. We also provided two function that can handle this kind of operation \textbf{add\texttt{\_pack}} and \textbf{get\texttt{\_pack}}, which will ensure a new session every time. We created this database as a way to store the information in case of a server failure. If the server will fail we can restore the queue based on this DB or if a result is processed wrong by the java part we can take a look on the faulty files.
 \par 
 
-After the server had inserted the information in the database, it will spawn a java process that will handle the images. The java process will place the resulting images into a folder created by the server and when it is done it will return an output to the server that will specify if any error had occurred during the execution. If an error was present the server will fire a email to the user will specify that thing and otherwise it will send an email containing the link from where the user can download the image. The email are sent using the smtplib python's library. That library is used to create services that can handle all the emails (@yahoo, @gmail, and others).
+After the server had inserted the information in the database, it will spawn a java process that will handle the images. The java process will place the resulting images into a folder created by the server and when it is done it will return an output to the server that will specify if any error had occurred during the execution. If an error was present the server will fire an email to the user will specify that thing and otherwise it will send an email containing the link from where the user can download the resulted images. The emails are sent using the smtplib python's library. That library is used to create services that can handle all the emails (@yahoo, @gmail, and others).
 \par 
 
 The following picture will represent what an user will receive when the server had done processing the request.
@@ -696,16 +732,32 @@ The following picture will represent what an user will receive when the server h
 \medskip
 \includegraphics[scale=1, center]{receive_email.png}
 \begin{center}
-Fig 20 - ... 
+Fig 22 - ... 
 \end{center}
 \par 
 
-When the user will click the link a download will be started and, depending on the size, the files will be deleted from the server after a period of time, to save storage memory. As we can see in the previous figure (Fig 20) the link contains the file hash sored in out table. If we had chose to sent an email to the user with the file path (default method offered by flask), we will expose our server to vulnerabilities, such that if someone would like to download something from our machine could do that very easy just by changing the path. This is why we chose to use a unique hash for every file, to prevent that kind of threat.
+When the user will click the link a download will be started and, depending on the size, the files will be deleted from the server after a period of time, to save storage memory. As we can see in the previous figure (Fig 22) the link contains the file hash sored in out table. If we had chose to sent an email to the user with the file path (default method offered by flask), we will expose our server to vulnerabilities, such that if someone would like to download something from our machine could do that very easy just by changing the path. This is why we chose to use a unique hash for every file, to prevent that kind of threat.
 
 \subsection{Java part}
 
 \quad 
-The first thing that we have to do on our machines to be able to run the server will be to modify a little bit the Java Virtual Machine (JVM is a virtual machine that enables a machine to run a java program). Because the satellite images that we work with tent to get very large in size we will need to allocate some extra memory such that the java process can load into the memory all the files. The images can get as large as 800 Megabytes, and the minimum required number of images for the processing to be done is 3 (NIR, green band and topographical image). A user can upload multiple sets of this images and for every image set a thread will be spawned in java, so we will need lots of available memory. On our machine we set up a maximum number of 3 threads that can run simultaneous and we had to set up the default JVM memory to 4 GB. This can be done on a machine running windows by  creating a environment variable called \texttt{\_JAVA\_OPTIONS} with the value \textbf{-Xmx4096m}. That value will set the minimum JVM memory allocation to 4 GB.
+The first thing that we have to do on our machines to be able to run the server will be to modify a little bit the Java Virtual Machine (JVM is a virtual machine that enables a machine to run java programs). Because the satellite images, that we work with, tent to get very large in size we will need to allocate some extra memory, such that the java process can load into the memory all the files. The images can get as large as 800 Megabytes, and the minimum required number of images for the processing to be done is 3 (NIR, green band and topographical image). A user can upload multiple sets of this images and for every image set a thread will be spawned by the java process, so we will need lots of available memory. On our machine we set up a maximum number of 3 threads that can run simultaneous and we had to set up the default JVM memory to 4 GB. This can be done on a machine running windows by  creating a environment variable called \texttt{\_JAVA\_OPTIONS} with the value \textbf{-Xmx4096m}. That value will set the minimum JVM memory allocation to 4 GB.
+\par 
+
+The arguments between the python server and the spawned java process will be passed though the command line. The first argument will be the path to the folder where the images are stored into the server and the second argument will represent the path to where the results should be stored.
+\par 
+
+We created two main classes that will handle the images. The first one that will be instantiated is named WaterDetectorBasic and the second one is called CreateFloodMapBasedOnTOPO.
+\par 
+
+The first class (WaterDetectorBasic) contains an inner class \texttt{Thread\_process\_color} that implements the java Runnable interface. That will be used as a thread to process every set of images contained in a request. If a input has multiple sets of images a thread will be spawned for each one. Because of our machine's limitation, currently we are running on maximum 3 threads for each java process (all the images would need to be loaded in memory, which will exceed our 4 GB set allocated for the JVM). The threads are spawned using a Java ExecutorService which can create a JavaPool with a predetermined number of threads. A java pool is like a job dispenser with a limited number of employees. You can set the number of employees, each one receiving one task, and when the task is done by an employee the dispenser will provide another one for it.
+
+\medskip
+\includegraphics[scale=0.7, center]{WaterDetectorBasic_class.png}
+\begin{center}
+Fig 20 - ... 
+\end{center}
+\par 
 
 \newpage
 
