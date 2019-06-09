@@ -192,13 +192,13 @@ Bulz \textsc{Gabriel} % Student's Name
 
 
 
-Floods are between the most devastating natural disasters that our society has to face and they can produce tremendous assets and human lives loss. As a solution we tried to create a prediction model that can highlight the areas with high risk of being flooded during severe rainstorms.
+Floods are between the most devastating natural disasters that our society has to face. During past significant floods a lot of assets and lives were lost. As a solution we tried to create a prediction model that can highlight the areas with high risk of being flooded during severe rainstorms.
 \par 
 
-One of our main goals was to create a cheap to produce and maintain application, that could be easy to use and understand even by untrained people.
+One of our main goals was to create a cheap to produce and maintain application, that could be easy understood even by untrained people.
 \par 
 
-This paper will offer some insides into the model skeleton and processing mechanics. The main idea behind our prediction model is that it will take as input satellite images over a land area and by combining the data it will firstly detect the water bodies using a special index called (normalized difference water index or NDWI) and then it will flood that area, starting from the detected water areas, based on the land topography.
+This paper will offer some insides into the model skeleton and processing mechanics. The main idea behind our prediction model is that it will take as input satellite images over a land area and by combining the data it will detect the water bodies, using a special index called (normalized difference water index or NDWI). After that it will flood the area based on the land topography, starting from the detected water areas.
 
 \end{abstract} %end abstract
 
@@ -225,19 +225,19 @@ Flood prediction models are of significant importance for hazard assessment and 
 Thus, the importance of advanced systems for short-term and long-term prediction for flood and other hydrological events is strongly emphasized to alleviate damage \cite{Pitt}. However, the prediction of flood lead time and occurrence location is fundamentally complex due to the dynamic nature of climate condition. Therefore, today’s major flood prediction models are mainly data-specific and involve various simplified assumptions \cite{Lohani}. 
 \par
 
-Physically based models were long used to predict hydrological events, such as storm, rainfall, water flow models, and other global circulation phenomena , including the coupled effects of atmosphere, ocean, and floods. This is the reason why we chose to develop our application based on a physically flood prediction model. Other types of prediction models are data-driven models e.g. machine learning or hybrid models which can combine data-driven, statistical and physically base models.
+Physically based models were long used to predict hydrological events, such as storms, rainfall, water flow models, and other global circulation phenomena , including the coupled effects of atmosphere, ocean, and floods. This is the reason why we chose to develop our application based on a physically flood prediction model. Other types of prediction models are data-driven models e.g. machine learning or hybrid models which can combine data-driven, statistical and physically base models.
 \par 
 
 Physical models showed great capabilities for predicting a diverse range of flooding scenarios \cite{Nayak},especially in long and mid-term prediction, although they often require various types of geomorphological and  hydrological data. 
 \par 
 
-In contrast to the physically based models, the data-driven prediction models using ML shown a higher performance rate on  short-term forecasting compared to the physically based models. In addition,  it was shown that the performance of ML could be improved through hybridization  with other ML methods, soft computing techniques, numerical simulations, and physical models. Such applications provided more robust and efficient models that can effectively learn complex flood systems in an adaptive manner. Although the literature includes numerous evaluation performance analyses of individual ML models \cite{Taherei, Kasiviswanathan, Ravansalar, Mosavi}, there is no definite conclusion reported with regards to which models function better in certain applications. In fact, the literature includes only a limited number of surveys on specific ML methods in specific hydrology fields \cite{Dandagala, Deka, Fotovatikhah}. Consequently, there is a research gap for a comprehensive literature review in the general applications of ML in all flood resource variables from the perspective of ML modeling and data-driven prediction systems.
+In contrast to the physically based models, the data-driven prediction models using ML shown a higher performance rate on  short-term forecasting compared to the physically based models. In addition, it was shown that the performance of ML could be improved through hybridization  with other ML methods, soft computing techniques, numerical simulations, and physical models. Such applications provided more robust and efficient models that can effectively learn complex flood systems in an adaptive manner. Although the literature includes numerous evaluation performance analyses of individual ML models \cite{Taherei, Kasiviswanathan, Ravansalar, Mosavi}, there is no definite conclusion reported with regards to which models function better in certain applications. In fact, the literature includes only a limited number of surveys on specific ML methods in specific hydrology fields \cite{Dandagala, Deka, Fotovatikhah}. Consequently, there is a research gap for a comprehensive literature review in the general applications of ML in all flood resource variables from the perspective of ML modeling and data-driven prediction systems.
 \par 
 
-Although the data-driven models using ML can be much efficient in some cases there is a still a big draw back regarding their development and use. For a data-driven model to have a high accuracy it will be needed a very large amount of training data, which can be hard to acquire due the weather conditions and monitoring devices availability time. Furthermore the development of a data-driven model using ML is very expensive because it requires a complex model which needs to be trained for a long period of time, requiring a high computation cost, and it also requires a longer validation, testing, and evaluation period.
+Although the data-driven models using ML can be much efficient in some cases there is still a big drawback regarding their development and use. For a data-driven model to have a high accuracy it will be needed a very large training data set, which can be hard to acquire due the weather conditions and the availability time of monitoring devices. Furthermore the development of a data-driven system using ML is very expensive because it requires a complex model which needs to be trained for a long period of time, requiring a high computation cost. It also requires a longer validation, testing, and evaluation period.
 \par
 
-Even dough the data-driven models using ML can be a great scientific tool they tend to be hard to understood by a non trained person, and they can require, as shown above, a high run cost and a data set which can be very difficult to acquire by every person. This is why we chose to develop a physically prediction model which can be used by everybody with a low run cost, which requires a minimum data-set easy to obtain via different services like Sentinel 1,2,3 or Landsat satellite images programs. This app has the potential to serve regular people when making decisions about where to buy a property, or where to build a house without any risk saving lots of money.
+Even dough the data-driven models using ML can be a great scientific tool they tend to be hard to understood by a non trained person and they can require, as shown above, a high run cost and a data set which can be difficult to acquire by normal people. This is why we chose to develop a physically prediction model which can be used by everybody with a low run cost, which requires a minimum data-set, easy to obtain via different services like Sentinel 1,2,3 or Landsat satellite images programs. This app has the potential to serve regular people when making decisions about where to buy a property, or where to build a house without any risk, saving lots of money.
 \par
 
 
@@ -245,16 +245,13 @@ Even dough the data-driven models using ML can be a great scientific tool they t
 \subsection{Method and Outline}
 
 \quad
-This paper identifies the state of the art of physically methods for flood prediction taking into account the processing time, cost, efficiency and difficulty to use. The methods that we used shown a very significant performance and accuracy rate.
+This paper identifies the state of the art of physically methods for flood prediction taking into account the processing time, cost, efficiency and difficulty to use. The methods that we used shown a very significant performance and accuracy rate (water detection 89\%, predicting flooded areas 67\%).
 \par
 
-The applications in flood prediction can be classified according to flood resource variables, i.e. river flow, flood peak discharge, urban flood and plain flood. Among these key influencing flood resource variables, and the spatial examination of the topographical images, the application include the possibility to detect with high accuracy the water surfaces (over 89\% accuracy from all tests).
-\par
-
-The mainly methods that we used in the application were the detection of water and flooding a land area based on the topographical images. The water detection was obtained by combining a set of near infrared (or NIR) and green band satellite images, and then applying a method of extraction called normalized difference water index (NDWI). This method is based on the extraction the water bodies taking into account the reflectance property of water.
+The mainly methods that we used in the application were the detection of water and flooding a land area based on the topographical images. The water detection was obtained by combining a set of near infrared (or NIR) and green band satellite images, and then applying a method of extraction called normalized difference water index (NDWI). This method is based on the extraction of water bodies by taking into account the reflective property of water.
 \par 
 
-After the water has been detected, the land area is flooded based on the topographical map of the surface. One of the problems that we encountered here is ,besides the water detection, the fact that the topographical satellite images tend to cover a bigger area than the NIR and green band area from the satellite images, so we had to map the smaller NIR images into the bigger topographical images, but we will discuss this problem and how we solve it in the following chapters. The resulting product of our application is a area that has a high possibility of being flooded during a heavy rainstorm, results that can be achieved using a very low processing time, cost and resources.
+After the water had been detected the land area is flooded based on the topographical map of the surface. One of the problems that we encountered here is ,besides the water detection, the fact that the topographical satellite images tend to cover a bigger area than the NIR and green band satellite images, so we had to map the smaller NIR images into the bigger topographical images. We will discuss this problem and see how we solve it in the following chapters. The resulting product of our application is an area that has a high risk of being flooded during a heavy rainstorm. The results that can be achieved using a very low processing time, cost and resources.
 \par 
 
 \begin{center}
@@ -262,7 +259,7 @@ After the water has been detected, the land area is flooded based on the topogra
 	Fig 1 - Input and output description of the application
 \end{center}
 
-Combining those techniques with an easy to use and understand client interface we managed to create a system that can predict the land areas with a high potential of being flooded. The processing time and cost are reduced because the server part has to go through a set of images only twice, first time to detect the surface water and second time to flood the land area based on the topographic map, so the computations are reduced as low as possible. On the client side, there are big advantages because the set of resources (satellite images) are free and easy to access and the results are easy to understand, making this application ideal for a non trained person.
+Combining those techniques with an easy to use and understand client interface we managed to create a system that can predict the land areas with a high potential of being flooded. The processing time and cost are reduced because the server has to go through a set of images only twice, first time to detect the surface water and second time to flood the land area based on the topographic map, so the computations are reduced as low as possible. From the user's point of view there are big advantages because the set of resources (satellite images) are free and easy to access, and the results are easy to understand, making this application ideal for a non trained person.
 \par
 
 
@@ -275,24 +272,26 @@ Combining those techniques with an easy to use and understand client interface w
 For creating our physically prediction model we chose to use NDWI water extraction technique due its ease use and low processing time. McFeeters \cite{McFeeters} developed the normalized difference water index (NDWI) using the reflectance of the green (band 2) and near-infrared (band 4) bands of Landsat TM (Thematic Mapper). NDWI is one of the most widely used water indices for a variety of applications, including surface water mapping, land cover analyses \cite{Duan, Poulin, Hui} and also it shown great classification accuracy in areas that include shadow and dark surfaces.
 \par 
 
-Besides the existence of NDWI index for detecting the water bodies, there are other techniques presented in various papers \cite{Multifractal water analysis, NDWI Comparison} that shown significant results. These methods are the Multifractal analysis of water bodies using Wavelet method and Fluctuation analysis and the detection of water using neural networks. Both of these techniques shown a high accuracy (multifractal analysis shown the best of those two, over 89\%; very similar to the accuracy obtained by our NDWI index), but there are some downsides regarding the neural network water detection. That method shown great results but only on some particular sets of images and it did not provided a proper classification for all radar images. The studies \cite{NDWI Comparison} suggests that the neural network errors may appear due to the high sensitivity to the noise in the images. 
+Besides the NDWI index for detecting the water bodies, there are some other techniques presented in various papers \cite{Multifractal water analysis, NDWI Comparison} that shown significant results. These methods are the \textbf{Multifractal analysis of water bodies using Wavelet method and Fluctuation analysis} and the \textbf{detection of water using neural networks}. Both of these techniques shown a high accuracy (multifractal analysis shown the best of those two, over 89\%; very similar to the accuracy obtained by our NDWI index).
+\par 
+There are some downsides regarding the neural network water detection. That method shown great results but only on some particular sets of images and it did not provided a proper classification for all radar images. The studies \cite{NDWI Comparison} suggests that the neural network errors may appear due to the high sensitivity to the noise in the images. 
 \par 
 
-On short, after our model manages to detect the water areas from a picture it starts to expand these areas taking into account the topography of the land, like a flood bases in the land level. This model is called a physically prediction model and it allows us to create a simply to understand and test model, which will be time and cost efficient. 
+On short, after our model manages to detect the water areas from a picture it starts to expand these areas taking into account the topography of the land, like a flood bases to the land level. This model is called a physically prediction model and it allows us to create a simply to understand and test model, which will be time and cost efficient. 
 \par 
 
-There exists more complex physical models that can take into account more elements, like land water saturation, vegetation type of that area and the volume of rain that will fall over specific areas, but that types of models are more complex, and more expensive both on execution time and on development time. The test and validation part will need to be more complex, and the input required will be harder to gathered up by a simple user. 
+There exists more complex physical models that can take into account more elements, like land water saturation, vegetation type of that area and the volume of rain that will fall over specific areas, but that types of models are more complex, and more expensive, both on execution time and development time. The test and validation part will need to be more complex, and the input required will be harder to obtain by a simple user. 
 \par 
 
-Besides the physically prediction models there are some other forecasting models presented in various papers \cite{Flood forecasting models}, like data driven models based on machine learning and hybrid models that combine physically, and machine learning hydrologically models.\par 
+Besides the physically prediction models, there are some other forecasting models presented in various papers \cite{Flood forecasting models}, like data driven models based on machine learning and hybrid models that combine physically, and machine learning hydrologically models.\par 
 
 The first one that we will discuss is the \textbf{ML-based hydrology-dynamic modeling}: The computational cost of this model can limit the resolution and the scope of the hydro-dynamic system. The costs can be reduced by up to orders of magnitude by taking advantage of machine learning derivation methods, as it was experimentally done of other fluid dynamics models \cite{Yohai}.
 \par 
 
-The second model that we will discuss about will be the \textbf{Remote discharge estimation}: The most important obstacle for incorporating machine learning into the hydrology field is the limited data. Measuring the water levels and the discharges is relatively difficult when it comes into attention the global order of 100,000. But still, the quantity, variety and quality of satellites constantly imaging all river is rising at a very fast pace. The ability to estimate the river discharges without in-site measurements is a a task that has become both critical for the hydrology field, and incredibly well suited for machine learning field.
+The second model that we will discuss about will be the \textbf{Remote discharge estimation}: The most important obstacle for incorporating machine learning into the hydrology field is the limited data. Measuring the water levels and the discharges is relatively difficult when it comes into attention the global order of 100,000. But still, the quantity, variety and quality of satellites constantly imaging all river is rising at a very fast pace. The ability to estimate the river discharges without in-site measurements is a task that has become both critical for the hydrology field, and incredibly well suited for machine learning field.
 \par 
 
-The third and the last model that we will discuss about is the \textbf{Hybrid physics-machine learning hydrologic models}: This model is a alternative to the machine learning approach, and it adopts a hybrid approach where a ML model is combined with the classical physics-based components, which can enclose important prior knowledge about the domain structure. Some could view this approach as allowing the physically model to capture the major hydrologic  model, while the ML will be responsible for error correction, and calibration of the final model. As an interesting fact, it was shown that the physically models tend to be more accurate on the long-term and mid-term prediction, while the ML tend to be more accurate on the short-term predictions, and by combining those two techniques in one we can possibly obtain a accurate prediction model on both long-term and short-time periods.
+The third and the last model that we will discuss about is the \textbf{Hybrid physics-machine learning hydrologic models}: This model is an alternative to the machine learning approach, and it adopts a hybrid approach where a ML model is combined with the classical physics-based components, which can enclose important prior knowledge about the domain structure. Some could view this approach as allowing the physically model to capture the major hydrologic  model, while the ML will be responsible for error correction, and calibration of the final model. As an interesting fact, it was shown that the physically models tend to be more accurate on the long-term and mid-term prediction, while the ML tend to be more accurate on the short-term predictions, and by combining those two techniques we can possibly obtain an accurate prediction model on both long-term and short-time periods.
 
 
 
@@ -308,10 +307,10 @@ The third and the last model that we will discuss about is the \textbf{Hybrid ph
 \subsubsection{Collecting the resources}
 
 \quad
-Our prediction model was created with a simple scope in mind, to offer a simply  application that can predict the areas with high risk of being flooded during a rainstorm, with as little processing time and cost as possible. The input for our model had to be easy to obtained and the output had to be easy to understand, so we chose to use a input data that is both easy to obtained and free (it will need to be accessible by every person). The input for our model is a set of .tiff images that should contain a near infrared image (NIR), a green band image, and a topographic image. A simple way to obtain the NIR and green band images is by using the available data offered by satellites like Landsat 1 to Landsat 8 or Sentinel 2. 
+Our prediction model was created with a simple scope in mind, to offer a simply  application that can predict the areas with high risk of being flooded during a rainstorm, with as little processing time and cost as possible. The input for our model had to be easy to obtained and the output had to be easy to understand, so we chose to use an input data that is easy to obtained and free (it will need to be accessible by every person). The input for our model is a set of .tiff images that should contain a near infrared image (NIR), a green band image, and a topographic image. A simple way to obtain the NIR and green band images is by using the available data offered by satellites like Landsat 1 to Landsat 8 or Sentinel 2. 
 
 \par 
-The Landsat project is one of the longest-running enterprise projects for acquisition of satellite imagery of Earth. The project was first developed by NASA and then it was transferred to NOAA (National Oceanic and Atmospheric Administration) by U.S Jimmy Carter's presidential directive. There were 8 Landsat satellites on the Earth's orbit, now only 2 of them are still active, and the resources collected are available on the USGS (U.S Geological Survey) website. The only thing that a user will need in order to access the data is a free account. After the account is created the user can select different areas via USGS's EarthExplorer portal and download the area's satellite imagery using filters like Data Range or satellite preference (Landsat satellite 1-8).
+The Landsat project is one of the longest-running enterprise projects for acquisition of satellite imagery of Earth. The project was first developed by NASA and then it was transferred to NOAA (National Oceanic and Atmospheric Administration) by U.S Jimmy Carter's presidential directive. There were 8 Landsat satellites on the Earth's orbit, now only 2 of them are still active, and the resources collected are available on the USGS (U.S Geological Survey) website. The only thing that a user will need in order to access the data is a free account. After the account is created the user can select different areas via USGS's EarthExplorer portal and download the satellite imagery using different filters.
 \par
 
 \bigskip
@@ -321,7 +320,7 @@ The Landsat project is one of the longest-running enterprise projects for acquis
 Fig 2 - \cite{USGS} - Selecting Landsat images
 \end{center}
 
-The image presented above (fig 2) is a shot taken while searching for our test data from a region in U.S (Cairo) that was heavy flooded during a rainstorm by the Mississippi river. The yellow and pink areas represents two different scenes captured by the Landsat 7 satellite. A set of 8 images are found in a package downloaded from this website depending on the satellite that had provided them, but all the Landsat satellites imagery set contains a NIR and green band shot of the selected area (the main difference between them is the resolution in meters of the photo). We used in our research mainly Landsat's 7 images because the photos are at a higher resolution (30 m) and most of them are already processed by the USGS servers (some images need to be processed by the internal servers before being available to the users).
+The image presented above (fig 2) is a shot took while searching for our test data from a region in U.S (Cairo) that was heavy flooded during a rainstorm by the Mississippi river. The yellow and pink areas represents two different scenes captured by the Landsat 7 satellite. A set of 8 images are found in a package downloaded from this website depending on the satellite that had provided them, but all of the Landsat's satellites imagery sets contains a NIR and green band shot of the selected area (the main difference between them is the resolution in meters of the photo). We used in our research mainly Landsat's 7 images because the photos are at a higher resolution (30 m) and most of them are already processed by the USGS servers (some images need to be processed by the internal servers before being available to the users).
 
 \includegraphics[scale=0.73, center]{Capture.png} 
 \begin{center}
@@ -331,7 +330,7 @@ Fig 3 - \cite{Wiki_landsat} - Landsat 7 bands description
 
 \medskip
 
-As we specified above there is another option to obtain the images besides Landsat, and that is through the Sentinel program. Sentinel is an observation mission from the Eu Copernicus Programme that acquires optical imagery of Earth at large resolution (10 to 60 m) over land and coastal waters. There are 3 satellites launched by the Copernicus Programme but we will focus mainly on Sentinel 2, because it has the largest collected data. 
+As we specified above there is other options to obtain the images ,besides Landsat, and that is through the Sentinel program. Sentinel is an observation mission from the Eu Copernicus Programme that acquires optical imagery of Earth at large resolution (10 to 60 m) over land and coastal waters. There are 3 satellites launched by the Copernicus Programme but we will focus mainly on Sentinel 2, because it has the largest collected data. 
 \par 
 
 The Sentinel 2 satellite has a multi-spectral instrument with 13 spectral channels in the visible, short wave and near infrared spectral range. The bands that are interesting for us are the 3-rd band which is the green one and the 8-th band which is the NIR one (the bands have a spatial resolution of 10 m). The images  can be downloaded from the Copernicus Scihub website, again by creating a free account. There is a possibility to select a date range, cloud coverage percent and the satellite platform which is the best suited for the user needs (I.E Sentinel 1,2 or 3). 
@@ -340,7 +339,7 @@ The Sentinel 2 satellite has a multi-spectral instrument with 13 spectral channe
 There are some drawbacks regarding the Cepernicus Schihub website about the images accessibility. The site offers only two images that can be downloaded each day. The image preview will still be available, but none of the satellite image sets will be available for download. 
 \par 
 
-The web site will display a map over the earth's surface and the user can select an area from where the images will be searched. Because the Sentinel satellites have a predefined trajectory some images can be a little bit cut, meaning that even we selected a specific areas the images offered by the website can have a some black parts, representing the areas which the satellite didn't capture in the photos. We can see that thing in the left side of Fig 4, where a preview over the images is displayed.
+The web site will display a map over the earth's surface and the user can select an area from where the images will be searched. Because the Sentinel satellites have a predefined trajectory some images can be a little bit cut of, meaning that even we selected a specific areas the images offered by the website can have some black parts, representing the areas which the satellite didn't capture in the photos. We can see that thing in the left side of Fig 4, where a preview over the images is displayed.
 \par 
 
 A quick solution to that problem is to download adjacent images and merge them together into a bigger image using the tools offered by QGIS (we will discuss about QGIS in the following pages).
@@ -355,10 +354,10 @@ Fig 4 - \cite{Copernicus} - Selecting Sentinel images
 \par 
 
 
-Still, there are some drawbacks from using the Sentinel imagery. We chose to use the Landsat images over Sentinel's data set, because the Sentinel 1 images are at a lower resolution, and the Sentinel 2 and 3 images are too recent taken (the satellites were launched in 2015, so the data could not cover a larger time period for our data analysis).
+Still, there are some drawbacks from using the Sentinel imagery. We chose to use the Landsat images over Sentinel's data set because the Sentinel 1 images have a lower resolution, and the Sentinel 2 and 3 images are too recent taken (the satellites were launched in 2015, so the data set could not cover a larger time period for our analysis).
 \par 
 
-After we obtained the NIR and green band images we will need to download a topographic map of the area ,that will be processed. The topographic map can be taken from USGS website by searching for digital elevation maps. The process is pretty similar to the one of collecting Landsat imagery. A interesting difference between a NIR and a topographic image is represented by the images size. The topographic image is usually taken over a larger field, and this is a problem that we encountered during the processing of the areas with high flood risk. We needed to determine where to place the smaller image inside the bigger one based on coordinates, but we will discuss about this problem in one of the following sections.
+After we obtained the NIR and green band images we will need to download a topographic map of the area that will be processed. The topographic map can be taken from USGS website by searching for digital elevation maps. The process is pretty similar to the one of collecting Landsat imagery. A interesting difference between a NIR and a topographic image is represented by the images size. The topographic image is usually taken over a larger field, and this is a problem that we encountered during the processing of the areas with high flood risk. We needed to determine where to place the smaller image, inside the bigger one, based on global coordinates, but we will discuss this problem in one of the following sections.
 \par
 
 \subsubsection{Processing the resources}
@@ -370,7 +369,7 @@ Before a set of images can be processed by our application they need to be rende
 The images will need to be rendered from 8 bit depth to 32 bit depth and the pixel range value will be mapped between 0 and 255. They will also need to be saved with .TIF extension, to be later processed by our servers.
 \par 
 
-The Sentinel images are pretty straight forward to rendered, but the images from Landsat will need an extra step before being ready to save. The Landsat 7 images have what seems to be "black stripes" across the side of the image. This is due to a failure of Landsat 7 Scan Line Corrector. The forward movement of the satellite on the orbit should be compensated by The Scan Line Corrector, but because of the failure a zigzag pattern of ground tracking is used instead of a mapping in straight lines. This can be seen very clearly in the image below (fig 5), and the location of the black stripes varies between 390-450 m; therefore US Geological Survey(USGS) estimates that affected images lose about 22\% of their data \cite{Landsat-error}.
+The Sentinel images are pretty straight forward to rendered, but the images from Landsat will need an extra step before being ready to save. The Landsat 7 images have what seems to be "black stripes" across the side of the image. This is due to a failure of Landsat 7 Scan Line Corrector. The forward movement of the satellite on the orbit should be compensated by The Scan Line Corrector, but because of the failure a zigzag pattern for ground tracking is used instead of a mapping in straight lines. This can be seen very clearly in the image below (fig 5), and the location of the black stripes varies between 390-450 m; therefore US Geological Survey(USGS) estimates that affected images lose about 22\% of their data \cite{Landsat-error}.
 
 \bigskip
 
@@ -381,7 +380,7 @@ Fig 5 - Landsat 7 image error
 \par 
 
 \quad
-The black lines get smaller as we approach the center of the image, which means that we can crop some parts of the land area and use them without any future modification, or if we need to use the full image we can try to apply a image correction, which should fill the black lines based on the gap masks offered by Landsat (for this part we will need to have Gdal installed). Below we can see how a mask layer looks like (fig 6).
+The black lines get smaller as we approach the center of the image, which means that we can crop some parts of the land area and use them without any future modification, or if we need to use the full image we can try to apply an image correction, which should fill the black lines based on the gap masks offered by Landsat (for this part we will need to have Gdal installed). Below we can see how a mask layer looks like (fig 6).
 \par 
 
 
@@ -393,7 +392,7 @@ Fig 6 - Landsat 7 correction mask
 \end{center}
 \par 
 
-After the images are ready they can be rendered by saving the image with .tif extension and checking the "render image" box.
+After the images are ready they can be rendered by saving the images with a .tif extension and checking the "render image" box.
 
 
 
@@ -403,13 +402,13 @@ After the images are ready they can be rendered by saving the image with .tif ex
 \medskip
 
 \quad
-Java is popular object-oriented programming language that was designed to have as few implementation dependencies as possible. It was created in 1995 by Sun Microsystems and now it is owned by Oracle.
+Java is a popular object-oriented programming language that was designed to have as few implementation dependencies as possible. It was created in 1995 by Sun Microsystems and now it is owned by Oracle.
 \par
 
-This project was developed using Java 1.8 with two external libraries i.e.: Gdal and jai-imageio-core 1.4.0. Any version below 1.6 will now work as intended because of jai-imageio-core library. These libraries were used to process the TIFF images from satellite.
+This project was developed using Java 1.8 with two external libraries i.e.: Gdal and jai-imageio-core 1.4.0. Any version below 1.6 will now work as intended because of jai-imageio-core library. These libraries are used to process the TIFF images from satellite.
 \par
 
-At first we intended to use Python as the heavy lifting programming language because of the more relaxed syntactic structure, but in the end we chose Java because of its parallel programming capabilities. Usually when we have to work with satellite images we should take into account the fact that the images can be really large, like 8161x7211 pixels in size covering over 589.000.000 $km^2$, and when we have to process more that one image of this kind the processing time becomes very important.
+At first we intended to use Python as the heavy lifting programming language because of the more relaxed syntactic structure, but in the end we chose Java because of its parallel programming capabilities. Usually when we have to work with satellite images we should take into account the fact that the images can be really large, like 8161x7211 pixels in size covering over 589.000.000 $km^2$, and when we have to process more than one image of this kind the processing time becomes very important.
 \par
 
 Python will become much slower in this area because of the Global Interpreter Lock or GIL (a mutex, or a lock, that allows only one thread to be in a state of execution at any point in time). The impact of the GIL is visible only to developers who execute multi-threaded programs, because it can create a performance bottleneck at the CPU level.
@@ -423,33 +422,33 @@ In the following image (fig 7) we can take a look over the processing time (in m
 \bigskip
 
 \begin{center}
-Fig 7 - Java multi thread vs python single thread
+Fig 7 - Java multi thread vs python single thread; time milliseconds
 \end{center}
 \par 
 \includegraphics[scale=0.7, center]{multi_thread2.png}
 
 \quad
-The tests were made by us on a sample of 8 images with an average size of 1000x1000 px, and the results shown that the java multi-threaded system (marked with blue on fig 7) was in average faster with 40\% than the python single-threaded system. We valued this feature very much because the reduced time of processing combined with the image handling power offered by java helped us to create a time and cost efficient application, and that is what we intended at first.
+The tests were made by us on a sample of 8 images with an average size of 1000x1000 pixels, and the results shown that the java multi-threaded system (marked with blue on fig 7) was in average 40\% faster than the python single-threaded system. We valued this feature very much because the reduced processing time combined with the image handling power offered by java helped us to create a time and cost efficient application.
 
 
 \subsection{Programming language: Python}
 \medskip
 
 \quad
-Python is a interpreted, high-level, open source programming language that was made to have a  relaxed syntactic structure and to be more easy to read. It supports both functional and object oriented programming and its mainly targeted to a fast development and easy to maintain code.
+Python is an interpreted, high-level, open source programming language that was made to have a relaxed syntactic structure and to be more easy to read. It supports both functional and object oriented programming and its mainly targeted to a fast development and easy to maintain code.
 \par
 
 Python had played a major role in the project because of its relaxed syntactic structure and it was use to create the server part of the application, using Flask (flask is a microframework for python web based applications).
 \par 
 
-After the server receives a set of satellite images from the user, a Java process is started by the server to solve the request. The java files are complied when the server is started for the first time and then for every request a java process is started. All this part was handled using the python's "subprocess" library
+After the server receives a set of satellite images from the user, a Java process is started by the server to solve the request. The java files are complied when the server is started for the first time, and then for every incoming request a java process is started. All this part was handled using the python's "subprocess" library
 \par
 \medskip
 
-We will take a short look on how the python server compiles the java files and how a process is started, and we will discuss in more details in the next chapters.
+We will take a look on how the python server compiles the java files and how a process is started, and we will discuss in more details in the next chapters.
 \medskip
 
-Here we can take a short look on how the java files are compiled
+Here we can take a look on how the java files are compiled
 \par
 \bigskip
 \includegraphics[scale=0.8, center]{python_call_java_1.png}
@@ -481,13 +480,13 @@ We used Gdal as a Java library to process the satellite images. We needed a way 
 Flask is a web framework written for Python which is classified as a microframework because it does not require particular tools or libraries, and it is really light weight because it has no database abstraction, no user authentication and no form validation.
 \par 
 
-Flask was developed based on the template engines offered by Jinja 2, which can enable a accelerated development for our web application. It also offers a micro but extensible web framework, which can become very flexible by using several widely used web development tools and libraries \cite{Flask1}.
+Flask was developed based on the template engines offered by Jinja 2, which can enable an accelerated development for our web application. It also offers a micro, but extensible, web framework, which can become very flexible by using several widely used web development tools and libraries \cite{Flask1}.
 \par 
 
-There is an another available web framework dedicated to Python which we took into consideration when we built this application and that is Django. At first look Django seemed a better choice than Flask, because it has a better template engine than Flask, it has a ORM (object-relational mapping) system that can work with several databases like SQLite, Oracle and MySQL and it has a built-in bootstrapping tool, but despite all this upsides, which can make the application development much easier, there are some drawbacks when using Django. Even though Django could offer a cheaper App development, we should also take a look on how a Django HTTP server will compare to a HTTP Flask server.
+There is an another available web framework dedicated to Python which we took into consideration when we built this application and that is Django. At first look Django seemed a better choice than Flask because it has a better template engine than Flask, it has a ORM (object-relational mapping) system that can work with several databases like SQLite, Oracle and MySQL and it has a built-in bootstrapping tool, but despite all this upsides, which can make the application development much easier, there are some drawbacks when using Django. Even though Django could offer a cheaper application development, we should also take a look on how a Django HTTP server will compare to a HTTP Flask server.
 \par 
 
-We had to consider the fact that the machine on which our application will run will need to be cheap to maintained, and it should be pretty responsive, which means that it should have a low latency (that was one of our main focuses). We took a look on several benchmarks that compared the performance obtained by Flask and Dajngo during longer sessions of run time, because the available resources tend to change with time. We had to determine how they can handle a more intensive environment where the available resources can decrease. Like on the real machines where the decrease of resource is non linear because the OS can spawn daemons or trigger some side jobs, we had to find some tests that will take this facts into account, and we found that the HTTP Flask server performs much better than the HTTP Django server in this king of conditions. The tests that we take into consideration \cite{Flask2} were made using Gunicorn (a Python Web Server Gateway HTTP interface) at a constant 4000 queries per seconds. In the tests the HTTP Falsk server displayed a lower latency and  error numbers and a higher request number compared to the HTTP Django server.
+We had to consider the fact that the machine on which our application will run will need to be cheap to maintained, and it should be pretty responsive, which means that it should have a low latency (that was one of our main focuses). We took a look on several benchmarks that compared the performance obtained by Flask and Dajngo during longer sessions of run time. The available resources tend to change with time so we need to be cautious. We had to determine how they can handle a more intensive environment where the available resources can decrease. Like on the real machines where the decrease of resource is non linear, because the OS can spawn daemons or trigger some side jobs, we had to find some tests that will take this facts into account. We found that the HTTP Flask server performs much better than the HTTP Django server in this king of conditions. The tests that we take into consideration \cite{Flask2} were made using Gunicorn (a Python Web Server Gateway HTTP interface) at a constant 4000 queries per seconds. In the tests the HTTP Falsk server displayed a lower latency and error numbers, and a higher request number compared to the HTTP Django server.
 \par 
 
 \bigskip
@@ -508,17 +507,17 @@ Fig 11 - \cite{Flask2} - Latency and error diagram (Flask vs Django)
 \section{Functional description}
 
 \quad
-In this section we will take a closer look on how our application manages to process the input offered by the user and predict the areas with high flooding risk. Firstly we offer a friendly and easy to understand web interface where any user can upload a set of satellite images, where a set is composed of a NIR image, a green band image and a topographical image (a user can upload multiple sets of this kind at once; the sets will be identified based on names).
+In this section we will take a closer look on how our application manages to process the input offered by the user and predict the areas with high flooding risk. Firstly we offer a friendly and easy to understand web interface where any user can upload a set of satellite images. A set is composed of a NIR image, a green band image and a topographical image (a user can upload multiple sets of this kind at once; the sets will be identified based on names).
 \par 
- After the input is uploaded to the server a solving request will be created and placed on a queue. Each request is processed one at a time, and when it turn will come, the server will unzip the input and start the prediction. The first step in our prediction consists in detecting the water surfaces by combining the NIR band image and the green band image and then applying a formula called NDWI (Normalized Difference Water Index) to each pixel. After that, the resulting image is mapped to the topographical image and a flood algorithm is applied. The flood will start from the water bodies already detected and it will spread base on the land's topography.
+ After the input is uploaded to the server a solving request will be created and placed on a queue. Each request is processed one at a time, and when it turn will come, the server will unzip the input and start the prediction. The first step in our prediction consists in detecting the water surfaces by combining the NIR band image and the green band image, then applying a formula called NDWI (Normalized Difference Water Index) to each pixel. After that, the resulting image is mapped to the topographical image and a flood algorithm is applied. The flood will start from the water bodies already detected and it will spread base on the land's topography.
 
-
+\newpage
 \subsection{Detecting surface water using NDWI + referinte si procente}
 \quad 
 
 The detection of the water bodies was probably one of the most challenging part of this application, because there are different types of water, with different colors and different densities. At first, we tried to detect the water surfaces based on their color, but usually the chromatic of the oceanic water is very different than the chromatic of the lakes and rivers. The color range that we had to cover was too large, so we gave up on this idea. 
 \par 
-The second method that we tried was to use only the near infrared band. The idea behind this was that the satellite will shoot a laser beam across the land area and the beam will be reflected back by the most objects, except water. It is one of the only things that can absorb the NIR laser, so the values of the NIR resulted images ,over the water bodies, will be equal to 0. Near the water banks, because the volume of water is too small to absorb all the NIR rays, the pixel values will not be exactly 0 (the value range can vary up to 15-20). The method seemed to work when we considered all the pixel values between 0-15 to be a water part, with a calculated accuracy of around 83\% (from our tests done over a set of 12 images), but we encountered a big drawback. On the flatter land areas, lacking valleys and mountains, the images looked pretty good, but when the topography was to diverse the shadows began to appear. The pixel value of the areas covered by shadows can vary between 10 and 25, so we got a lot of false positive cases.
+The second approach was to use only the near infrared band. The idea behind this was that the satellite will shoot a laser beam across the land area and the beam will be reflected back by the most objects, except water. It is one of the only things that can absorb the NIR laser, so the values of the NIR resulted images over the water bodies will be equal to 0. Near the water banks, because the volume of water is too small to absorb all the NIR rays, the pixel values will not be exactly 0 (the value range can vary up to 15-20). The method seemed to work when we considered all the pixel values between 0-15 to be a water part, with a calculated accuracy of around 83\% (from our tests done over a set of 12 images), but we encountered a big drawback. On the flatter land areas, lacking valleys and mountains, the images looked pretty good, but when the topography being to be a bit more diverse the shadows began to appear. The pixel value of the areas covered by shadows can vary between 10 and 25, so we got a lot of false positive cases.
 
 \bigskip
 \includegraphics[scale=0.4, left]{water-false-positive.png}
@@ -530,7 +529,7 @@ Fig 12 - False positive water detection
 We can take a look in the previous picture (Fig 12) to see how significant are the errors caused by the shadows. The green areas represent the water bodies classified correct and the white areas are the shadows that our application classified as water. It may not seem much but that figure is 1414 x 658 pixels in size covering around 930.412 $m^2$, and it will be a waist of money to move all the people from that areas in case of a flood just because we classified the shadows as water.
 \par 
 
-The method that we chose in the end was to use a index called NDWI or Normalized difference water index. NDWI is a remote sensing indicator which is obtained by combining the NIR and green band images. The formula will be applied as following for each pixel:
+The approach that we chose in the end was to use a index called NDWI or Normalized difference water index. NDWI is a remote sensing indicator which is obtained by combining the NIR and green band images. The formula will be applied as following for each pixel:
 
 $$ NDWI/perpixel = \frac{Xgreen - Xnir}{Xgreen + Xnir}$$
 
@@ -539,7 +538,7 @@ If the calculated value is bigger than 0.45 we can classify that specific pixel 
 There are numerous studies \cite{NDWI, NDWI Comparison} that suggested that NDWI is one of the best classification method, for optical images, comparable with the multifractal formalism method (with an accuracy of 89\%), and the neural network classification approach that shown great results in some cases, but it did not provide a proper classification because of its high sensitivity to speckle noise.
 \par 
 
-In the end, using this approach we manage to detect all the water bodies with a great accuracy with a insignificant false positives like shadows and other objects. We can take a look in the following picture (Fig 13) on how a result image using NDWI would look like. In this picture all the white zones are water areas, and if we make a difference between the Fig 12 and Fig 13 we can see a big improve when we take in consideration the error caused by the shadows.
+In the end, using this approach we manage to detect all the water bodies with a great accuracy with an insignificant false positives rate caused by shadows and other objects. We can take a look in the following picture (Fig 13) on how a result image using NDWI would look like. In this picture all the white zones are water areas, and if we make a difference between the Fig 12 and Fig 13 we can see a big improve when we take in consideration the error caused by the shadows.
 \par 
 
 
@@ -550,19 +549,18 @@ Fig 13 - Water detection using NDWI (white areas are water bodies)
 \end{center}
 \par 
 
-After the application has managed to detect all the water bodies from a image it will need to overlay the processed image over the topographic image. This will be a topic that we will cover in the next subsection.
+After the application has managed to detect all the water bodies from an image it will need to overlay the processed image over the topographic image. This will be a topic that we will cover in the next subsection.
 
 \subsection{Mapping the processed images (containing water) to the topographically images}
 
 \quad
-In this section we will discuss about how we managed to map two images (the processed image, containing water, with the topographical image). The idea behind this process is that, usually the topographical images available online tend to cover a very large area, that can be even 10 times bigger that the image from which we detect the water bodies, so when we apply the flood algorithm that should extend the water areas based on the topographical surface we cannot just simply place the smaller image over the larger one without taking into account the coordinates. 
+In this section we will discuss about how we managed to map two images (the processed image, containing water, with the topographical image). The idea behind this process is that, usually the topographical images, available online, tend to cover a very large area, that can be even 10 times bigger that the image from which we detect the water bodies, so when we apply the flood algorithm that should spread the water based on the topographical surface we cannot just simply place the smaller image over the larger one without taking into account the coordinates. 
 \par 
 
-Fortunately for us, every topographical, NIR, and green band image offered both by Landsat and Sentinel has a header that contains the metadata (information about the data; structural, administrative and descriptive) for that specific image. In the header we can find the coordinates of each corner of an image, and we can use the Gdal library to take use of that data. The 
-Gdal library can parse every header offered by satellite images and this is why we chose to use this approach. 
+Fortunately for us, every topographical, NIR, and green band image offered both by Landsat and Sentinel has a header that contains the metadata (information about the data; structural, administrative and descriptive). In the header we can find the coordinates of each corner of an image, and we can use the Gdal library to take use of that data. The Gdal library can parse every header offered by satellite images and this is why we chose to include this library into our application. 
 \par 
 
-We cannot just simply overlay one image above another because the pictures can have different resolutions, some of them have a resolution of 10 $m^2$ per pixel, while others can have a resolution 30 $m^2$ per pixel. What we did instead was to create a function that can map every pixel to a global coordinate (of form longitude and latitude), and we can search for that coordinate set in the second image. For every image header we apply a function offered by Gdal called dataset.GetGeoTransform which can parse the metadata, and then based on obtained data a Spatial Reference is created for each picture (Spatial reference is a class offered by Gdal that can reference every satellite image to a place on Earth based on the metadata obtained). The Spatial Reference for both images (our processed image and topographical image) is then passed as an argument together with the transformation header, and the pixel coordinates to a function that will return the longitude and latitude corresponding to the specified pixel.
+We cannot just simply overlay one image above another because the pictures can have different resolutions, some of them have a resolution of 10 $m^2$ per pixel, while others can have a resolution 30 $m^2$ per pixel. What we did instead was to create a function that can map every pixel to a global coordinate (of form longitude and latitude), and then we can search for that coordinate set in the second image. For every image header we apply a function offered by Gdal called dataset.GetGeoTransform, which can parse the metadata, and then based on obtained data a Spatial Reference is created for each picture (Spatial reference is a class offered by Gdal that can reference every satellite image to a place on Earth based on the metadata obtained). The Spatial Reference for both images (our processed image and topographical image) is then passed as an argument together with the transformation header, and the pixel coordinates to a function that will return the longitude and latitude corresponding to the specified pixel.
 
 \bigskip
 \includegraphics[scale=0.8, left]{java_coordinate_mapping.png}
@@ -582,17 +580,17 @@ These functions will be used to help us on the flood algorithm that we will disc
 \subsection{The flood algorithm applied over the images}
 
 \quad
-In this section we will discuss about how the flood algorithm works. Firstly the water detection class is called, which will combine the NIR and the green band images resulting a processed image that will color all the water bodies with the white color, and the rest (land cover) will be colored black.
+In this subsection we will discuss about how the flood algorithm works. Firstly the water detection class is called, which will combine the NIR and the green band images resulting a processed image that will color all the water bodies with the white color, and the rest (land cover) will be colored black.
 \par 
- After the water is detected, the flood algorithm is called. The algorithm is stored in a class that will take as input parameters the name of the NIR image, the name of the processed image(containing the water bodies), and the name of the topographic image. The only reason that we had to pass as an input parameter the name of the NIR image is because our processed image does not contain a file header (containing the global coordinates of each corner), but essentially the images are pretty much the same, when it comes to the land cover area, so we had to use the NIR header as the matadata for our processed picture.
+ After the water is detected, the flood algorithm is called. The algorithm is stored in a class that will take as input parameters the name of the NIR image, the name of the processed image(containing the water bodies), and the name of the topographic image. The only reason that we had to pass as an input parameter the name of the NIR image is because our processed image does not contain a file header (containing the global coordinates of each corner), but essentially the images are pretty much the same, when it comes to the land covered area, so we had to use the NIR header as the matadata for our processed picture.
 \par
 
-The flood algorithm that we created is based on the square flood fill algorithm. The idea is that the image is parsed in a linear manner, and when it encounters a white pixel (containing water) it starts a fill algorithm, that pixel will be colored to green and its based on the topographical map will be retained (the height is obtained by mapping the pixel from our processed image to the topographical map (using the functions described in the previous subsection). Every neighbor (up, down, left, right; this is why is called square flood fill) of that pixel will be place on a stack. \par 
-The elements are popped from the stack, one at a time, and every element is checked. If the element is a white pixel (already containing water), it is colored green (we chose to color the already parsed pixels with green to know that they have been checked, so they will not be added again on the stack; it servers as a mark flag), and its neighbors will be added to the stack. If the element is a black pixel (land area) it will be subjected to a test, and if the test is passed the pixel is colored green, and all his neighbor will be pushed on the stack. The test consists on several things.
+The flood algorithm that we created is based on the square flood fill algorithm. The idea is that the image is parsed in a linear manner, and when it encounters a white pixel (containing water) it starts a fill algorithm. That pixel will be colored to green and its height from the topographical map will be retained (the height is obtained by mapping the pixel from our processed image to the topographical map, using the functions described in the previous subsection). Every neighbor (up, down, left, right; this is why is called square flood fill) of that pixel will be place on a stack. \par 
+The elements are popped from the stack, one at a time, and every element is checked. If the element is a white pixel (already containing water), it is colored green (we chose to color the already parsed pixels with green to know that they have been checked, so they will not be added again on the stack; it servers as a mark flag), and its neighbors will be added to the stack. If the element is a black pixel (land area) it will be subjected to a test, and if the test is passed the pixel is colored green, and all his neighbor will be pushed on the stack. 
 \par 
- Firstly the coordinates (set x,y) of the black pixel will be gathered from our processed image. The x,y coordinates will be transformed to a global longitude and latitude. The obtained global coordinates will be mapped to the topographical image such that the algorithm will be able to identify the exact position of our black pixel on the topographical map. The height of our black pixel is than compared to the previous stored height, and if the height difference is small enough, the pixel will pass the test. Besides the height difference we tried to take into account the distance from the river, such that we store the coordinates of the closest river (water) pixel, and we calculate the height difference based on the distance from the water. The reason because we used this extra test case is because of the swampy regions. They tend to be pretty flat, with a small height variation, but we all know that the water cannot extent to the infinity, so this is why we chose to use this extra case. The height difference that we accepted was between \textbf{$CurrentHeight - 2$} and \textbf{$CurrentHeight + 2$} (the range was selected by us based on several tests and comparisons with real floods).
+The test consists on several things. Firstly the coordinates (set x,y) of the black pixel will be gathered from our processed image. The x,y coordinates will be transformed to a global longitude and latitude. The obtained global coordinates will be mapped to the topographical image such that the algorithm will be able to identify the exact position of our black pixel on the topographical map. The height of our black pixel is than compared to the previous stored height, and if the height difference is small enough, the pixel will pass the test. Besides the height difference we tried to take into account the distance from the river, such that we store the coordinates of the closest river (water) pixel, and we calculate the height difference based on the distance from the water. The reason why we used this extra test was because of the swampy regions. These regions to be pretty flat, with a small height variation, but we all know that the water cannot extent to the infinity, so this is why we chose to use this extra case. The height difference that we accepted was between \textbf{$CurrentHeight - 2$} and \textbf{$CurrentHeight + 2$} (the range was selected by us based on several tests and comparisons with real floods).
 \par 
-In the following pictures (Fig 15, Fig 16) we can take a look on how our application will get through every process (detecting water and applying the flood algorithm). On Fig 15 in the right side we can see how a NIR input image would look like and in the left side is the resulting image after we apply the detection of water bodies.
+In the following pictures (Fig 15, Fig 16) we can take a look on how our application will get through every process (detecting water and applying the flood algorithm). On Fig 15 in the left side we can see how a NIR input image would look like and in the right side is the resulting image after we apply the detection of water bodies.
 
 \bigskip
 \includegraphics[scale=0.3, left]{process1.png}
@@ -620,7 +618,7 @@ Fig 17 - Our prediction compared with real flood
 \end{center}
 \par 
 
-The image above covers about 260,000,000 $m^2$ and it represents the overlaid images of the prediction made by us and a real flood that took place in 2011. The blue marked areas  represents the areas that our model predicted right which are \textbf{15,379,190} $m^2$ and the yellow pixels represents the area which was flooded in 2011, but our model could not predict. The yellow surface is about \textbf{7,801,780} $m^2$ in size, which means that our model has managed to predict the flooded areas with an \textbf{accuracy of 66,34}\% from the total flooded area in 2011. The red pixels in the image represent the land area that our model overestimated, but we cannot classify that as an error because our prediction model does not take into account the precipitation level that will fall during a specific rainstorm, it just predicts the worst possible case. That red area covers around 11,976,000 $m^2$.
+The image above covers about 260,000,000 $m^2$ and it represents the overlaid images of the prediction made by us and a real flood that took place in 2011. The blue marked areas  represents the areas that our model predicted right which are \textbf{15,379,190} $m^2$ and the yellow pixels represents the area which was flooded in 2011, but our model could not predict. The yellow surface is about \textbf{7,801,780} $m^2$ in size, which means that our model has managed to predict the flooded areas with an \textbf{accuracy of 66,34}\%. The red pixels in the image represent the land area that our model overestimated, but we cannot classify that as an error because our prediction model does not take into account the precipitation level that will fall during a specific rainstorm, it just predicts the worst possible case. That red area covers around 8,976,000 $m^2$.
 
 
 \newpage
@@ -635,19 +633,19 @@ In this section we will describe how our application is structured and the techn
 Firstly our application has a server side which is written in python, using the Flask web framework, and that part will run as a process on our machines. It will offer a web GUI interface for every user that will chose to enter our website. There are several HTML templates that will be loaded when needed (home page, image upload succeeded page, image upload failed page, error while processing page). 
 \par 
 
-The first page that is displayed then a user will access the website will be the homepage where the instruction on how to use our application will be displayed, together with a upload files field (that would take a zip, tar.gz or taz.bz2 as input), and a field where the user can enter a email. On the upload files field the user can place as an input a set of images. The sets should be composed as follow: one NIR image, one green band image, and one topographical image over the same are. The images should have the .TIF extension. The user can place multiple sets of images but the sets would be differentiate by their name (e.g set 1: \texttt{0\_nif}, \texttt{0\_green}, \texttt{0\_topo}; set 2: \texttt{1\_nif}, \texttt{1\_green}, \texttt{1\_topo}). The email is required because after the images are being processed the server will send an email to the specified address with a link from where the resulted images can be downloaded.
+The first page that is displayed when a user will access the website will be the homepage where. The instructions on how to use our application will be displayed together with a upload file field (that would take a zip, tar.gz or taz.bz2 as input), and a field where the user can enter an email. On the upload files field the user can place as an input a set of images. The sets should be composed as follow: one NIR image, one green band image, and one topographical image over the same are. The images should have the .TIF extension. The user can place multiple sets of images but the sets would be differentiate by their name (e.g set 1: \texttt{0\_nif}, \texttt{0\_green}, \texttt{0\_topo}; set 2: \texttt{1\_nif}, \texttt{1\_green}, \texttt{1\_topo}). The email is required because after the images are being processed the server will fire an email to the specified address with a link from where the resulted images can be downloaded.
 \par 
 
-After the submit button is pressed the input images will be uploaded to the server, and if the uploaded has succeeded and the email is valid a HTML page with that specific message will be displayed to the user. When the images are received by the server a request to process the input sets is created and place on a queue, each request is processed one at a time. A request will contain a field with the user email address and a field containing the path the zip files that the user had uploaded.
+After the submit button is pressed, the input images will be uploaded to the server, and if the upload has succeeded and the email is valid a HTML page with that specific message will be displayed. When the images are received by the server a request to process the input sets is created and place on a queue, each request is processed one at a time. A request will contain a field with the user email address and a field containing the path the zip files that the user had uploaded.
 \par 
 
-When the time has come for a request to be processed, it will be popped from the queue at it will be analyzed. The server will try to unzip the input set and check if the resulted folder contains the required images with the specified naming style. If the standards are not met a email is fired to notify the user that the input is not valid and it will no be processed. If the input set is accepted, the server will add in the Databese a item that will contain a path the the folder where the images were unzipped and a unique hash that should make the identification much more easy. The image processing part is done by a Java process that will be spawned by the server for each process. The Java files, together with the needed libraries will be compiled when the server is started for the first time (we already talked about how we compiled the Java files and how we run a Java process from python in the second chapter on python subsection; Fig 8 - compiling, Fig 9 - running a process). 
+When the time has come for a request to be processed, it will be popped from the queue at it will be analyzed. The server will try to unzip the input set and check if the resulted folder contains the required images with the specified naming style. If the standards are not met an email is fired to notify the user that the input is not valid and it will not be processed. If the input set is accepted, the server will add in the Databese a item that will contain a path the the folder where the images were unzipped and a unique hash that should make the identification much more easy. The image processing part is done by a Java process that will be spawned by the server for each request. The Java files, together with the needed libraries will be compiled when the server is started for the first time (we already talked about how we compiled the Java files and how we run a Java process from python in the second chapter on python subsection; Fig 8 - compiling, Fig 9 - running a process). 
 \par 
 
 When a Java process is started the server will pass as command line arguments a path the the folder where the images that should be handled are stored, and a path to a folder where the resulted picture should be placed (the folder that will contain the results is created by the server). From this point the spawned Java process will handle the given input in a multi-threaded manner (each image set will be processed by a separate thread) and it will try to place the output on the specified folder path. When the Java process is ended it will return an output that will specify if the instructions had been executed with no errors. If an error has occurred that thing will be specified in the output. 
 \par 
 
-After the Java process is finished the python server will check the output, and if no error had occurred an email with a link, from where the resulting images can be downloaded, is sent to the user. If the server detects some errors from the Java process an email is send to notify the user.
+After the Java process is finished the python server will check the output, and if no error had occurred an email with a link, from where the resulting images can be downloaded is sent to the user. If the server detects some errors from the Java process an email is fire to notify the user.
 
 
 
@@ -655,7 +653,7 @@ After the Java process is finished the python server will check the output, and 
 \section{The user interface}
 
 \quad
-The graphical interface that the user will interact with is a pretty simple HTML page loaded using Flask and mostly create using Bootstrap (Bootstrap is a free framework for front-end which offers CSS and JavaScript design templates, forms, buttons, and so on). Bootstrap was linked to our project with a remote link, so the templates will work only if there is a valid internet connection. The following image (Fig 18) will offer us a quick preview on how this page looks like.
+The graphical interface that the user will interact with is a pretty simple HTML page loaded using Flask, mostly create using Bootstrap (Bootstrap is a free framework for front-end which offers CSS and JavaScript design templates, forms, buttons, and so on). Bootstrap was linked to our project with a remote link, so the templates will work only if there is a valid internet connection. The following image (Fig 18) will offer us a quick preview on how this page looks like.
 
 \bigskip
 \includegraphics[scale=0.4, center]{gui_homepage.png}
@@ -667,10 +665,10 @@ Fig 18 - Main Home Page
 The background is a Bootstrap carousel that will display 3 images, from our local source, in a repetitive manner. The first item that we see below the title is a Bootstrap list-group that holds several list-group-items, each of them representing a instruction about how the input file should look like (type of accepted images, what images will be needed, accepted naming style, and accepted archives format).
 \par 
 
-The second field is a file-input from which the user will be able to upload the archive containing the input images that will later need to be processed by our server.
+The second field is a file-input from which the user will be able to upload the archive containing the input images, that will be later processed by our server.
 \par 
 
-The third field represents a input of type email, where the user should insert an email address to which a message will be sent ,with a link from where the resulted images can be downloaded, after the server manages to process the request. If an error will occur during the processing the user will be notify at that email address. Below the email input field is a submit button that will upload the images to the server, together with the email address, and if all went good a web page containing the "Success" message will be displayed, otherwise a page containing the possible problems will be shown. At the bottom of the page we can find three icons that are linked to our Github, Facebook, and Instagram account.
+The third field represents an input of type email, where the user should insert an email address to which a message will be sent ,with a link from where the resulted images can be downloaded, after the server manages to process the request. If an error will occur during the processing the user will be notify at that email address. Below the email input field is a submit button that will upload the images to the server, together with the email address, and if all went good a web page containing the "Success" message will be displayed. Otherwise a page containing the possible problems will be shown. At the bottom of the page we can find three icons that are linked to our Github, Facebook, and Instagram account.
 
 
 
@@ -683,7 +681,7 @@ Fig 19 - Main use case
 \end{center}
 \par 
 
-The figure above (Fig 19) represents the main use case for our application. The flow shows the fact that the Server will deliver a web page for every user, which will input a set of images (archived) and an email back to the page. The user's input will be sent back to the server, and checked for any errors (wrong input images, wrong naming style). If no error are found the server will spawn a java process that will solve the request, and will notify the server when the job have been done. If no errors were detected while processing the files, the server will fire an email to the user with a link from where our predictions can be downloaded.
+The figure above (Fig 19) represents the main use case for our application. The flow shows the fact that the Server will deliver a web page for every user, which will input a set of images (archived) and an email back to the page. The user's input will be sent back to the server, and checked for any errors (wrong input images, wrong naming style). If no error are found the server will spawn a java process that will solve the request, and will notify the server when the job have been done. If no errors were detected, while processing the files, the server will fire an email to the user with a link from where our predictions can be downloaded.
 
 
 \section{Implementation details}
@@ -691,7 +689,7 @@ The figure above (Fig 19) represents the main use case for our application. The 
 In this section we will go a bit deeper in the details regarding the implementation of our application. Firstly we will discuss about the server side written in python and then we will discuss about the java part that is responsible for the image processing part.
 \par 
 
-In the following picture (Fig 20) we can see a overview of our server, which contains two threads, one is responsible with the web part, with flask, and the other one is responsible for managing the request pushed on queue. A java process is spawned to solve every request and the results path together with an unique hash are stored in the DB.
+In the following picture (Fig 20) we can see a overview of our server, which contains two threads, one is responsible with the web part (with Flask), and the other one is responsible for managing the request pushed on queue. A java process is spawned to solve every request and the results path together with an unique hash are stored in the DB.
 \par 
 
 \medskip
@@ -746,7 +744,7 @@ When the user will click the link a download will be started and, depending on t
 \subsection{Java part}
 
 \quad 
-The first thing that we have to do on our machines to be able to run the server will be to modify a little bit the Java Virtual Machine (JVM is a virtual machine that enables a machine to run java programs). Because the satellite images, that we work with, tent to get very large in size we will need to allocate some extra memory, such that the java process can load into the memory all the files. The images can get as large as 800 Megabytes, and the minimum required number of images for the processing to be done is 3 (NIR, green band and topographical image). A user can upload multiple sets of this images and for every image set a thread will be spawned by the java process, so we will need lots of available memory. On our machine we set up a maximum number of 3 threads that can run simultaneous and we had to set up the default JVM memory to 4 GB. This can be done on a machine running windows by  creating a environment variable called \texttt{\_JAVA\_OPTIONS} with the value \textbf{-Xmx4096m}. That value will set the minimum JVM memory allocation to 4 GB.
+The first thing that we have to do on our machines to be able to run the server will be to modify a little bit the Java Virtual Machine (JVM is a virtual machine that enables a machine to run java programs). Because the satellite images, that we work with, tent to get very large in size we will need to allocate some extra memory, such that the java process can load into the memory all the files. The images can get as large as 800 Megabytes, and the minimum required number of images for the processing to be done is 3 (NIR, green band and topographical image). A user can upload multiple sets of this images and for every image set a thread will be spawned by the java process, so we will need lots of available memory. On our machine we set up a maximum number of 3 threads that can run simultaneous and we had to set up the default JVM memory to 4 GB. This can be done on a machine running windows by  creating an environment variable called \texttt{\_JAVA\_OPTIONS} with the value \textbf{-Xmx4096m}. That value will set the minimum JVM memory allocation to 4 GB.
 \par 
 
 The arguments between the python server and the spawned java process will be passed though the command line. The first argument will be the path to the folder where the images are stored into the server and the second argument will represent the path to where the results should be stored.
@@ -764,7 +762,7 @@ Fig 23 - WaterDetectorBasic class diagram
 In the above figure (Fig 23) we can see a class diagram representation from WaterDetectorBasic. This class is responsible for detecting the water bodies from the satellite images. For each image set it will spawn a thread that will do the computation using the NDWI index.
 \par 
 
-The second important class is called CreateFloodMapBasedOnTOPO and it is pretty similar to our first class. It has a java ExecutorService which creates a java pool that will spawn a thread for every set of images. The thread is a inner class called \texttt{ Thread\_process\_flood }that will create a flood fill base on the land's topography. It has some interesting methods like getPixelFromCoordinates, that can map a certain set of global coordinates to a pixel from an image, and getCoordinatesFromPixel. It also has a method for calculating the distance between 2 given points and a function getHeightFromTopo that will return a value representing the height of a specified coordinates set from a topographical image.
+The second important class is called CreateFloodMapBasedOnTOPO and it is pretty similar to our first class. It has a java ExecutorService which creates a java pool that will spawn a thread for every set of images. The thread is an inner class called \texttt{ Thread\_process\_flood }that will create a flood fill base on the land's topography. It has some interesting methods like getPixelFromCoordinates, that can map a certain set of global coordinates to a pixel from an image, and getCoordinatesFromPixel. It also has a method for calculating the distance between 2 given points and a function getHeightFromTopo that will return a value representing the height of a specified coordinates set from a topographical image.
 
 \bigskip
 \includegraphics[scale=0.55, center]{CreateFloodMapBasedOnTOPO_class.png}
@@ -783,16 +781,16 @@ Fig 24 - CreateFloodMapBasedOnTOPO class diagram
 
 \quad 
 
-In this chapter we will review some tests for our application in order to check the accuracy rate, and at the end we will discuss about what other improves can be done to increase our model's accuracy. The tests were done over various regions of USA because it was easier for us to find there more data from previous flood, to compare with our results.
+In this chapter we will review some tests for our application in order to check the accuracy rate and at the end we will discuss about what other improves can be done to increase our model's accuracy. The tests were done over various regions of USA because it was easier for us to find there more data from previous flood, to compare with our results.
 \par 
 
 In conclusion we can say that we are satisfied with the obtained results because we had a main goal in mind when we started this project. The main plan was to create an easy to use and cheap to create and run program that can offer considerable results on detecting the areas with a high risk of being flooded during a heavy rainstorm.
 \par 
 
-The water identification part, using the NDWI index, showed remarkable detection accuracy, of around 82\% (from our tests), without making many false positives assumption. The water zones that our model may fail to identify are the water regions that are not too deep, like the river's banks and small ponds, but usualy these don't have such a huge impact during a flood when we take into consideration the water volume that will be delivered by lakes and rivers.
+The water identification part, using the NDWI index, showed remarkable detection accuracy, of around \textbf{89\%} (from our tests), without making many false positives assumption. The water zones that our model may fail to identify are the water regions that are not too deep, like the river's banks and small ponds, but usualy these don't have such a huge impact during a flood, when we take into consideration the water volume that will be delivered by lakes and rivers.
 \par 
 
-The prediction of areas with high risk of being flooded had an accuracy rate of around 67\% (from our tests that are presented in the following pages), and from our point of view, it could offer some valuable information. For example, our model could be used by normal people to identify the places where it could be safe to build a house or invest in agriculture.
+The prediction of areas with high risk of being flooded had an accuracy rate of around \textbf{67\%} (from our tests that are presented in the following pages), and from our point of view the model could offer some valuable information. For example, our system could be used by normal people to identify the places where it could be safe to build a house or invest in agriculture.
 
 \newpage
 
@@ -881,12 +879,12 @@ The test area was located in the Louisiana State, USA, and the comparison was ma
 One of the first things that we will like to do in the future is to transform our physical prediction model into a hybrid prediction model, that will combine the advantages of the ML models together with the upsides of the physical model.
 \par 
 
-We would like to keep, as much as possible, our goal still in focus, by creating a easy to use and cheap to run prediction model that would be available for everyone, with a higher accuracy rate. By tilting to a hybrid model we hope to increase our prediction accuracy from about 67\% to as much as possible, without losing our integrity regarding the application' simplicity and reduced cost.
+We would like to keep, as much as possible, our goal still in focus, by creating an easy to use and cheap to run prediction model that would be available for everyone, with a higher accuracy rate. By tilting to a hybrid model we hope to increase our prediction accuracy from about 67\% to as much as possible, without losing our integrity regarding the application' simplicity and reduced cost.
 \par
 
 We could try to add new factors in our model that would increase dramatically the accuracy, like taking into account the actual precipitation volume over a land area and the water flow over some regions. Taking into account these factors will surely increase the development and running cost, because the model will be much more complex and will require more processing time. Another factor that could increase our accuracy rate, that will be pretty cheap and easy to integrate, would be to analyze the plants and the soil. That could be done pretty easy, by adding one more photo to the data set (from the user's point of view), and by combining the pictures we could determine the water level from the soil and the type of plans that grow over a land area. The plants can have a big impact because they can absorb huge quantities of water and they can also change the water's path during a flood.
 \par 
-All these factors can surely increase our prediction model accuracy rate, but we will need to keep in mind our goal, to create a easy to use and cheap prediction model, and for that future research will be needed.
+All these factors can surely increase our prediction model accuracy rate, but we will need to keep in mind our goal, to create an easy to use and cheap prediction model, and for that future research will be needed.
 
 
 
