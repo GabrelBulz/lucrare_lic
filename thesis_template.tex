@@ -192,7 +192,13 @@ Bulz \textsc{Gabriel} % Student's Name
 
 
 
-TREBUIE COMPLETAT AICI
+Floods are between the most devastating natural disasters that our society has to face and they can produce tremendous assets and human lives loss. As a solution we tried to create a prediction model that can highlight the areas with high risk of being flooded during severe rainstorms.
+\par 
+
+One of our main goals was to create a cheap to produce and maintain application, that could be easy to use and understand even by untrained people.
+\par 
+
+This paper will offer some insides into the model skeleton and processing mechanics. The main idea behind our prediction model is that it will take as input satellite images over a land area and by combining the data it will firstly detect the water bodies using a special index called (normalized difference water index or NDWI) and then it will flood that area, starting from the detected water areas, based on the land topography.
 
 \end{abstract} %end abstract
 
@@ -328,9 +334,18 @@ Fig 3 - \cite{Wiki_landsat} - Landsat 7 bands description
 As we specified above there is another option to obtain the images besides Landsat, and that is through the Sentinel program. Sentinel is an observation mission from the Eu Copernicus Programme that acquires optical imagery of Earth at large resolution (10 to 60 m) over land and coastal waters. There are 3 satellites launched by the Copernicus Programme but we will focus mainly on Sentinel 2, because it has the largest collected data. 
 \par 
 
-The Sentinel 2 satellite has a multi-spectral instrument with 13 spectral channels in the visible, short wave and near infrared spectral range. The bands that are interesting for us are the 3-rd band which is the green one and the 8-th band which is the NIR one (the bands have a spatial resolution of 10 m). The images  can be downloaded from the Copernicus Scihub website, again by creating a free account. There is a possibility to select a date range, cloud coverage in percents and the satellite platform which is the best suitable for the user needs (I.E Sentinel 1,2 or 3). 
+The Sentinel 2 satellite has a multi-spectral instrument with 13 spectral channels in the visible, short wave and near infrared spectral range. The bands that are interesting for us are the 3-rd band which is the green one and the 8-th band which is the NIR one (the bands have a spatial resolution of 10 m). The images  can be downloaded from the Copernicus Scihub website, again by creating a free account. There is a possibility to select a date range, cloud coverage percent and the satellite platform which is the best suited for the user needs (I.E Sentinel 1,2 or 3). 
 \par 
 
+There are some drawbacks regarding the Cepernicus Schihub website about the images accessibility. The site offers only two images that can be downloaded each day. The image preview will still be available, but none of the satellite image sets will be available for download. 
+\par 
+
+The web site will display a map over the earth's surface and the user can select an area from where the images will be searched. Because the Sentinel satellites have a predefined trajectory some images can be a little bit cut, meaning that even we selected a specific areas the images offered by the website can have a some black parts, representing the areas which the satellite didn't capture in the photos. We can see that thing in the left side of Fig 4, where a preview over the images is displayed.
+\par 
+
+A quick solution to that problem is to download adjacent images and merge them together into a bigger image using the tools offered by QGIS (we will discuss about QGIS in the following pages).
+
+\newpage
 \bigskip
 
 \includegraphics[scale=0.54, center]{sentinel.png} 
@@ -737,15 +752,24 @@ The first thing that we have to do on our machines to be able to run the server 
 The arguments between the python server and the spawned java process will be passed though the command line. The first argument will be the path to the folder where the images are stored into the server and the second argument will represent the path to where the results should be stored.
 \par 
 
-We created two main classes that will handle the images. The first one that will be instantiated is named WaterDetectorBasic and the second one is called CreateFloodMapBasedOnTOPO.
-\par 
-
-The first class (WaterDetectorBasic) contains an inner class \texttt{Thread\_process\_color} that implements the java Runnable interface. That will be used as a thread to process every set of images contained in a request. If a input has multiple sets of images a thread will be spawned for each one. Because of our machine's limitation, currently we are running on maximum 3 threads for each java process (all the images would need to be loaded in memory, which will exceed our 4 GB set allocated for the JVM). The threads are spawned using a Java ExecutorService which can create a JavaPool with a predetermined number of threads. A java pool is like a job dispenser with a limited number of employees. You can set the number of employees, each one receiving one task, and when the task is done by an employee the dispenser will provide another one for it.
+We created two main classes that will handle the images. The first one, that will be instantiated, is named WaterDetectorBasic (Fig 23)and the second one is called CreateFloodMapBasedOnTOPO (Fig 24). The first class (WaterDetectorBasic) contains an inner class called \texttt{Thread\_process\_color}. That will be used as a thread to process every set of images contained in a request. If an input has multiple sets of images a thread will be spawned for each one. Because of our machine's limitation, currently, we are running on maximum 3 threads for each java process (all the images would need to be loaded into memory, and we have only 4 GB allocated for the JVM). The threads are spawned using a Java ExecutorService which can create a JavaPool with a predetermined number of threads. A java pool is like a job dispenser with a limited number of employees. You can set the number of employees, each one receiving one task, and when a task is finished by an employee the dispenser will provide another one for it.
 
 \medskip
-\includegraphics[scale=0.7, center]{WaterDetectorBasic_class.png}
+\includegraphics[scale=0.6, center]{WaterDetectorBasic_class.png}
 \begin{center}
-Fig 23 - ... 
+Fig 23 - WaterDetectorBasic class diagram
+\end{center}
+\par 
+
+In the above figure (Fig 23) we can see a class diagram representation from WaterDetectorBasic. This class is responsible for detecting the water bodies from the satellite images. For each image set it will spawn a thread that will do the computation using the NDWI index.
+\par 
+
+The second important class is called CreateFloodMapBasedOnTOPO and it is pretty similar to our first class. It has a java ExecutorService which creates a java pool that will spawn a thread for every set of images. The thread is a inner class called \texttt{ Thread\_process\_flood }that will create a flood fill base on the land's topography. It has some interesting methods like getPixelFromCoordinates, that can map a certain set of global coordinates to a pixel from an image, and getCoordinatesFromPixel. It also has a method for calculating the distance between 2 given points and a function getHeightFromTopo that will return a value representing the height of a specified coordinates set from a topographical image.
+
+\bigskip
+\includegraphics[scale=0.55, center]{CreateFloodMapBasedOnTOPO_class.png}
+\begin{center}
+Fig 24 - CreateFloodMapBasedOnTOPO class diagram
 \end{center}
 \par 
 
@@ -777,7 +801,7 @@ The prediction of areas with high risk of being flooded had an accuracy rate of 
 \bigskip
 \includegraphics[scale=0.6, center]{test_1.png}
 \begin{center}
-Fig 24 - Test 1
+Fig 25 - Test 1
 \end{center}
 \par 
 
@@ -788,7 +812,7 @@ The test area was located in the Louisiana State, USA, and the comparison was ma
 \bigskip
 \includegraphics[scale=0.5, center]{test_2.png}
 \begin{center}
-Fig 25 - Test 2 
+Fig 26 - Test 2 
 \end{center}
 \par 
 
@@ -799,7 +823,7 @@ The test area was located in the Louisiana State, USA, and the comparison was ma
 \bigskip
 \includegraphics[scale=0.6, center]{test_3.png}
 \begin{center}
-Fig 26 - Test 3 
+Fig 27 - Test 3 
 \end{center}
 \par 
 
@@ -810,7 +834,7 @@ The test area was located in the Illinois State, USA, near city of Cairo and the
 \bigskip
 \includegraphics[scale=0.5, center]{test_4.png}
 \begin{center}
-Fig 27 - Test 4 
+Fig 28 - Test 4 
 \end{center}
 \par 
 
@@ -821,7 +845,7 @@ The test area was located in the Illinois State, USA, near city of Cairo and the
 \bigskip
 \includegraphics[scale=0.5, center]{test_5.png}
 \begin{center}
-Fig 28 - Test 5
+Fig 29 - Test 5
 \end{center}
 \par 
 
@@ -832,7 +856,7 @@ The test area was located in the Illinois State, USA, near city of Cairo and the
 \bigskip
 \includegraphics[scale=0.4, center]{test_6.png}
 \begin{center}
-Fig 29 - Test 6
+Fig 30 - Test 6
 \end{center}
 \par 
 
@@ -843,7 +867,7 @@ The test area was located in the Illinois State, USA, near city of Cairo and the
 \bigskip
 \includegraphics[scale=0.5, center]{test_7.png}
 \begin{center}
-Fig 30 - Test 7
+Fig 31 - Test 7
 \end{center}
 \par 
 
