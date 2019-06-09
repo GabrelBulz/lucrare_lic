@@ -192,13 +192,7 @@ Bulz \textsc{Gabriel} % Student's Name
 
 
 
-Floods are without doubt the most devastating natural disasters, striking numerous regions in the world each year. During the last decades due the increased frequency of heavy rain and a continuously increasing concentration of population near water regions a lot of assets and lives were lost.
-
-That is the reason why a system that can create a flood forecasting is  
-
-To process the resulted images we will use a library in python called GDAL which can handle that specific type of files (.tif)
-
-In the first part we will try to identify the areas nearby the rivers and lakes (because that areas are more likely to be flooded), and in the second part we will try to analyze the images based on the height of each section. The water from the rain will gather in the lower areas, so we can presume that that areas are likely to hold water.
+TREBUIE COMPLETAT AICI
 
 \end{abstract} %end abstract
 
@@ -259,7 +253,7 @@ After the water has been detected, the land area is flooded based on the topogra
 
 \begin{center}
 	\includegraphics[scale=0.6]{application_outline.png} 
-	Fig 1
+	Fig 1 - Input and output description of the application
 \end{center}
 
 Combining those techniques with an easy to use and understand client interface we managed to create a system that can predict the land areas with a high potential of being flooded. The processing time and cost are reduced because the server part has to go through a set of images only twice, first time to detect the surface water and second time to flood the land area based on the topographic map, so the computations are reduced as low as possible. On the client side, there are big advantages because the set of resources (satellite images) are free and easy to access and the results are easy to understand, making this application ideal for a non trained person.
@@ -278,7 +272,7 @@ For creating our physically prediction model we chose to use NDWI water extracti
 Besides the existence of NDWI index for detecting the water bodies, there are other techniques presented in various papers \cite{Multifractal water analysis, NDWI Comparison} that shown significant results. These methods are the Multifractal analysis of water bodies using Wavelet method and Fluctuation analysis and the detection of water using neural networks. Both of these techniques shown a high accuracy (multifractal analysis shown the best of those two, over 89\%; very similar to the accuracy obtained by our NDWI index), but there are some downsides regarding the neural network water detection. That method shown great results but only on some particular sets of images and it did not provided a proper classification for all radar images. The studies \cite{NDWI Comparison} suggests that the neural network errors may appear due to the high sensitivity to the noise in the images. 
 \par 
 
-On short, after our model manages to detect the water areas from a picture it starts to expand these areas taking into account the topography of the land, like a flood bases in the land level. This model is called a physically prediction model and it allows us to create a simply to understand and test model, which will be time and cost efficient. The image has to be processed only two times in a linear manner, first time to detect the water areas with a complexity of O(n) = N , and second time to flood the land area with a complexity that can go up to O(n) = $N^2$. 
+On short, after our model manages to detect the water areas from a picture it starts to expand these areas taking into account the topography of the land, like a flood bases in the land level. This model is called a physically prediction model and it allows us to create a simply to understand and test model, which will be time and cost efficient. 
 \par 
 
 There exists more complex physical models that can take into account more elements, like land water saturation, vegetation type of that area and the volume of rain that will fall over specific areas, but that types of models are more complex, and more expensive both on execution time and on development time. The test and validation part will need to be more complex, and the input required will be harder to gathered up by a simple user. 
@@ -293,10 +287,6 @@ The second model that we will discuss about will be the \textbf{Remote discharge
 \par 
 
 The third and the last model that we will discuss about is the \textbf{Hybrid physics-machine learning hydrologic models}: This model is a alternative to the machine learning approach, and it adopts a hybrid approach where a ML model is combined with the classical physics-based components, which can enclose important prior knowledge about the domain structure. Some could view this approach as allowing the physically model to capture the major hydrologic  model, while the ML will be responsible for error correction, and calibration of the final model. As an interesting fact, it was shown that the physically models tend to be more accurate on the long-term and mid-term prediction, while the ML tend to be more accurate on the short-term predictions, and by combining those two techniques in one we can possibly obtain a accurate prediction model on both long-term and short-time periods.
-
-
-
-\section{Thesis Structure}
 
 
 
@@ -322,14 +312,14 @@ The Landsat project is one of the longest-running enterprise projects for acquis
 
 \includegraphics[scale=0.5, right]{landsat_search.png} 
 \begin{center}
-Fig 2 - \cite{USGS}
+Fig 2 - \cite{USGS} - Selecting Landsat images
 \end{center}
 
 The image presented above (fig 2) is a shot taken while searching for our test data from a region in U.S (Cairo) that was heavy flooded during a rainstorm by the Mississippi river. The yellow and pink areas represents two different scenes captured by the Landsat 7 satellite. A set of 8 images are found in a package downloaded from this website depending on the satellite that had provided them, but all the Landsat satellites imagery set contains a NIR and green band shot of the selected area (the main difference between them is the resolution in meters of the photo). We used in our research mainly Landsat's 7 images because the photos are at a higher resolution (30 m) and most of them are already processed by the USGS servers (some images need to be processed by the internal servers before being available to the users).
 
 \includegraphics[scale=0.73, center]{Capture.png} 
 \begin{center}
-Fig 3 - \cite{Wiki_landsat}
+Fig 3 - \cite{Wiki_landsat} - Landsat 7 bands description
 \end{center}
 
 
@@ -345,7 +335,7 @@ The Sentinel 2 satellite has a multi-spectral instrument with 13 spectral channe
 
 \includegraphics[scale=0.54, center]{sentinel.png} 
 \begin{center}
-Fig 4 - \cite{Copernicus}
+Fig 4 - \cite{Copernicus} - Selecting Sentinel images
 \end{center}
 \par 
 
@@ -371,7 +361,7 @@ The Sentinel images are pretty straight forward to rendered, but the images from
 
 \includegraphics[scale=0.54, center]{landsat_black_stripes.png} 
 \begin{center}
-Fig 5
+Fig 5 - Landsat 7 image error
 \end{center}
 \par 
 
@@ -384,7 +374,7 @@ The black lines get smaller as we approach the center of the image, which means 
 
 \includegraphics[scale=0.54, center]{landsat_black_stripes_correction.png} 
 \begin{center}
-Fig 6
+Fig 6 - Landsat 7 correction mask
 \end{center}
 \par 
 
@@ -412,13 +402,13 @@ Python will become much slower in this area because of the Global Interpreter Lo
  
 \bigskip
 
-In the following image (fig 7) we can take a look over the processing time between the Java's multi-threaded system and the single-threaded Python's system
+In the following image (fig 7) we can take a look over the processing time (in milliseconds) between the Java's multi-threaded system and the single-threaded Python's system
 \par
 
 \bigskip
 
 \begin{center}
-Fig 7
+Fig 7 - Java multi thread vs python single thread
 \end{center}
 \par 
 \includegraphics[scale=0.7, center]{multi_thread2.png}
@@ -449,7 +439,7 @@ Here we can take a short look on how the java files are compiled
 \bigskip
 \includegraphics[scale=0.8, center]{python_call_java_1.png}
 \begin{center}
-Fig 8
+Fig 8 - Compiling Java files on python server
 \end{center}
 
 \newpage
@@ -459,7 +449,7 @@ Here we can take a look on how a process is started
 \medskip
 \includegraphics[scale=0.7, center]{python_call_java_2.png}
 \begin{center}
-Fig 9
+Fig 9 - Spawn a Java process from python server
 \end{center}
 
 \subsection{Gdal Library}
@@ -488,13 +478,13 @@ We had to consider the fact that the machine on which our application will run w
 \bigskip
 \includegraphics[scale=0.7, center]{django-flask-table.png}
 \begin{center}
-Fig 10 - \cite{Flask2}
+Fig 10 - \cite{Flask2} - Table Django vs Flask 
 \end{center}
 
 \medskip
 \includegraphics[scale=0.6, center]{django-flask-latency.png}
 \begin{center}
-Fig 11 - \cite{Flask2}
+Fig 11 - \cite{Flask2} - Latency and error diagram (Flask vs Django)
 \end{center}
 
 
@@ -592,13 +582,13 @@ In the following pictures (Fig 15, Fig 16) we can take a look on how our applica
 \bigskip
 \includegraphics[scale=0.3, left]{process1.png}
 \begin{center}
-Fig 15 - ... 
+Fig 15 - Detecting water bodies
 \end{center}
 \par 
 
 \includegraphics[scale=0.4, center]{process3.png}
 \begin{center}
-Fig 16 - ... coordinates
+Fig 16 - Our prediction and an actual flood
 \end{center}
 \par 
 
@@ -611,11 +601,11 @@ Another possible cause that can make some differences, between the two images, i
 \medskip
 \includegraphics[scale=0.6, center]{processed_flood_combined.png}
 \begin{center}
-Fig 17 - ... 
+Fig 17 - Our prediction compared with real flood 
 \end{center}
 \par 
 
-The image above covers about 26,000,000 $m^2$ and it represents the overlaid images of the prediction made by us and a real flood that took place in 2011. The blue marked areas  represents the areas that our model predicted right which are \textbf{1537919} $m^2$ and the yellow pixels represents the area which was flooded in 2011, but our model could not predict. The yellow surface is about \textbf{780178} $m^2$ in size, which means that our model has managed to predict the flooded areas with an \textbf{accuracy of 66,34}\% from the total flooded area in 2011. The red pixels in the image represent the land area that our model overestimated, but we cannot classify that as an error because our prediction model does not take into account the precipitation level that will fall during a specific rainstorm, it just predicts the worst possible case. That red area covers around 1,197,600 $m^2$.
+The image above covers about 260,000,000 $m^2$ and it represents the overlaid images of the prediction made by us and a real flood that took place in 2011. The blue marked areas  represents the areas that our model predicted right which are \textbf{15,379,190} $m^2$ and the yellow pixels represents the area which was flooded in 2011, but our model could not predict. The yellow surface is about \textbf{7,801,780} $m^2$ in size, which means that our model has managed to predict the flooded areas with an \textbf{accuracy of 66,34}\% from the total flooded area in 2011. The red pixels in the image represent the land area that our model overestimated, but we cannot classify that as an error because our prediction model does not take into account the precipitation level that will fall during a specific rainstorm, it just predicts the worst possible case. That red area covers around 11,976,000 $m^2$.
 
 
 \newpage
@@ -655,7 +645,7 @@ The graphical interface that the user will interact with is a pretty simple HTML
 \bigskip
 \includegraphics[scale=0.4, center]{gui_homepage.png}
 \begin{center}
-Fig 18 - ... 
+Fig 18 - Main Home Page 
 \end{center}
 \par 
 
@@ -674,7 +664,7 @@ The third field represents a input of type email, where the user should insert a
 \bigskip
 \includegraphics[scale=0.7, center]{FlowCase.png}
 \begin{center}
-Fig 19 - ... 
+Fig 19 - Main use case
 \end{center}
 \par 
 
@@ -692,7 +682,7 @@ In the following picture (Fig 20) we can see a overview of our server, which con
 \medskip
 \includegraphics[scale=0.795, right]{application_overview.png}
 \begin{center}
-Fig 20 - ... 
+Fig 20 - Application Structure 
 \end{center}
 \par 
 
@@ -717,7 +707,7 @@ The database is created using the SQL ALCHEMY and the resulted table contains on
 \medskip
 \includegraphics[scale=0.9, right]{database_table.png}
 \begin{center}
-Fig 21 - ... 
+Fig 21 - DB structure created with SQLAlchemy 
 \end{center}
 \par 
 
@@ -732,7 +722,7 @@ The following picture will represent what an user will receive when the server h
 \medskip
 \includegraphics[scale=1, center]{receive_email.png}
 \begin{center}
-Fig 22 - ... 
+Fig 22 - Email received by user containing link to results
 \end{center}
 \par 
 
@@ -755,7 +745,7 @@ The first class (WaterDetectorBasic) contains an inner class \texttt{Thread\_pro
 \medskip
 \includegraphics[scale=0.7, center]{WaterDetectorBasic_class.png}
 \begin{center}
-Fig 20 - ... 
+Fig 23 - ... 
 \end{center}
 \par 
 
@@ -767,11 +757,114 @@ Fig 20 - ...
 
 \chapter{Conclusions}
 
+\quad 
+
+In this chapter we will review some tests for our application in order to check the accuracy rate, and at the end we will discuss about what other improves can be done to increase our model's accuracy. The tests were done over various regions of USA because it was easier for us to find there more data from previous flood, to compare with our results.
+\par 
+
+In conclusion we can say that we are satisfied with the obtained results because we had a main goal in mind when we started this project. The main plan was to create an easy to use and cheap to create and run program that can offer considerable results on detecting the areas with a high risk of being flooded during a heavy rainstorm.
+\par 
+
+The water identification part, using the NDWI index, showed remarkable detection accuracy, of around 82\% (from our tests), without making many false positives assumption. The water zones that our model may fail to identify are the water regions that are not too deep, like the river's banks and small ponds, but usualy these don't have such a huge impact during a flood when we take into consideration the water volume that will be delivered by lakes and rivers.
+\par 
+
+The prediction of areas with high risk of being flooded had an accuracy rate of around 67\% (from our tests that are presented in the following pages), and from our point of view, it could offer some valuable information. For example, our model could be used by normal people to identify the places where it could be safe to build a house or invest in agriculture.
+
+\newpage
 
 \section{Performance Evaluation} 
 
+\bigskip
+\includegraphics[scale=0.6, center]{test_1.png}
+\begin{center}
+Fig 24 - Test 1
+\end{center}
+\par 
+
+The test area was located in the Louisiana State, USA, and the comparison was made based on a flood occurred on the Mississipi river on 26.05.2011. The land area covers around \textbf{22,235,760 $m^2$}. The calculated flooded area from 2011 was \textbf{1,129,980 $m^2$} and the area identified correct by our model was \textbf{899,900 $m^2$}, so our prediction had an accuracy of \textbf{79,64\%}. The area that our model was unable to predict was about \textbf{230,080 $m^2$} and the overpredicted area was \textbf{454,830 $m^2$.}
+
+\newpage
+
+\bigskip
+\includegraphics[scale=0.5, center]{test_2.png}
+\begin{center}
+Fig 25 - Test 2 
+\end{center}
+\par 
+
+The test area was located in the Louisiana State, USA, and the comparison was made based on a flood occurred on the Mississipi river on 26.05.2011. The land area covers around \textbf{42,344,390 $m^2$}. The calculated flooded area from 2011 was \textbf{1,832,910 $m^2$} and the area identified correct by our model was \textbf{1,290,730 $m^2$}, so our prediction had an accuracy of \textbf{70,4\%}. The area that our model was unable to predict was about \textbf{542,180 $m^2$} and the overpredicted area was \textbf{890,335 $m^2$.}
+
+\newpage
+
+\bigskip
+\includegraphics[scale=0.6, center]{test_3.png}
+\begin{center}
+Fig 26 - Test 3 
+\end{center}
+\par 
+
+The test area was located in the Illinois State, USA, near city of Cairo and the comparison was made based on a flood occurred on the Mississipi river on 11.05.2011. The land area covers around \textbf{20,405,522 $m^2$}. The calculated flooded area from 2011 was \textbf{5,682,310 $m^2$} and the area identified correct by our model was \textbf{3,421,210 $m^2$}, so our prediction had an accuracy of \textbf{60,20\%}. The area that our model was unable to predict was about \textbf{2,261,100 $m^2$} and the overpredicted area was \textbf{1,699,550 $m^2$.}
+
+\newpage
+
+\bigskip
+\includegraphics[scale=0.5, center]{test_4.png}
+\begin{center}
+Fig 27 - Test 4 
+\end{center}
+\par 
+
+The test area was located in the Illinois State, USA, near city of Cairo and the comparison was made based on a flood occurred on the Mississipi river on 11.05.2011. The land area covers around \textbf{9,831,360 $m^2$}. The calculated flooded area from 2011 was \textbf{2,360,730 $m^2$} and the area identified correct by our model was \textbf{1,442,710 $m^2$}, so our prediction had an accuracy of \textbf{61,12\%}. The area that our model was unable to predict was about \textbf{918,020 $m^2$} and the overpredicted area was \textbf{808,500 $m^2$.}
+
+\newpage
+
+\bigskip
+\includegraphics[scale=0.5, center]{test_5.png}
+\begin{center}
+Fig 28 - Test 5
+\end{center}
+\par 
+
+The test area was located in the Illinois State, USA, near city of Cairo and the comparison was made based on a flood occurred on the Mississipi river on 11.05.2011. The land area covers around \textbf{18,738,000 $m^2$}. The calculated flooded area from 2011 was \textbf{3,576,710 $m^2$} and the area identified correct by our model was \textbf{2,067,510 $m^2$}, so our prediction had an accuracy of \textbf{57.80\%}. The area that our model was unable to predict was about \textbf{1,509,200 $m^2$} and the overpredicted area was \textbf{855,590 $m^2$.}
+
+\newpage
+
+\bigskip
+\includegraphics[scale=0.4, center]{test_6.png}
+\begin{center}
+Fig 29 - Test 6
+\end{center}
+\par 
+
+The test area was located in the Illinois State, USA, near city of Cairo and the comparison was made based on a flood occurred on the Mississipi river on 11.05.2011. The land area covers around \textbf{42,129,640 $m^2$}. The calculated flooded area from 2011 was \textbf{4,551,300 $m^2$} and the area identified correct by our model was \textbf{2,907,040 $m^2$}, so our prediction had an accuracy of \textbf{63,87\%}. The area that our model was unable to predict was about \textbf{1,644,260 $m^2$} and the overpredicted area was \textbf{1,224,370 $m^2$.}
+
+\newpage
+
+\bigskip
+\includegraphics[scale=0.5, center]{test_7.png}
+\begin{center}
+Fig 30 - Test 7
+\end{center}
+\par 
+
+The test area was located in the Louisiana State, USA, and the comparison was made based on a flood occurred on the Mississipi river on 26.05.2011. The land area covers around \textbf{264,620,250 $m^2$}. The calculated flooded area from 2011 was \textbf{4,688,740 $m^2$} and the area identified correct by our model was \textbf{3,813,420 $m^2$}, so our prediction had an accuracy of \textbf{81,33\%}. The area that our model was unable to predict was about \textbf{875,320 $m^2$} and the overpredicted area was \textbf{2,172,160 $m^2$.}
+
+\newpage
 
 \section{Future Development}
+
+\quad
+One of the first things that we will like to do in the future is to transform our physical prediction model into a hybrid prediction model, that will combine the advantages of the ML models together with the upsides of the physical model.
+\par 
+
+We would like to keep, as much as possible, our goal still in focus, by creating a easy to use and cheap to run prediction model that would be available for everyone, with a higher accuracy rate. By tilting to a hybrid model we hope to increase our prediction accuracy from about 67\% to as much as possible, without losing our integrity regarding the application' simplicity and reduced cost.
+\par
+
+We could try to add new factors in our model that would increase dramatically the accuracy, like taking into account the actual precipitation volume over a land area and the water flow over some regions. Taking into account these factors will surely increase the development and running cost, because the model will be much more complex and will require more processing time. Another factor that could increase our accuracy rate, that will be pretty cheap and easy to integrate, would be to analyze the plants and the soil. That could be done pretty easy, by adding one more photo to the data set (from the user's point of view), and by combining the pictures we could determine the water level from the soil and the type of plans that grow over a land area. The plants can have a big impact because they can absorb huge quantities of water and they can also change the water's path during a flood.
+\par 
+All these factors can surely increase our prediction model accuracy rate, but we will need to keep in mind our goal, to create a easy to use and cheap prediction model, and for that future research will be needed.
+
+
 
 
 \renewcommand{\bibname}{Bibliography}
