@@ -49,6 +49,7 @@
 \newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 \newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 
+
 \pagenumbering{roman}
 
 \begin{document}
@@ -496,7 +497,7 @@ There is an another available web framework dedicated to Python which we took in
 We had to consider the fact that the machine on which our application will run will need to be cheap to maintain and responsive, which means that it should have low latency (that was one of our main focuses). We have taken a look on several benchmarks that compared the performance obtained by Flask and Dajngo during longer sessions of run time. The available resources tend to change with time so we need to be cautious. We had to determine how they can handle a more intensive environment where the available resources can decrease. Like on real machines where the decrease of resources is non-linear, because the OS can spawn daemons or trigger some side jobs, we had to find some tests that will take these facts into account. In these conditions we found that the HTTP Flask server performs much better than the HTTP Django server. The tests that we have taken into consideration \cite{Flask2} were made using Gunicorn (a Python Web Server Gateway HTTP interface) at a constant rate of 4000 queries per seconds. In the tests the HTTP Flask server displayed lower latency and error numbers and a higher request number compared to the HTTP Django server.
 \par 
 
-\bigskip
+\medskip
 \includegraphics[scale=0.6, center]{django-flask-table.png}
 \begin{center}
 Figure 10. \cite{Flask2} - Table Django vs Flask.
@@ -698,8 +699,7 @@ In this section we will go a bit deeper in the implementation details of our app
 In the following picture (Figure 20) we can see an overview of our server, which contains two threads, one is responsible with the web part (with Flask), and the other one is responsible for managing the requests pushed on queue. A Java process is spawned to solve every request and the results path, together with an unique hash, are stored in the database.
 \par 
 
-\medskip
-\includegraphics[scale=0.795, right]{application_overview.png}
+\includegraphics[scale=0.7, right]{application_overview.png}
 \begin{center}
 Figure 20. Application Structure.
 \end{center}
@@ -781,14 +781,11 @@ Figure 24. CreateFloodMapBasedOnTOPO class diagram.
 
 
 %\chapter{\vspace{-60pt} Performance Evaluation}
-\vspace{-60pt}
-\chapter{\vspace{-60pt}}
-{\Huge \bfseries Prediction of areas with high  }
-\\[0.4cm]
+\chapter{Tests}
 
 
 \bigskip
-\includegraphics[scale=0.6, center]{test_1.png}
+\includegraphics[scale=0.55, center]{test_1_1.png}
 \begin{center}
 Figure 25. Test 1.
 \end{center}
@@ -799,9 +796,9 @@ The test area was located in the Louisiana State, USA, and the comparison was ma
 \newpage
 
 \bigskip
-\includegraphics[scale=0.5, center]{test_2.png}
+\includegraphics[scale=0.55, center]{test_2.png}
 \begin{center}
-Figure 26. Test 2. 
+Figure 26. Test 2.
 \end{center}
 \par 
 

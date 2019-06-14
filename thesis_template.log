@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.10.18)  13 JUN 2019 15:46
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.10.18)  14 JUN 2019 12:59
 entering extended mode
 **./thesis_template.tex
 (thesis_template.tex
@@ -352,18 +352,18 @@ Package: array 2018/04/30 v2.4h Tabular extension package (FMi)
 ) (thesis_template.aux)
 \openout1 = `thesis_template.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 54.
-LaTeX Font Info:    ... okay on input line 54.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 54.
-LaTeX Font Info:    ... okay on input line 54.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 54.
-LaTeX Font Info:    ... okay on input line 54.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 54.
-LaTeX Font Info:    ... okay on input line 54.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 54.
-LaTeX Font Info:    ... okay on input line 54.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 54.
-LaTeX Font Info:    ... okay on input line 54.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -477,7 +477,7 @@ G,.JBIG2,.JB2,.eps]
 <FMI-03.png, id=1, 597.432pt x 597.432pt>
 File: FMI-03.png Graphic file (type png)
 <use FMI-03.png>
-Package pdftex.def Info: FMI-03.png  used on input line 69.
+Package pdftex.def Info: FMI-03.png  used on input line 70.
 (pdftex.def)             Requested size: 100.0pt x 99.99413pt.
  [1
 
@@ -493,10 +493,10 @@ Chapter 1.
 <application_outline.png, id=23, 769.37437pt x 656.4525pt>
 File: application_outline.png Graphic file (type png)
 <use application_outline.png>
-Package pdftex.def Info: application_outline.png  used on input line 258.
+Package pdftex.def Info: application_outline.png  used on input line 259.
 (pdftex.def)             Requested size: 461.62819pt x 393.87454pt.
 
-Overfull \hbox (8.6603pt too wide) in paragraph at lines 258--260
+Overfull \hbox (8.6603pt too wide) in paragraph at lines 259--261
  [] 
  []
 
@@ -505,10 +505,10 @@ Chapter 2.
 <landsat_search.png, id=38, 988.44281pt x 686.565pt>
 File: landsat_search.png Graphic file (type png)
 <use landsat_search.png>
-Package pdftex.def Info: landsat_search.png  used on input line 323.
+Package pdftex.def Info: landsat_search.png  used on input line 324.
 (pdftex.def)             Requested size: 494.2202pt x 343.28166pt.
 
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 323--324
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 324--325
 [][] 
  []
 
@@ -518,10 +518,10 @@ Overfull \hbox (17.62482pt too wide) in paragraph at lines 323--324
 <Capture.png, id=42, 642.90187pt x 129.48375pt>
 File: Capture.png Graphic file (type png)
 <use Capture.png>
-Package pdftex.def Info: Capture.png  used on input line 331.
+Package pdftex.def Info: Capture.png  used on input line 332.
 (pdftex.def)             Requested size: 469.31447pt x 94.52232pt.
 
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 331--332
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 332--333
 [][] 
  []
 
@@ -529,10 +529,10 @@ Overfull \hbox (17.62482pt too wide) in paragraph at lines 331--332
 <sentinel.png, id=51, 910.90312pt x 686.565pt>
 File: sentinel.png Graphic file (type png)
 <use sentinel.png>
-Package pdftex.def Info: sentinel.png  used on input line 356.
+Package pdftex.def Info: sentinel.png  used on input line 357.
 (pdftex.def)             Requested size: 455.45044pt x 343.28166pt.
 
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 356--357
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 357--358
 [][] 
  []
 
@@ -540,10 +540,10 @@ Overfull \hbox (17.62482pt too wide) in paragraph at lines 356--357
 <landsat_black_stripes.png, id=57, 728.7225pt x 495.35063pt>
 File: landsat_black_stripes.png Graphic file (type png)
 <use landsat_black_stripes.png>
-Package pdftex.def Info: landsat_black_stripes.png  used on input line 382.
+Package pdftex.def Info: landsat_black_stripes.png  used on input line 383.
 (pdftex.def)             Requested size: 393.50429pt x 267.48535pt.
 
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 382--383
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 383--384
 [][] 
  []
 
@@ -552,10 +552,10 @@ Overfull \hbox (17.62482pt too wide) in paragraph at lines 382--383
 File: landsat_black_stripes_correction.png Graphic file (type png)
 <use landsat_black_stripes_correction.png>
 Package pdftex.def Info: landsat_black_stripes_correction.png  used on input li
-ne 395.
+ne 396.
 (pdftex.def)             Requested size: 379.27635pt x 260.16812pt.
 
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 395--396
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 396--397
 [][] 
  []
 
@@ -563,10 +563,10 @@ Overfull \hbox (17.62482pt too wide) in paragraph at lines 395--396
 <multi_thread2.png, id=67, 455.45157pt x 485.56406pt>
 File: multi_thread2.png Graphic file (type png)
 <use multi_thread2.png>
-Package pdftex.def Info: multi_thread2.png  used on input line 432.
+Package pdftex.def Info: multi_thread2.png  used on input line 433.
 (pdftex.def)             Requested size: 318.81392pt x 339.89252pt.
 
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 432--433
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 433--434
 [][] 
  []
 
@@ -574,10 +574,10 @@ Overfull \hbox (17.62482pt too wide) in paragraph at lines 432--433
 <python_call_java_1.png, id=74, 627.84563pt x 215.30438pt>
 File: python_call_java_1.png Graphic file (type png)
 <use python_call_java_1.png>
-Package pdftex.def Info: python_call_java_1.png  used on input line 461.
+Package pdftex.def Info: python_call_java_1.png  used on input line 462.
 (pdftex.def)             Requested size: 502.27718pt x 172.24373pt.
 
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 461--462
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 462--463
 [][] 
  []
 
@@ -585,10 +585,10 @@ Overfull \hbox (17.62482pt too wide) in paragraph at lines 461--462
 <python_call_java_2.png, id=79, 703.87968pt x 426.09187pt>
 File: python_call_java_2.png Graphic file (type png)
 <use python_call_java_2.png>
-Package pdftex.def Info: python_call_java_2.png  used on input line 471.
+Package pdftex.def Info: python_call_java_2.png  used on input line 472.
 (pdftex.def)             Requested size: 492.71242pt x 298.26227pt.
 
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 471--472
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 472--473
 [][] 
  []
 
@@ -596,32 +596,31 @@ Overfull \hbox (17.62482pt too wide) in paragraph at lines 471--472
 <django-flask-table.png, id=84, 688.82344pt x 91.84312pt>
 File: django-flask-table.png Graphic file (type png)
 <use django-flask-table.png>
-Package pdftex.def Info: django-flask-table.png  used on input line 500.
+Package pdftex.def Info: django-flask-table.png  used on input line 501.
 (pdftex.def)             Requested size: 413.29726pt x 55.10628pt.
 
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 500--501
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 501--502
 [][] 
  []
 
-[16 <./django-flask-table.png>]
-<django-flask-latency.png, id=90, 794.97pt x 469.00218pt>
+<django-flask-latency.png, id=85, 794.97pt x 469.00218pt>
 File: django-flask-latency.png Graphic file (type png)
 <use django-flask-latency.png>
-Package pdftex.def Info: django-flask-latency.png  used on input line 506.
+Package pdftex.def Info: django-flask-latency.png  used on input line 507.
 (pdftex.def)             Requested size: 476.98569pt x 281.40347pt.
 
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 506--507
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 507--508
 [][] 
  []
 
-[17 <./django-flask-latency.png>]
+[16 <./django-flask-table.png>] [17 <./django-flask-latency.png>]
 <water-false-positive.png, id=95, 1064.47687pt x 495.35063pt>
 File: water-false-positive.png Graphic file (type png)
 <use water-false-positive.png>
-Package pdftex.def Info: water-false-positive.png  used on input line 529.
+Package pdftex.def Info: water-false-positive.png  used on input line 530.
 (pdftex.def)             Requested size: 425.7832pt x 198.13673pt.
 
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 529--530
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 530--531
 [][] 
  []
 
@@ -629,10 +628,10 @@ Overfull \hbox (17.62482pt too wide) in paragraph at lines 529--530
 <NDWI-prediction.png, id=100, 1090.0725pt x 1058.45438pt>
 File: NDWI-prediction.png Graphic file (type png)
 <use NDWI-prediction.png>
-Package pdftex.def Info: NDWI-prediction.png  used on input line 552.
+Package pdftex.def Info: NDWI-prediction.png  used on input line 553.
 (pdftex.def)             Requested size: 436.02127pt x 423.37425pt.
 
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 552--553
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 553--554
 [][] 
  []
 
@@ -640,10 +639,10 @@ Overfull \hbox (17.62482pt too wide) in paragraph at lines 552--553
 <java_coordinate_mapping.png, id=109, 562.35094pt x 224.33812pt>
 File: java_coordinate_mapping.png Graphic file (type png)
 <use java_coordinate_mapping.png>
-Package pdftex.def Info: java_coordinate_mapping.png  used on input line 572.
+Package pdftex.def Info: java_coordinate_mapping.png  used on input line 573.
 (pdftex.def)             Requested size: 449.88136pt x 179.47073pt.
 
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 572--573
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 573--574
 [][] 
  []
 
@@ -651,20 +650,20 @@ Overfull \hbox (17.62482pt too wide) in paragraph at lines 572--573
 <process1.png, id=118, 1555.31062pt x 810.02625pt>
 File: process1.png Graphic file (type png)
 <use process1.png>
-Package pdftex.def Info: process1.png  used on input line 602.
+Package pdftex.def Info: process1.png  used on input line 603.
 (pdftex.def)             Requested size: 466.59679pt x 243.00975pt.
 
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 602--603
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 603--604
 [][] 
  []
 
 <process3.png, id=119, 1261.71375pt x 807.015pt>
 File: process3.png Graphic file (type png)
 <use process3.png>
-Package pdftex.def Info: process3.png  used on input line 608.
+Package pdftex.def Info: process3.png  used on input line 609.
 (pdftex.def)             Requested size: 504.67656pt x 322.80028pt.
 
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 608--609
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 609--610
 [][] 
  []
 
@@ -672,7 +671,7 @@ Overfull \hbox (17.62482pt too wide) in paragraph at lines 608--609
 <processed_flood_combined.png, id=124, 918.43124pt x 698.61pt>
 File: processed_flood_combined.png Graphic file (type png)
 <use processed_flood_combined.png>
-Package pdftex.def Info: processed_flood_combined.png  used on input line 621.
+Package pdftex.def Info: processed_flood_combined.png  used on input line 622.
 (pdftex.def)             Requested size: 551.063pt x 419.16924pt.
  [24 <./process3.png>] [25 <./processed_flood_combined.png>]
 Chapter 3.
@@ -682,10 +681,10 @@ Chapter 3.
 <gui_homepage.png, id=140, 1198.4775pt x 690.32906pt>
 File: gui_homepage.png Graphic file (type png)
 <use gui_homepage.png>
-Package pdftex.def Info: gui_homepage.png  used on input line 665.
+Package pdftex.def Info: gui_homepage.png  used on input line 666.
 (pdftex.def)             Requested size: 479.3825pt x 276.12672pt.
 
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 665--666
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 666--667
 [][] 
  []
 
@@ -693,14 +692,14 @@ Overfull \hbox (17.62482pt too wide) in paragraph at lines 665--666
 <FlowCase.png, id=146, 767.11594pt x 516.42938pt>
 File: FlowCase.png Graphic file (type png)
 <use FlowCase.png>
-Package pdftex.def Info: FlowCase.png  used on input line 684.
+Package pdftex.def Info: FlowCase.png  used on input line 685.
 (pdftex.def)             Requested size: 536.9775pt x 361.4981pt.
  [29 <./FlowCase.png>]
 <application_overview.png, id=151, 647.41875pt x 432.11438pt>
 File: application_overview.png Graphic file (type png)
 <use application_overview.png>
 Package pdftex.def Info: application_overview.png  used on input line 702.
-(pdftex.def)             Requested size: 514.69545pt x 343.52928pt.
+(pdftex.def)             Requested size: 453.19003pt x 302.478pt.
 
 Overfull \hbox (17.62482pt too wide) in paragraph at lines 702--703
 [][] 
@@ -755,112 +754,102 @@ Overfull \hbox (17.62482pt too wide) in paragraph at lines 774--775
 
 [35 <./CreateFloodMapBasedOnTOPO_class.png>]
 Chapter 4.
-
-Underfull \hbox (badness 10000) in paragraph at lines 786--788
-
- []
-
-<test_1.png, id=180, 781.41937pt x 698.61pt>
-File: test_1.png Graphic file (type png)
-<use test_1.png>
-Package pdftex.def Info: test_1.png  used on input line 791.
-(pdftex.def)             Requested size: 468.85524pt x 419.16924pt.
-
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 791--792
-[][] 
- []
-
+<test_1_1.png, id=180, 779.91376pt x 550.30594pt>
+File: test_1_1.png Graphic file (type png)
+<use test_1_1.png>
+Package pdftex.def Info: test_1_1.png  used on input line 788.
+(pdftex.def)             Requested size: 428.9539pt x 302.6692pt.
 [36
 
- <./test_1.png>] [37]
-<test_2.png, id=188, 981.6675pt x 832.61063pt>
+ <./test_1_1.png>]
+<test_2.png, id=184, 981.6675pt x 832.61063pt>
 File: test_2.png Graphic file (type png)
 <use test_2.png>
-Package pdftex.def Info: test_2.png  used on input line 802.
-(pdftex.def)             Requested size: 490.83255pt x 416.30429pt.
+Package pdftex.def Info: test_2.png  used on input line 799.
+(pdftex.def)             Requested size: 539.9188pt x 457.93726pt.
 
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 802--803
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 799--800
 [][] 
  []
 
-[38 <./test_2.png>]
-<test_3.png, id=193, 862.72313pt x 696.35156pt>
+[37 <./test_2.png>]
+<test_3.png, id=189, 862.72313pt x 696.35156pt>
 File: test_3.png Graphic file (type png)
 <use test_3.png>
-Package pdftex.def Info: test_3.png  used on input line 813.
+Package pdftex.def Info: test_3.png  used on input line 810.
 (pdftex.def)             Requested size: 517.63788pt x 417.81415pt.
 
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 813--814
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 810--811
 [][] 
  []
 
-[39 <./test_3.png>]
-<test_4.png, id=198, 990.70125pt x 680.5425pt>
+[38 <./test_3.png>]
+<test_4.png, id=194, 990.70125pt x 680.5425pt>
 File: test_4.png Graphic file (type png)
 <use test_4.png>
-Package pdftex.def Info: test_4.png  used on input line 824.
+Package pdftex.def Info: test_4.png  used on input line 821.
 (pdftex.def)             Requested size: 495.34941pt x 340.27042pt.
 
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 824--825
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 821--822
 [][] 
  []
 
-[40 <./test_4.png>]
-<test_5.png, id=204, 897.3525pt x 694.09312pt>
+[39 <./test_4.png>]
+<test_5.png, id=199, 897.3525pt x 694.09312pt>
 File: test_5.png Graphic file (type png)
 <use test_5.png>
-Package pdftex.def Info: test_5.png  used on input line 835.
+Package pdftex.def Info: test_5.png  used on input line 832.
 (pdftex.def)             Requested size: 448.67514pt x 347.04572pt.
 
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 835--836
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 832--833
 [][] 
  []
 
-[41 <./test_5.png>]
-<test_6.png, id=209, 1199.98312pt x 831.105pt>
+[40 <./test_5.png>]
+<test_6.png, id=205, 1199.98312pt x 831.105pt>
 File: test_6.png Graphic file (type png)
 <use test_6.png>
-Package pdftex.def Info: test_6.png  used on input line 846.
+Package pdftex.def Info: test_6.png  used on input line 843.
 (pdftex.def)             Requested size: 479.98476pt x 332.43611pt.
 
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 846--847
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 843--844
 [][] 
  []
 
-[42 <./test_6.png>]
-<test_7.png, id=214, 931.98187pt x 688.07062pt>
+[41 <./test_6.png>]
+<test_7.png, id=210, 931.98187pt x 688.07062pt>
 File: test_7.png Graphic file (type png)
 <use test_7.png>
-Package pdftex.def Info: test_7.png  used on input line 857.
+Package pdftex.def Info: test_7.png  used on input line 854.
 (pdftex.def)             Requested size: 465.98979pt x 344.03447pt.
 
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 857--858
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 854--855
 [][] 
  []
 
-[43 <./test_7.png>]
+[42 <./test_7.png>]
 Chapter 5.
-[44
+[43
 
 
-] [45]
-Underfull \hbox (badness 10000) in paragraph at lines 915--916
+] [44]
+Underfull \hbox (badness 10000) in paragraph at lines 912--913
 []\OT1/cmr/m/n/12 Flood fore-cast-ing - World me-te-o-ro-log-i-cal or-ga-ni-za-
 tion
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 915--916
+Underfull \hbox (badness 10000) in paragraph at lines 912--913
 \OT1/cmr/m/it/12 http://www.wmo.int/pages/prog/hwrp/FloodForecastingInitiative.
 php \OT1/cmr/m/n/12 - ac-cessed
  []
 
-[46
+[45
 
-] [47] [48] (thesis_template.aux) ) 
+] [46] [47] (thesis_template.aux) ) 
 Here is how much of TeX's memory you used:
  6159 strings out of 492970
- 92178 string characters out of 3126149
+ 92188 string characters out of 3126149
  354585 words of memory out of 3000000
  9872 multiletter control sequences out of 15000+200000
  11195 words of font info for 40 fonts, out of 3000000 for 9000
@@ -876,9 +865,9 @@ ic/amsfonts/cm/cmr8.pfb><C:/Users/Gabrel/AppData/Local/Programs/MiKTeX 2.9/font
 s/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Gabrel/AppData/Local/Programs/M
 iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/Gabrel/AppData/Lo
 cal/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on thesis_template.pdf (51 pages, 9909768 bytes).
+Output written on thesis_template.pdf (50 pages, 9892634 bytes).
 PDF statistics:
- 264 PDF objects out of 1000 (max. 8388607)
+ 260 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  161 words of extra memory for PDF output out of 10000 (max. 10000000)
 
