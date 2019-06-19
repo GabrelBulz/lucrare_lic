@@ -170,7 +170,7 @@ Assoc. Prof. Dr. Marc Eduard \textsc{Fr\^incu} % Coordinator
 \begin{minipage}{0.4\textwidth}
 \begin{flushright} \large
 \textbf{GRADUATE:} \\
-Bulz \textsc{Gabriel} % Student's Name
+Gabriel \textsc{Bulz} % Student's Name
 \end{flushright}
 \end{minipage}\\[1cm]
 
@@ -295,7 +295,7 @@ The second model that we will discuss will be the \textbf{Remote discharge estim
 The third and last model that we will discuss is the \textbf{Hybrid physics-machine learning hydrologic models}: This model is an alternative to the machine learning approach, and it adopts a hybrid approach where an ML model is combined with the classical physics-based components, which can enclose important prior knowledge about the domain structure. Some could view this approach as allowing the physically model to capture the major hydrologic  model, while the ML will be responsible for error correction, and calibration of the final model. An interesting fact is that it was shown that the physical models tend to be more accurate in the long-term and mid-term predictions, while the ML models tend to be more accurate in short-term predictions and, by combining those two techniques, it is possible to obtain an accurate prediction model on both long-term and short-time periods.
 \par 
 
-We chose to create a physical prediction model which combines the water detection technique (using NDWI index) with a flooding technique (based on expanding the water areas taking into account the topography of the land) because these approaches allowed us to create a simple model with a considerable accuracy rate (\textbf{67\%} calculated from our tests). With a less complex model we could save a lot from the developing cost because the required tests are much simpler to be done and the actual model is simpler to create, requiring less developers, less time and less money. Another good reason why we chose a simpler model is that its required processing time is reduced because it doesn't have to take in consideration as much factors as the ML or hybrid models. 
+We chose to create a physical prediction model which combines the water detection technique (using NDWI index) with a flooding technique (based on expanding the water areas taking into account the topography of the land) because these approaches allowed us to create a simple model with a considerable accuracy rate (\textbf{67\%} calculated from our tests). With a less complex model we could save a lot from the developing cost because the required tests are much simpler to be done and the actual model is simpler to create, requiring less developers, less time and less money. Another good reason why we chose a simpler model is that its required processing time is reduced because it does not have to take in consideration as much factors as the ML or hybrid models. 
 \par 
 
 As a side effect of the reduced number of factors taken into consideration  by our model the consumer public has less gathering to do (gathering of information).
@@ -612,7 +612,7 @@ Figure 16. Our prediction and an actual flood.
 \end{center}
 \par 
 
-In the above picture (Figure 16) we can see, on the left side, how a prediction made by our algorithm would look like. The image is obtained by applying the flood algorithm over the processed image (which contains the water bodies) on the right side of Figure 15. \par 
+In the above picture (Figure 16) we can see, on the left side, how a prediction made by our algorithm would look like. The image is obtained by applying the flood algorithm over the processed image (which contains the water bodies) on the right of Figure 15. \par 
 
 On the right side of Figure 16 we can see an image of an actual flood area that was captured by the Landsat 7 satellite over a section of Mississippi river in Cairo, Illinois, USA. There are some zones  that contain water (in the image of the actual flood) that cannot be seen because of the clouds. The green waves cannot penetrate through the clouds, meaning that some images cannot be processed correctly because of this problem.
 \par 
